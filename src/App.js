@@ -1,10 +1,7 @@
+import React from "react";
 
-function App() {
-  return (
-    <div>
-      Project - FirstLight
-    </div>
-  );
-}
+const App = () => {
+    return <h1>Project - FirstLight</h1>;
+};
 
 export default App;
