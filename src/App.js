@@ -1,7 +1,8 @@
 import React from "react";
+import SignUp from "./components/signup/index"
 
 const App = () => {
-    return <h1>Project - FirstLight</h1>;
+    return <SignUp />;
 };
 
 export default App;

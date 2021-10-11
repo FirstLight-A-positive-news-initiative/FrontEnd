@@ -1,0 +1,52 @@
+*{
+    font-family: 'Ubuntu', sans-serif;
+}
+.box{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../../images/signupwall3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-color: white; */
+}
+.box div{
+    text-align: center;
+    width: 400px;
+    height: 75vh;
+    padding: 4px;
+    background-color:white;
+    border-radius: 20px;
+    opacity: 0.96;
+}
+.title{
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: 3rem;
+    margin-top: 15%;
+    margin-bottom: 20px;
+}
+.description{
+    margin: 10px;
+    margin-bottom: 50px;
+    color: #4d4d4d;
+}
+.signup{
+    height: 40px;
+}
+.register{    
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 1.3rem;
+    text-transform: none;
+}
+.signin{
+    margin: 10px;
+    margin-top: 20px;
+    color: #4d4d4d;
+}
+.signin a{
+    text-decoration: none;
+    color:black
+}
