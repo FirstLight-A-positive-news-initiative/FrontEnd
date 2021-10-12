@@ -1,24 +1,31 @@
 *{
     font-family: 'Ubuntu', sans-serif;
 }
+.bg{
+    background-image: url("../../assets/images/composition-24.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .box{
     min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-image: url("../../images/signupwall3.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    justify-content: left;
     /* background-color: white; */
 }
 .box div{
     text-align: center;
     width: 400px;
     height: 75vh;
-    padding: 4px;
+    padding: 50px;
     background-color:white;
     border-radius: 20px;
     opacity: 0.96;
+}
+.logo{
+    height: 50%;
+    margin: 0;
+    padding: 0;
 }
 .title{
     font-family: 'DM Serif Display', serif;
@@ -29,7 +36,7 @@
 }
 .description{
     margin: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     color: #4d4d4d;
 }
 .signup{
@@ -45,6 +52,7 @@
     margin: 10px;
     margin-top: 20px;
     color: #4d4d4d;
+    font-weight: 500;
 }
 .signin a{
     text-decoration: none;
