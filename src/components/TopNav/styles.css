@@ -1,0 +1,53 @@
+.top-nav__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+}
+
+.top-nav__header a {
+    text-decoration: none;
+    color: black;
+}
+
+.top-nav__image {
+    height: 5rem;
+    cursor: pointer;
+}
+
+.top-nav__search {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    padding: 0.5rem;
+    border-radius: 20px;
+}
+
+.top-nav__search input {
+    margin: 0 0.5rem;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+}
+
+.top-nav__links {
+    list-style: none;
+}
+
+.top-nav__links li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.top-nav__links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.top-nav__links li a:hover {
+    transition: all 0.3s ease 0s;
+    color: #666666;
+}
+
+.top-nav__links-icons {
+    transform: translate(-4px, 4px);
+}
