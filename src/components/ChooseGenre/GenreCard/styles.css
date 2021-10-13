@@ -1,0 +1,19 @@
+.GenreCard__card {
+    box-shadow: 2px 2px 4px grey;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 5% !important;
+    color: black;
+}
+
+.GenreCard__choice-button {
+    width: 100%;
+    text-align: center;
+    color: black !important;
+}
+
+.GenreCard__choice-button-selected {
+    background-color: #69DADB !important;
+    color: white !important;
+}

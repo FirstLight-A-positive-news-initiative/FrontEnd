@@ -1,0 +1,25 @@
+.ChooseGenre__heading {
+    margin-top: 5%;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+.ChooseGenre__genre-grid {
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+#ChooseGenre__submit-button-div {
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+#ChooseGenre__submit-button {
+    width: 10%;
+    font-size: large;
+    color: black;
+    border: 0.1em solid black;
+}

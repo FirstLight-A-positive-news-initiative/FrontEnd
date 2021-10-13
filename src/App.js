@@ -3,10 +3,12 @@ import { Switch, Route, Redirect } from "react-router";
 import userContext from "./context/userContext";
 import SignUp from "./components/signup";
 import TopNav from "./components/TopNav";
+import ChooseGenre from "./components/ChooseGenre";
 
 const App = () => {
     var routes = null;
-    const [user, setUser] = useContext(userContext);
+    // const [user, setUser] = useContext(userContext);
+    const user = "shubh"
     if (user == null) {
         routes = (
             <div>
@@ -21,6 +23,7 @@ const App = () => {
             <div>
                 <TopNav />
                 <Switch>
+                    <Route exact path = "/choose-genre" component = {ChooseGenre} />
                     <Redirect to="/news"></Redirect>
                 </Switch>
             </div>

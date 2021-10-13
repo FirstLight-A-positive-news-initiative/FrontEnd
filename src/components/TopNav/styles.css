@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 8%;
+    background-color: #ffffff;
 }
 
 .top-nav__header a {
@@ -18,7 +19,7 @@
 .top-nav__search {
     display: flex;
     align-items: center;
-    background: #ffffff;
+    background: #ccc;
     padding: 0.5rem;
     border-radius: 20px;
 }
@@ -28,6 +29,7 @@
     border: none;
     outline: none;
     padding: 0.5rem;
+    background-color: #ccc;
 }
 
 .top-nav__links {
