@@ -12,21 +12,26 @@ import "./styles.css";
 const GenreCard = ({ genre, image, selected_genres, set_genres }) => {
 
     const handleGenre = (e) => {
+        var curr_button = document.getElementById(e.target.id).classList;
+        var s = false;
+        for(var i = 0; i < curr_button.length; i++) {
+            if(curr_button[i] === `GenreCard__choice-button-selected`) {
+                s = true;
+            }
+        }
+        if(s) {
+            curr_button.remove(`GenreCard__choice-button-selected`);
+        } else {
+            curr_button.add(`GenreCard__choice-button-selected`);
+        }
+
         var idx = selected_genres.indexOf(e.target.value);
         if(idx !== -1) {
             selected_genres.splice(idx, 1);
             set_genres([...selected_genres]);
-
-            var curr_button = document.getElementById(e.target.id);
-            curr_button.classList.add(`GenreCard__choice-button-selected`);
         } else {
             set_genres([...selected_genres, e.target.value]);
-
-            var curr_button = document.getElementById(e.target.id);
-            curr_button.classList.remove(`GenreCard__choice-button-selected`);
         }
-        console.log(selected_genres);
-        return;
     }
 
     return (

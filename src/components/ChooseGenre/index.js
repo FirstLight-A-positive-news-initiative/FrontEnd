@@ -39,8 +39,8 @@ const ChooseGenre = () => {
 
     return (
         <div>
-            <h2 className = "ChooseGenre__heading">Please select your favorite genres!</h2>
-            <Grid className = "ChooseGenre__genre-grid" container spacing = {2}>
+            <h2 className = "ChooseGenre__heading">Please select your favorite genres</h2>
+            <Grid className = "ChooseGenre__genre-grid" container spacing = {6}>
                 {
                     genre_list.map((g) => (
                         <Grid item>
