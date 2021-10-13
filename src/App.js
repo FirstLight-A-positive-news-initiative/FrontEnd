@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router";
 import userContext from "./context/userContext";
+import SignUp from "./components/signup";
 
 const App = () => {
     var routes = null;
@@ -8,14 +9,15 @@ const App = () => {
     if (user == null) {
         routes = (
             <Switch>
-                <Redirect></Redirect>
+                <Route path="/login" component={SignUp} />
+                <Redirect to="/"></Redirect>
             </Switch>
         );
     } else {
         routes = (
             <div>
                 <Switch>
-                    <Redirect></Redirect>
+                    <Redirect to="/news"></Redirect>
                 </Switch>
             </div>
         );
