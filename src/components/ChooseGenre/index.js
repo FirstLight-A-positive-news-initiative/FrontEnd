@@ -53,12 +53,13 @@ const ChooseGenre = () => {
             <Grid className = "ChooseGenre__genre-grid" container spacing = {2}>
                 {
                     genre_list.map((g) => (
-                        <Grid item className = "ChooseGenre__genre-grid-item">
+                        <Grid key = {g.genre} item className = "ChooseGenre__genre-grid-item">
                             <GenreCard 
                                 genre = {g.genre}
                                 image = {g.image}
                                 selected_genres = {genres}
                                 set_genres = {setGenres}
+                                key = {g.genre}
                             />
                         </Grid>
                     ))
