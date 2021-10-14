@@ -37,14 +37,17 @@ const TopNav = (props) => {
                 <ul className="top-nav__links">
                     <li>
                         <Link to="/news">
-                            <BiNews class="top-nav__links-icons" size="25px" />
+                            <BiNews
+                                className="top-nav__links-icons"
+                                size="25px"
+                            />
                             News
                         </Link>
                     </li>
                     <li>
                         <Link to="/games">
                             <IoGameControllerOutline
-                                class="top-nav__links-icons"
+                                className="top-nav__links-icons"
                                 size="25px"
                             />
                             Games
@@ -53,7 +56,7 @@ const TopNav = (props) => {
                     <li>
                         <Link to="/comics">
                             <BiBookOpen
-                                class="top-nav__links-icons"
+                                className="top-nav__links-icons"
                                 size="25px"
                             />
                             Comics
