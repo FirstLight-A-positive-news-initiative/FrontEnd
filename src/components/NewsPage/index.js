@@ -24,10 +24,7 @@ const NewsPage = () => {
         <div>
             <div
                 className="news-page__header"
-                styles={{
-                    backgroundImage: `url(https://source.unsplash.com/user/erondu/1600x900
-                    )`,
-                }}
+                styles={{ backgroundImage: `url(${news.image_link})` }}
             >
                 <h1>{news.title}</h1>
             </div>

@@ -10,7 +10,7 @@ import NewsPage from "./components/NewsPage";
 const App = () => {
     var routes = null;
     // const [user, setUser] = useContext(userContext);
-    var user = "shubh";
+    const user = "h";
     if (user == null) {
         routes = (
             <div>
@@ -26,7 +26,7 @@ const App = () => {
                 <TopNav />
                 <Switch>
                     <Route exact path="/choose-genre" component={ChooseGenre} />
-                    <Route exact path="/news/:id" component={NewsPage} />
+                    <Route exact path="/:id" component={NewsPage} />
                     <Redirect to="/news"></Redirect>
                 </Switch>
                 <BottomNav />
