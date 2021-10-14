@@ -1,19 +1,19 @@
 *{
     font-family: 'Ubuntu', sans-serif;
 }
-.bg{
+.sign-up__bg{
     background-image: url("../../assets/images/composition-24.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
-.box{
+.sign-up__box{
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: left;
     /* background-color: white; */
 }
-.box div{
+.sign-up__box > div:first-child{
     text-align: center;
     width: 400px;
     height: 75vh;
@@ -22,39 +22,83 @@
     border-radius: 20px;
     opacity: 0.96;
 }
-.logo{
+.sign-up__box-logo{
     height: 50%;
     margin: 0;
     padding: 0;
 }
-.title{
+.sign-up__box-title{
     font-family: 'DM Serif Display', serif;
     font-weight: 400;
-    font-size: 3rem;
-    margin-top: 15%;
-    margin-bottom: 20px;
+    font-size: 1.5rem;
+    margin: 1%;
 }
-.description{
+.sign-up__box-description{
     margin: 10px;
     margin-bottom: 30px;
     color: #4d4d4d;
 }
-.signup{
+.sign-up__box-welcome{
+    color: #4d4d4d;
+    margin-top: -25px;
+    margin-bottom: 25px;
+    font-size: 1.2rem;    
+    font-weight: 500;
+}
+.sign-up__box-google{
+    margin-top: -15px;
+    color: black;
+}
+/* .sign-up__box-signup{
     height: 40px;
 }
-.register{    
+.sign-up__box-signup-register{    
     margin-left: 10px;
     font-weight: 500;
     font-size: 1.3rem;
     text-transform: none;
-}
-.signin{
+} */
+.sign-up__box-signin{
     margin: 10px;
     margin-top: 20px;
     color: #4d4d4d;
     font-weight: 500;
 }
-.signin a{
+.sign-up__box-signin a{
     text-decoration: none;
     color:black
+}
+.sign-up__box-mobileImage{
+    display:none;
+}
+
+@media only screen and (max-width: 500px){
+    .sign-up__bg {
+        background-color: white;
+    }
+    .sign-up__box{
+        max-height: 100vh;
+        max-width: 100vw;
+        margin: 0;
+        padding: 0;
+    }
+    .sign-up__box-logo{
+        height: 40%;
+        margin-top: -5%;
+    }
+    .sign-up__box > div:first-child{
+        width: 500px;
+        padding: 0;
+        margin: 0;
+    }
+    .sign-up__box-mobileImage{
+        display: inline-block;
+        height: 100px;
+        position: absolute;
+        height: 30%;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: 68%;
+    }
 }
