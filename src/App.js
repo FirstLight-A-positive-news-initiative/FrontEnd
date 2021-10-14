@@ -10,7 +10,7 @@ import NewsPage from "./components/NewsPage";
 const App = () => {
     var routes = null;
     // const [user, setUser] = useContext(userContext);
-    const user = "h";
+    var user = null;
     if (user == null) {
         routes = (
             <div>
