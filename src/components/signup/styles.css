@@ -1,4 +1,4 @@
-*{
+body{
     font-family: 'Ubuntu', sans-serif;
 }
 .sign-up__bg{
@@ -41,7 +41,7 @@
 .sign-up__box-welcome{
     color: #4d4d4d;
     margin-top: -25px;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     font-size: 1.2rem;    
     font-weight: 500;
 }
