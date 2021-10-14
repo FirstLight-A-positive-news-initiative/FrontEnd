@@ -44,7 +44,7 @@ const BottomNav = () => {
                 ></input>
                 <FaTimes onClick={clearSearch} />
             </div>
-            <BottomNavigation className = "BottomNav__nav">
+            <div className = "BottomNav__nav">
                 <Button onClick = {handleSearch} value = "search" className = "BottomNav__nav-item">
                     <AiOutlineSearch className = "BottomNav__nav-item-icon" /> 
                     <h6 className = "BottomNav__nav-item-text">Search</h6>
@@ -70,7 +70,7 @@ const BottomNav = () => {
                         <h6 className = "BottomNav__nav-item-text">Games</h6>
                     </Link>
                 </Button>
-            </BottomNavigation>
+            </div>
         </div>
     );
 }
