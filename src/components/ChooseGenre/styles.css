@@ -1,8 +1,28 @@
+.ChooseGenre {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .ChooseGenre__heading {
     margin-top: 5%;
     width: 100%;
     text-align: center;
-    margin-bottom: 5%;
+    margin-bottom: 2.5%;
+}
+
+.ChooseGenre__alert-disable {
+    display: none !important;
+}
+
+.ChooseGenre__alert {
+    display: flex;
+    width: 25%;
+    margin: 2% 0;
+    justify-content: center;
+    box-shadow: 2px 2px 8px gray !important;
+    background-color: #FEC260;
+    color: #943c0b;
 }
 
 .ChooseGenre__genre-grid {
@@ -18,8 +38,32 @@
 }
 
 #ChooseGenre__submit-button {
-    width: 10%;
+    min-width: 200px;
     font-size: large;
     color: black;
     border: 0.1em solid black;
+}
+
+@media only screen and (max-width : 992px) {
+
+    .ChooseGenre__alert {
+        width: 80%;
+    }
+
+    .ChooseGenre__genre-grid {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        justify-content: center;
+    }
+
+    .ChooseGenre__genre-grid-item {
+        padding: 0 !important;
+        margin: 2% !important;
+    }
+
+    #ChooseGenre__submit-button {
+        width: 50%;
+        margin-bottom: 100px;
+    }
 }

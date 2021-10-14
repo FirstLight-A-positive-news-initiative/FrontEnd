@@ -4,6 +4,7 @@
     align-items: center;
     padding: 20px 8%;
     background-color: #ffffff;
+    border-bottom: 2px solid black;
 }
 
 .top-nav__header a {
@@ -52,4 +53,20 @@
 
 .top-nav__links-icons {
     transform: translate(-4px, 4px);
+}
+
+@media only screen and (max-width: 992px) {
+    .top-nav__header {
+        display: none !important;
+    }
+}
+
+@media only screen and (min-width: 993px) and (max-width : 1077px) {
+    .top-nav__links {
+        display: flex;
+        justify-content: right;
+    }
+    .top-nav__links li {
+        padding: 0px 5px !important;
+    }
 }

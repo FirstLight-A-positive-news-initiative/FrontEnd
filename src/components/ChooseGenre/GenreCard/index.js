@@ -35,8 +35,8 @@ const GenreCard = ({ genre, image, selected_genres, set_genres }) => {
     }
 
     return (
-        <Box>
-            <Card variant = "outlined" sx={{ maxWidth: 275 }} className = "GenreCard__card">
+        <Box className = "GenreCard__box">
+            <Card variant = "outlined" className = "GenreCard__card">
                 <CardContent>
                     <CardMedia
                         component = "img"

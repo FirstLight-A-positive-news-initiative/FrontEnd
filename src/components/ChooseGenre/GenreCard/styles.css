@@ -5,6 +5,7 @@
     flex-wrap: wrap;
     border-radius: 5% !important;
     color: black;
+    width: 200px;
 }
 
 .GenreCard__choice-button {
@@ -16,4 +17,10 @@
 .GenreCard__choice-button-selected {
     background-color: black !important;
     color: white !important;
+}
+
+@media only screen and (max-width : 992px) {
+    .GenreCard__card {
+        width: 150px;
+    }
 }
