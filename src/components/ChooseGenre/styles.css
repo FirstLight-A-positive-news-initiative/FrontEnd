@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .ChooseGenre__heading {
@@ -9,6 +10,8 @@
     width: 100%;
     text-align: center;
     margin-bottom: 2.5%;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .ChooseGenre__alert-disable {
@@ -40,8 +43,8 @@
 #ChooseGenre__submit-button {
     min-width: 200px;
     font-size: large;
-    color: black;
-    border: 0.1em solid black;
+    color: white;
+    background-color: black;
 }
 
 @media only screen and (max-width : 992px) {
