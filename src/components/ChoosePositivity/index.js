@@ -1,87 +1,72 @@
 import React, { useState } from "react";
-import { Alert, Button, Card, CardContent, CardMedia, Grid } from "@mui/material";
+import { Slider, Button } from "@mui/material";
 import "./styles.css";
 
-import FirstLight from "../../assets/images/FirstLight_No_Text.png";
+import PositivityImages from "../../assets/images/PositivityRange";
 
 const ChoosePositivity = () => {
-    const [positivity, setPositivity] = useState(null);
+    const [poslevel, setPoslevel] = useState(50);
+    const { pos_25, pos_50, pos_75, pos_100 } = PositivityImages
+    const marks = [
+        {
+          value: 20,
+        },
+        {
+          value: 50,
+        },
+        {
+          value: 75,
+        },
+        {
+          value: 100,
+        },
+      ];
 
-    const handleClick = (e) => {
-        [20, 40, 70, 90].forEach((rise) => document.querySelector(`#ChoosePositivity__${rise}`).style = "transform: translateY(100%);")
-        
-        const img_rise = e.target.children[1].id.slice(-2);
-        document.querySelector(`#ChoosePositivity__${img_rise}`).style = `animation: rise_${img_rise} 1s ease; animation-fill-mode: forwards;`;
-        
-        setPositivity(img_rise);
-    } 
+    const handleChange = (e) => {
+        [25, 50, 75, 100].forEach((val) => document.getElementById(`pos_${val}`).style = "display: none;");
+        document.getElementById(`pos_${e.target.value}`).style = "display: block;";
 
-    const handleSubmit = () => {
-        if(!positivity) {
-            document.body.scrollTop = document.documentElement.scrollTop = 0;
-            document.getElementById(`ChoosePositivity__alert-box`).className = "ChoosePositivity__alert";
-        } else {
-            document.getElementById(`ChoosePositivity__alert-box`).className = "ChoosePositivity__alert-disable";
-            console.log(positivity);
-        }
-    } 
+        setPoslevel(e.target.value);
+    }
+
+    const handleSave = () => {
+        console.log(poslevel);
+    }
 
     return (
         <div className = "ChoosePositivity">
-            <h1 className = "ChoosePositivity__heading">Set a minimum positivity level for your news.</h1>
-            <Alert id = "ChoosePositivity__alert-box" severity = "warning" className = "ChoosePositivity__alert-disable">Please set a positivity level before continuing.</Alert>
-            <Grid className = "ChoosePositivity__grid" container spacing = {2}>
-                <Card className = "ChoosePositivity_card">
-                    <CardContent onClick = {(e) => handleClick(e)} className = "ChoosePositivity__card-content">
-                    <p>20%</p>
-                        <CardMedia 
-                            className = "ChoosePositivity__card-img"
-                            id = "ChoosePositivity__20"
-                            component = "img"
-                            image = {FirstLight}
-                            alt = "Firstlight"
-                        />
-                    </CardContent>
-                </Card>
-                <Card className = "ChoosePositivity_card">
-                    <CardContent onClick = {(e) => handleClick(e)} className = "ChoosePositivity__card-content">
-                        <p>40%</p>
-                        <CardMedia
-                            className = "ChoosePositivity__card-img"
-                            id = "ChoosePositivity__40"
-                            component = "img"
-                            image = {FirstLight}
-                            alt = "Firstlight"
-                        />
-                    </CardContent>
-                </Card>
-                <Card className = "ChoosePositivity_card">
-                    <CardContent onClick = {(e) => handleClick(e)} className = "ChoosePositivity__card-content">
-                        <p>70%</p>
-                        <CardMedia
-                            className = "ChoosePositivity__card-img"
-                            id = "ChoosePositivity__70"
-                            component = "img"
-                            image = {FirstLight}
-                            alt = "Firstlight"
-                        />
-                    </CardContent>
-                </Card>
-                <Card className = "ChoosePositivity_card">
-                    <CardContent onClick = {(e) => handleClick(e)} className = "ChoosePositivity__card-content">
-                        <p>90%</p>
-                        <CardMedia
-                            className = "ChoosePositivity__card-img"
-                            id = "ChoosePositivity__90"
-                            component = "img"
-                            image = {FirstLight}
-                            alt = "Firstlight"
-                        />
-                    </CardContent>
-                </Card>
-            </Grid>
-            <div id = "ChoosePositivity__submit-button-div">
-                <Button onClick = {handleSubmit} id = "ChoosePositivity__submit-button" variant = "outlined">Save</Button>
+            <h1>Set a positivity level for your news feed.</h1>
+            <p>This will help us curate a more personalized news feed, with a minimum positivity score set by you.</p>
+            <div className = "ChoosePositivity__emojis">
+                <ul>
+                    <li>
+                        <img id = "pos_25" className = "ChoosePositivity__emoji-img" src = {pos_25} />
+                    </li>
+                    <li>
+                        <img id = "pos_50" className = "ChoosePositivity__emoji-img" src = {pos_50} />
+                    </li>
+                    <li>
+                        <img id = "pos_75" className = "ChoosePositivity__emoji-img" src = {pos_75} />
+                    </li>
+                    <li>
+                        <img id = "pos_100" className = "ChoosePositivity__emoji-img" src = {pos_100} />
+                    </li>
+                </ul>
+            </div>
+            <Slider
+                className = "ChoosePositivity__slider"
+                aria-label="positivity"
+                defaultValue={50}
+                marks = {marks}
+                step={null}
+                min={25}
+                max={100}
+                onChange = {(e) => handleChange(e)}
+            />  
+            <div className = "ChoosePositivity__save">
+                <Button onClick = {handleSave} className = "ChoosePositivity__save-button">
+                    Save
+                </Button>
             </div>
         </div>
     );
