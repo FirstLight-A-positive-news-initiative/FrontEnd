@@ -1,0 +1,131 @@
+.ChoosePositivity {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.ChoosePositivity__heading {
+    margin-top: 5%;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2.5%;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.ChoosePositivity__alert-disable {
+    display: none !important;
+}
+
+.ChoosePositivity__alert {
+    display: flex;
+    min-width: 25%;
+    margin: 2% 0;
+    justify-content: center;
+    box-shadow: 2px 2px 8px gray !important;
+    background-color: #FEC260 !important;
+    color: #943c0b !important;
+    font-size: 1em !important;
+    font-family: 'Ubuntu', sans-serif !important;
+    padding: 0 5% !important;
+}
+
+.ChoosePositivity__alert > div > svg {
+    color: #943c0b;
+}
+
+.ChoosePositivity__grid {
+    margin-top: 2% !important;
+    display: flex;
+    justify-content: center;
+}
+
+.ChoosePositivity_card {
+    border-radius: 5% !important;
+    box-shadow: 2px 2px 8px gray !important;
+    margin: 2%;
+}
+
+.ChoosePositivity__card-img {
+    transform: translateY(100%);
+}
+
+.ChoosePositivity__card-content {
+    text-align: center;
+}
+
+#ChoosePositivity__submit-button-div {
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+#ChoosePositivity__submit-button {
+    min-width: 200px;
+    font-size: large;
+    color: white;
+    background-color: black;
+}
+
+/* animations */
+
+@keyframes rise_20 {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(80%);
+    }
+}
+
+@keyframes rise_40 {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(60%);
+    }
+}
+
+@keyframes rise_70 {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(30%);
+    }
+}
+
+@keyframes rise_90 {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+@media only screen and (max-width : 992px) {
+
+    .ChoosePositivity__alert {
+        width: 80%;
+    }
+
+    .ChoosePositivity__grid {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        justify-content: center;
+    }
+
+    #ChoosePositivity__submit-button {
+        width: 50%;
+        margin-bottom: 100px;
+    }
+
+    .ChoosePositivity_card {
+        width: 150px;
+        margin: 2%;
+    }
+}
