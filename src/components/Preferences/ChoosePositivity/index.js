@@ -40,16 +40,16 @@ const ChoosePositivity = () => {
             <div className = "ChoosePositivity__emojis">
                 <ul>
                     <li>
-                        <img id = "pos_25" className = "ChoosePositivity__emoji-img" src = {pos_25} />
+                        <img id = "pos_25" className = "ChoosePositivity__emoji-img" src = {pos_25} alt = "pos_range" />
                     </li>
                     <li>
-                        <img id = "pos_50" className = "ChoosePositivity__emoji-img" src = {pos_50} />
+                        <img id = "pos_50" className = "ChoosePositivity__emoji-img" src = {pos_50} alt = "pos_range" />
                     </li>
                     <li>
-                        <img id = "pos_75" className = "ChoosePositivity__emoji-img" src = {pos_75} />
+                        <img id = "pos_75" className = "ChoosePositivity__emoji-img" src = {pos_75} alt = "pos_range" />
                     </li>
                     <li>
-                        <img id = "pos_100" className = "ChoosePositivity__emoji-img" src = {pos_100} />
+                        <img id = "pos_100" className = "ChoosePositivity__emoji-img" src = {pos_100} alt = "pos_range" />
                     </li>
                 </ul>
             </div>

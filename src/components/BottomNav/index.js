@@ -4,7 +4,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { BiNews, BiBookOpen } from "react-icons/bi";
 import { IoGameControllerOutline } from "react-icons/io5";
 import { FaTimes } from "react-icons/fa";
-import { Button, Backdrop } from "@mui/material";
+import { Button } from "@mui/material";
 
 import "./styles.css";
 import FirstLight from "../../assets/images/FirstLight_No_Text.png";
@@ -57,7 +57,7 @@ const BottomNav = () => {
                     </Link>
                 </Button>
 
-                <img src = {FirstLight} />
+                <img src = {FirstLight} alt = "logo" />
 
                 <Button value = "comics" className = "BottomNav__nav-item">
                     <Link className = "Bottom__nav-item-link" to = "/comics">
