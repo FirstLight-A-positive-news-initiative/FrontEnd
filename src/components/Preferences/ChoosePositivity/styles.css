@@ -36,7 +36,7 @@
 
 .ChoosePositivity__emoji-img {
     position: absolute;
-    top: 30%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, 0);
 }
@@ -69,6 +69,7 @@
     font-size: large !important;
     color: white !important;
     background-color: black !important;
+    margin-bottom: 1% !important;
 }
 
 @media only screen and (max-width: 992px) {
@@ -81,11 +82,12 @@
     }
 
     .ChoosePositivity__emoji-img {
-        top: 20%;
+        top: 25%;
         height: 300px;
     }
 
     .ChoosePositivity__slider {
+        margin-top: 10%;
         margin-bottom: 5% !important;
         width: 80% !important;
     }

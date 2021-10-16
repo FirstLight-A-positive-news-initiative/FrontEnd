@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Slider, Button } from "@mui/material";
 import "./styles.css";
 
-import PositivityImages from "../../assets/images/PositivityRange";
+import PositivityImages from "../../../assets/images/PositivityRange";
 
 const ChoosePositivity = () => {
     const [poslevel, setPoslevel] = useState(50);
@@ -56,7 +56,7 @@ const ChoosePositivity = () => {
             <Slider
                 className = "ChoosePositivity__slider"
                 aria-label="positivity"
-                defaultValue={50}
+                defaultValue={100}
                 marks = {marks}
                 step={null}
                 min={25}

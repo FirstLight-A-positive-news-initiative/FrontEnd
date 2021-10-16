@@ -4,8 +4,7 @@ import userContext from "./context/userContext";
 import SignUp from "./components/signup";
 import TopNav from "./components/TopNav";
 import BottomNav from "./components/BottomNav";
-import ChooseGenre from "./components/ChooseGenre";
-import ChoosePositivity from "./components/ChoosePositivity";
+import Preferences from "./components/Preferences";
 import NewsPage from "./components/NewsPage";
 
 const App = () => {
@@ -26,8 +25,7 @@ const App = () => {
             <div>
                 <TopNav />
                 <Switch>
-                    <Route exact path="/choose-genre" component={ChooseGenre} />
-                    <Route exact path = "/choose-positivity" component = {ChoosePositivity} />
+                    <Route exact path="/preferences" component = {Preferences} />
                     <Route exact path="/:id" component={NewsPage} />
                     <Redirect to="/news"></Redirect>
                 </Switch>
