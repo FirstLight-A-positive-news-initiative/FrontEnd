@@ -68,17 +68,30 @@
 }
 
 .news-page__content p {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     line-height: 30px;
     font-size: 1.1rem;
     font-family: "Roboto", sans-serif;
     color: rgba(00, 00, 00, 0.7);
 }
 
+.news-page__content-title {
+    margin-top: 2rem;
+    line-height: 30px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: black;
+}
+
 @media only screen and (min-width: 993px) {
     .news-page__content p {
         padding: 1rem 5rem;
-        line-height: 30px;
         font-size: 1.2rem;
+        margin-top: 0.5rem;
+    }
+
+    .news-page__content-title {
+        padding: 1rem 5rem;
+        font-size: 1.4rem;
     }
 }
