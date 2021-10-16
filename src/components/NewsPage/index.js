@@ -7,7 +7,7 @@ const NewsPage = () => {
 
     const news = {
         _id: "61657ada41bcb0d8221414f3",
-        title: "FDA advisers to vote on Moderna booster shots",
+        title: "FDA advisers to vote on Mfd dfd sdfs sdfsdf sdfds fsdf dsfsdfsd sdfsd foderna booster shots",
         link: "https://www.msn.com/en-us/news/us/fda-advisers-to-vote-on-moderna-booster-shots/ar-AAPwemB",
         image_link:
             "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BB1fJIjk.img?h=1119&w=1119&m=6&q=60&o=f&l=f",
@@ -30,6 +30,13 @@ const NewsPage = () => {
         genre: "health",
     };
 
+    function trim(str) {
+        if (str.length > 50) {
+            return str.substr(0, 70) + "...";
+        }
+        return str;
+    }
+
     function toTitleCase(str) {
         return str.replace(/\w\S*/g, function (txt) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -47,11 +54,14 @@ const NewsPage = () => {
                     <p className="news-page__header-genre">
                         {toTitleCase(news.genre)}
                     </p>
-                    <h1 className="news-page__header-title">{news.title}</h1>
+                    <h1 className="news-page__header-title">
+                        {trim(news.title)}
+                    </h1>
                 </div>
             </div>
             <div className="news-page__content">
                 <a href={news.link}>Read complete article</a>
+                <h1 className="news-page__content-title">{news.title}</h1>
                 <p>{news.summary}</p>
             </div>
         </div>
