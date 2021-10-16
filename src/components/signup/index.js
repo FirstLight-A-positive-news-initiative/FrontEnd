@@ -1,9 +1,10 @@
 import React, {useState} from "react";
-import {Button} from '@mui/material';
-import {FcGoogle} from "react-icons/fc";
+// import {Button} from '@mui/material';
+// import {FcGoogle} from "react-icons/fc";
 import Logo from "../../assets/images/FirstLight1.png";
 import Img from "../../assets/images/meditating.png"
-import { createTheme, ThemeProvider} from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
+// import { ThemeProvider } from '@mui/material/styles';
 import { GoogleLogin } from 'react-google-login';
 import "./styles.css";
 
