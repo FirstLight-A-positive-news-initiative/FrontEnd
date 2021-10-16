@@ -1,0 +1,23 @@
+.newsCard{
+    margin: 20px;
+    display: inline-block;
+}
+.card__genre{
+    display: inline;
+    text-align: center;
+    font-size: 0.8rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 1rem;
+    padding: 0.3rem;
+}
+
+@media only screen and (max-width: 500px){
+    .newsCard{
+        display: flex;
+        padding: 0px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        justify-content: center;
+    }
+}

@@ -6,11 +6,12 @@ import TopNav from "./components/TopNav";
 import BottomNav from "./components/BottomNav";
 import ChooseGenre from "./components/ChooseGenre";
 import NewsPage from "./components/NewsPage";
+// import Card from "./components/Card";
 
 const App = () => {
     var routes = null;
     // const [user, setUser] = useContext(userContext);
-    var user = "h";
+    var user = "usa";
     if (user == null) {
         routes = (
             <div>
@@ -27,6 +28,7 @@ const App = () => {
                 <Switch>
                     <Route exact path="/choose-genre" component={ChooseGenre} />
                     <Route exact path="/:id" component={NewsPage} />
+                    {/* <Route exact path="/test/card" component={Card} /> */}
                     <Redirect to="/news"></Redirect>
                 </Switch>
                 <BottomNav />
