@@ -20,7 +20,7 @@
 
 .ChoosePositivity__emojis {
     overflow-y: hidden;
-    height: 500px;
+    height: 350px;
     width: 100%;
     justify-content: center;
 }
@@ -36,9 +36,10 @@
 
 .ChoosePositivity__emoji-img {
     position: absolute;
-    top: 35%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, 0);
+    height: 40%;
 }
 
 .ChoosePositivity__slider {
@@ -83,12 +84,23 @@
 
     .ChoosePositivity__emoji-img {
         top: 25%;
-        height: 300px;
+        height: 225px;
     }
 
     .ChoosePositivity__slider {
-        margin-top: 10%;
+        margin-top: -50px;
         margin-bottom: 5% !important;
         width: 80% !important;
+    }
+}
+
+@media only screen and (min-width : 1440px) {
+    .ChoosePositivity__emojis {
+        height: 500px;
+    }
+
+    .ChoosePositivity__emoji-img {
+        top: 35%;
+        height: 400px;
     }
 }

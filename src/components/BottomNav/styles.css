@@ -11,11 +11,22 @@
         margin-top: 100px !important;
     }
 
+    #BottomNav__search-backdrop {
+        animation: search-backdrop 0.2s ease-in;
+        position: absolute !important;
+        top: 0 !important;
+        width: 100%;
+        background-color: black !important;
+        height: 100% !important;
+        opacity: 0.5;
+    }
+
     .BottomNav__search {
         display: none;
     }
 
     .BottomNav__search-active {
+        animation: search-appear 0.2s ease-in;
         top: 0;
         position: fixed;
         display:inherit;
@@ -27,8 +38,8 @@
         justify-content: center;
         border: 0.1em solid black;
         width: 80%;
-        box-shadow: 2px 2px 8px gray;
         transition: ease-in 1s;
+        border-radius: 20px;
     }
 
     .BottomNav__search-active input {
@@ -80,3 +91,18 @@
     }
 }
 
+@keyframes search-backdrop {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 0.5;
+    }
+}
+
+@keyframes search-appear {
+    from {
+        transform: translateY(-100%);
+    } to {
+        transform: translateY(0);
+    }
+}

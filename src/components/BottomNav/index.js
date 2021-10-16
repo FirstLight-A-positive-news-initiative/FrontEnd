@@ -4,7 +4,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { BiNews, BiBookOpen } from "react-icons/bi";
 import { IoGameControllerOutline } from "react-icons/io5";
 import { FaTimes } from "react-icons/fa";
-import { Button } from "@mui/material";
+import { Button, Backdrop } from "@mui/material";
 
 import "./styles.css";
 import FirstLight from "../../assets/images/FirstLight_No_Text.png";
@@ -24,14 +24,17 @@ const BottomNav = () => {
 
     const handleSearch = () => {
         if(document.getElementById(`BottomNav__search-box`).className === `BottomNav__search`) {
+            document.getElementById(`BottomNav__search-backdrop-disable`).id = `BottomNav__search-backdrop`;
             document.getElementById(`BottomNav__search-box`).className = `BottomNav__search-active`;
         } else {
+            document.getElementById(`BottomNav__search-backdrop`).id = `BottomNav__search-backdrop-disable`;
             document.getElementById(`BottomNav__search-box`).className = `BottomNav__search`;
         }
     }
 
     return (
         <div className = "BottomNav">
+            <div id = "BottomNav__search-backdrop-disable"></div>
             <div id = "BottomNav__search-box" className="BottomNav__search">
                 <AiOutlineSearch />
                 <input
