@@ -26,7 +26,6 @@ const App = () => {
             <div>
                 <TopNav />
                 <Switch>
-                    <Route exact path="/choose-genre" component={ChooseGenre} />
                     <Route exact path="/preferences" component = {Preferences} />
                     <Route exact path="/news/:id" component={NewsPage} />
                     {/* <Route exact path="/test/card" component={Card} /> */}
