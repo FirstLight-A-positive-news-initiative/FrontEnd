@@ -21,7 +21,7 @@ const TopNav = (props) => {
 
     return (
         <header className="top-nav__header">
-            <img src={Logo} className="top-nav__image" />
+            <img src={Logo} className="top-nav__image" alt = "logo" />
             <div className="top-nav__search">
                 <AiOutlineSearch />
                 <input

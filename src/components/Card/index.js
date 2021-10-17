@@ -54,7 +54,7 @@ export default function NewsCard() {
 
   return (
   <div className="newsCard">
-    <Card sx={{borderRadius: "1.5rem", margin:"4%" , width: 345, height: 430, display: "inline-block", margin: "0px",}}>
+    <Card sx={{borderRadius: "1.5rem", margin:"4%" , width: 345, height: 430, display: "inline-block"}}>
       <CardActionArea>
         <CardHeader
           avatar={

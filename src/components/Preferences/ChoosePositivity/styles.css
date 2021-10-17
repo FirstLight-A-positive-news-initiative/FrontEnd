@@ -1,0 +1,106 @@
+.ChoosePositivity {
+    padding-top: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ChoosePositivity > h1 {
+    text-align: center;
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.ChoosePositivity > p {
+    margin-top: 1%;
+    width: 100%;
+    text-align: center;
+} 
+
+.ChoosePositivity__emojis {
+    overflow-y: hidden;
+    height: 350px;
+    width: 100%;
+    justify-content: center;
+}
+
+.ChoosePositivity__emojis > ul {
+    display: flex;
+    justify-content: center;
+}
+
+.ChoosePositivity__emojis::-webkit-scrollbar {
+    display: none;
+}
+
+.ChoosePositivity__emoji-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 40%;
+}
+
+.ChoosePositivity__slider {
+    margin-bottom: 2% !important;
+    width: 50% !important; 
+}
+
+.ChoosePositivity__slider > .MuiSlider-thumbColorPrimary {
+    background-color: #f7b42c;
+    background-image: linear-gradient(315deg, #f7b42c 0%, #fc575e 74%);    
+    height: 50px;
+    width: 50px;
+}
+
+.MuiSlider-colorPrimary {
+    height: 10px !important;
+    color: #FFB830 !important;
+}
+
+.ChoosePositivity__save {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.ChoosePositivity__save-button {
+    min-width: 200px !important;
+    font-size: large !important;
+    color: white !important;
+    background-color: black !important;
+    margin-bottom: 1% !important;
+}
+
+@media only screen and (max-width: 992px) {
+    .ChoosePositivity {
+        padding: 5%;
+    }
+
+    .ChoosePositivity__emojis {
+        height: 350px;
+    }
+
+    .ChoosePositivity__emoji-img {
+        top: 25%;
+        height: 225px;
+    }
+
+    .ChoosePositivity__slider {
+        margin-top: -50px;
+        margin-bottom: 5% !important;
+        width: 80% !important;
+    }
+}
+
+@media only screen and (min-width : 1440px) {
+    .ChoosePositivity__emojis {
+        height: 500px;
+    }
+
+    .ChoosePositivity__emoji-img {
+        top: 35%;
+        height: 400px;
+    }
+}

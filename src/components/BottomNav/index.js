@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { AiOutlineSearch } from "react-icons/ai";
 import { BiNews, BiBookOpen } from "react-icons/bi";
 import { IoGameControllerOutline } from "react-icons/io5";
@@ -26,14 +24,17 @@ const BottomNav = () => {
 
     const handleSearch = () => {
         if(document.getElementById(`BottomNav__search-box`).className === `BottomNav__search`) {
+            document.getElementById(`BottomNav__search-backdrop-disable`).id = `BottomNav__search-backdrop`;
             document.getElementById(`BottomNav__search-box`).className = `BottomNav__search-active`;
         } else {
+            document.getElementById(`BottomNav__search-backdrop`).id = `BottomNav__search-backdrop-disable`;
             document.getElementById(`BottomNav__search-box`).className = `BottomNav__search`;
         }
     }
 
     return (
         <div className = "BottomNav">
+            <div id = "BottomNav__search-backdrop-disable"></div>
             <div id = "BottomNav__search-box" className="BottomNav__search">
                 <AiOutlineSearch />
                 <input
@@ -56,7 +57,7 @@ const BottomNav = () => {
                     </Link>
                 </Button>
 
-                <img src = {FirstLight} />
+                <img src = {FirstLight} alt = "logo" />
 
                 <Button value = "comics" className = "BottomNav__nav-item">
                     <Link className = "Bottom__nav-item-link" to = "/comics">

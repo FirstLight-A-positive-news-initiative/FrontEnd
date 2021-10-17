@@ -23,7 +23,8 @@
     align-items: center;
     background: #f8f9fa;
     padding: 0.5rem;
-    border-radius: 5%;
+    border-radius: 20px;
+    border: 0.15em solid black;
 }
 
 .top-nav__search input {
