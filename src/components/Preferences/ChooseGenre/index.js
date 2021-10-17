@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 
-import GenreCardImages from "../../assets/images/GenreCard";
+import GenreCardImages from "../../../assets/images/GenreCard";
 import "./styles.css";
 
 const ChooseGenre = () => {

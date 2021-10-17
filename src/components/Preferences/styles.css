@@ -1,0 +1,36 @@
+#Preferences__genre-active {
+    display: block;
+    animation: slide-in 0.5s ease-in;
+}
+
+#Preferences__genre-disable {
+    display: none;
+}
+
+#Preferences__positivity-active {
+    display: block;
+    animation: slide-in 0.5s ease-in;
+}
+
+#Preferences__positivity-disable {
+    display: none;
+}
+
+.Preferences__show {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.Preferences__show-button {
+    border: 0.1em solid black !important;
+    color: black !important;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateX(-100%);
+    } to {
+        transform: translateX(0);
+    }
+}

@@ -1,9 +1,9 @@
 import React from "react";
 import "./styles.css";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 const NewsPage = () => {
-    const { id } = useParams();
+    // const { id } = useParams();
 
     const news = {
         _id: "61657ada41bcb0d8221414f3",
@@ -49,6 +49,7 @@ const NewsPage = () => {
                 <img
                     src={news.image_link}
                     className="news-page__header-image"
+                    alt = "news"
                 />
                 <div className="news-page__overlay">
                     <p className="news-page__header-genre">
