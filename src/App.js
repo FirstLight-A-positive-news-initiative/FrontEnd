@@ -27,9 +27,9 @@ const App = () => {
                 <TopNav />
                 <Switch>
                     <Route exact path="/preferences" component = {Preferences} />
-                    <Route exact path="/test-card" component={Card} />
-                    <Route exact path="/:id" component={NewsPage} />
-                    <Redirect to="/news"></Redirect>
+                    <Route exact path="/news/:id" component={NewsPage} />
+                    {/* <Route exact path="/test/card" component={Card} /> */}
+                    <Redirect to="/news/test"></Redirect>
                 </Switch>
                 <BottomNav />
             </div>
