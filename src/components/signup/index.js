@@ -3,19 +3,19 @@ import React, {useState} from "react";
 // import {FcGoogle} from "react-icons/fc";
 import Logo from "../../assets/images/FirstLight1.png";
 import Img from "../../assets/images/meditating.png"
-import { createTheme } from '@mui/material/styles';
+// import { createTheme } from '@mui/material/styles';
 // import { ThemeProvider } from '@mui/material/styles';
 import { GoogleLogin } from 'react-google-login';
 import "./styles.css";
 
-const theme = createTheme({
-  palette: {
-    dark: {
-      main: '#4d4d4d',
-      contrastText: '#fff',
-    },
-  },
-});
+// const theme = createTheme({
+//   palette: {
+//     dark: {
+//       main: '#4d4d4d',
+//       contrastText: '#fff',
+//     },
+//   },
+// });
 
 const responseGoogle = (response) => {
   console.log(response);
@@ -40,7 +40,7 @@ const SignUp=()=>{
                   onFailure={responseGoogle}
                   cookiePolicy={'single_host_origin'}
                 />
-                <h3 className="sign-up__box-signin">Already have an account? <a href="javascript:void(0);" onClick={()=> onSignUpChange(!signUp)}>Sign In</a></h3>
+                <h3 className="sign-up__box-signin">Already have an account? <a href="www.google.com" onClick={()=> onSignUpChange(!signUp)}>Sign In</a></h3>
             </div>
             :<div>
                 <img className="sign-up__box-logo" alt="Logo" src={Logo}/>
@@ -56,7 +56,7 @@ const SignUp=()=>{
                   onFailure={responseGoogle}
                   cookiePolicy={'single_host_origin'}
                 />
-                <h3 className="sign-up__box-signin">Don't have an account? <a href="javascript:void(0);" onClick={()=> onSignUpChange(!signUp)}>Sign Up</a></h3>
+                <h3 className="sign-up__box-signin">Don't have an account? <a href="www.google.com" onClick={()=> onSignUpChange(!signUp)}>Sign Up</a></h3>
             </div>
             }
             <img className="sign-up__box-mobileImage" src={Img} alt="meditation"/>
