@@ -7,6 +7,7 @@ import BottomNav from "./components/BottomNav";
 import Preferences from "./components/Preferences";
 import NewsPage from "./components/NewsPage";
 import Card from "./components/Card";
+import NewsList from "./components/NewsList";
 
 const App = () => {
     var routes = null;
@@ -26,10 +27,11 @@ const App = () => {
             <div>
                 <TopNav />
                 <Switch>
-                    <Route exact path="/preferences" component = {Preferences} />
+                    <Route exact path="/news" component={NewsList} />
+                    <Route exact path="/preferences" component={Preferences} />
                     <Route exact path="/news/:id" component={NewsPage} />
-                    {/* <Route exact path="/test/card" component={Card} /> */}
-                    <Redirect to="/news/test"></Redirect>
+                    <Route exact path="/test/card" component={Card} />
+                    <Redirect to="/news"></Redirect>
                 </Switch>
                 <BottomNav />
             </div>

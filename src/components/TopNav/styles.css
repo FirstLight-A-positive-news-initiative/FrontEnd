@@ -22,9 +22,9 @@
     display: flex;
     align-items: center;
     background: #f8f9fa;
-    padding: 0.5rem;
+    padding: 0.2rem 0.6rem;
     border-radius: 20px;
-    border: 0.15em solid black;
+    border: 0.1em solid #777777;
 }
 
 .top-nav__search input {
@@ -63,7 +63,7 @@
     }
 }
 
-@media only screen and (min-width: 993px) and (max-width : 1077px) {
+@media only screen and (min-width: 993px) and (max-width: 1077px) {
     .top-nav__links {
         display: flex;
         justify-content: right;

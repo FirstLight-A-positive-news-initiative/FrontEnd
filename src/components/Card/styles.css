@@ -1,8 +1,9 @@
-.newsCard{
+.newsCard {
     margin: 20px;
     display: inline-block;
+    margin-top: 10px;
 }
-.card__genre{
+.card__genre {
     display: inline;
     text-align: center;
     font-size: 0.8rem;
@@ -12,8 +13,8 @@
     padding: 0.3rem;
 }
 
-@media only screen and (max-width: 500px){
-    .newsCard{
+@media only screen and (max-width: 500px) {
+    .newsCard {
         display: flex;
         padding: 0px;
         padding-top: 20px;

@@ -31,8 +31,8 @@ const NewsPage = () => {
     };
 
     function trim(str) {
-        if (str.length > 50) {
-            return str.substr(0, 70) + "...";
+        if (str.length > 40) {
+            return str.substr(0, 40) + "...";
         }
         return str;
     }
@@ -49,7 +49,7 @@ const NewsPage = () => {
                 <img
                     src={news.image_link}
                     className="news-page__header-image"
-                    alt = "news"
+                    alt="news"
                 />
                 <div className="news-page__overlay">
                     <p className="news-page__header-genre">

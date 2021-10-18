@@ -21,7 +21,7 @@ const TopNav = (props) => {
 
     return (
         <header className="top-nav__header">
-            <img src={Logo} className="top-nav__image" alt = "logo" />
+            <img src={Logo} className="top-nav__image" alt="logo" />
             <div className="top-nav__search">
                 <AiOutlineSearch />
                 <input
@@ -35,13 +35,16 @@ const TopNav = (props) => {
 
             <nav>
                 <ul className="top-nav__links">
-                    <li key = "news">
+                    <li key="news">
                         <Link to="/news">
-                            <BiNews className="top-nav__links-icons" size="25px" />
+                            <BiNews
+                                className="top-nav__links-icons"
+                                size="25px"
+                            />
                             News
                         </Link>
                     </li>
-                    <li key = "games">
+                    <li key="games">
                         <Link to="/games">
                             <IoGameControllerOutline
                                 className="top-nav__links-icons"
@@ -50,7 +53,7 @@ const TopNav = (props) => {
                             Games
                         </Link>
                     </li>
-                    <li key = "comics">
+                    <li key="comics">
                         <Link to="/comics">
                             <BiBookOpen
                                 className="top-nav__links-icons"
