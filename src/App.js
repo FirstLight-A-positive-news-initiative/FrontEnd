@@ -9,6 +9,7 @@ import NewsPage from "./components/NewsPage";
 import Card from "./components/Card";
 import NewsList from "./components/NewsList";
 import ComicsPage from "./components/ComicsPage";
+import Footer from "./components/Footer";
 
 const App = () => {
     var routes = null;
@@ -21,6 +22,7 @@ const App = () => {
                     <Route path="/login" component={SignUp} />
                     <Redirect to="/"></Redirect>
                 </Switch>
+                <Footer />
             </div>
         );
     } else {
@@ -32,9 +34,10 @@ const App = () => {
                     <Route exact path="/preferences" component={Preferences} />
                     <Route exact path="/news/:id" component={NewsPage} />
                     <Route exact path="/test/card" component={Card} />
-                    <Route exact path="/comics" component = {ComicsPage} />
+                    <Route exact path="/comics" component={ComicsPage} />
                     <Redirect to="/news"></Redirect>
                 </Switch>
+                <Footer />
                 <BottomNav />
             </div>
         );

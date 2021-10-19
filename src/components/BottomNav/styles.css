@@ -1,14 +1,14 @@
-@media only screen and (min-width : 993px) {
+@media only screen and (min-width: 993px) {
     .BottomNav {
         display: none !important;
     }
 }
 
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
     .BottomNav {
         display: flex;
         justify-content: center;
-        margin-top: 100px !important;
+        margin-top: 60px !important;
     }
 
     #BottomNav__search-backdrop {
@@ -29,7 +29,7 @@
         animation: search-appear 0.2s ease-in;
         top: 0;
         position: fixed;
-        display:inherit;
+        display: inherit;
         margin-top: 5%;
         display: flex;
         align-items: center;
@@ -94,7 +94,8 @@
 @keyframes search-backdrop {
     from {
         opacity: 0;
-    } to {
+    }
+    to {
         opacity: 0.5;
     }
 }
@@ -102,7 +103,8 @@
 @keyframes search-appear {
     from {
         transform: translateY(-100%);
-    } to {
+    }
+    to {
         transform: translateY(0);
     }
 }
