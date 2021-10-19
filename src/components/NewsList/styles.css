@@ -6,7 +6,6 @@
     display: flex;
     flex-direction: row;
     overflow-x: auto;
-    border-bottom: 0.1rem solid gray;
     align-items: center;
     -ms-overflow-style: none;
     scrollbar-width: none;

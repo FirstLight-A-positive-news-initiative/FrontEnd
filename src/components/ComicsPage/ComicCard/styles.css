@@ -1,0 +1,35 @@
+.ComicCard {
+    width: fit-content;
+    height: fit-content;
+    padding-left: 0 !important;
+    padding-bottom: 0 !important;
+    margin: 2% 1%;
+    padding-top: 1%;
+    border-radius: 10px !important;
+}
+
+.ComicCard__heading {
+    width: 70%;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.ComicCard__buttons {
+    width: 30%;
+    display: inline-block;
+    text-align: right;
+    font-size: x-large;
+}
+
+.ComicCard__card-image {
+    height: 150px;
+}
+
+@media only screen and (max-width: 992px) {
+    .ComicCard__card-image {
+        width: 100%;
+        height: 100%;
+    }
+}
