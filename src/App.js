@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router";
-// import userContext from "./context/userContext";
+import userContext from "./context/userContext";
 import SignUp from "./components/signup";
 import TopNav from "./components/TopNav";
 import BottomNav from "./components/BottomNav";
@@ -13,8 +13,7 @@ import Footer from "./components/Footer";
 
 const App = () => {
     var routes = null;
-    // const [user, setUser] = useContext(userContext);
-    var user = "null";
+    const [user, setUser] = useContext(userContext);
     if (user == null) {
         routes = (
             <div>
