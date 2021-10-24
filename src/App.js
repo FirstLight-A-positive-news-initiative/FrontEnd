@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router";
-// import userContext from "./context/userContext";
+import userContext from "./context/userContext";
 import SignUp from "./components/signup";
 import TopNav from "./components/TopNav";
 import BottomNav from "./components/BottomNav";
@@ -9,11 +9,11 @@ import NewsPage from "./components/NewsPage";
 import Card from "./components/Card";
 import NewsList from "./components/NewsList";
 import ComicsPage from "./components/ComicsPage";
+import Footer from "./components/Footer";
 
 const App = () => {
     var routes = null;
-    // const [user, setUser] = useContext(userContext);
-    var user = "null";
+    const [user, setUser] = useContext(userContext);
     if (user == null) {
         routes = (
             <div>
@@ -21,6 +21,7 @@ const App = () => {
                     <Route path="/login" component={SignUp} />
                     <Redirect to="/"></Redirect>
                 </Switch>
+                <Footer />
             </div>
         );
     } else {
@@ -32,9 +33,10 @@ const App = () => {
                     <Route exact path="/preferences" component={Preferences} />
                     <Route exact path="/news/:id" component={NewsPage} />
                     <Route exact path="/test/card" component={Card} />
-                    <Route exact path="/comics" component = {ComicsPage} />
+                    <Route exact path="/comics" component={ComicsPage} />
                     <Redirect to="/news"></Redirect>
                 </Switch>
+                <Footer />
                 <BottomNav />
             </div>
         );

@@ -11,7 +11,6 @@ import DisplayNewsList from "./DisplayNewsList";
 
 const NewsList = () => {
     const [tab, setTab] = useState("featured");
-    console.log(tab);
     return (
         <div className="news-list__container">
             <ul className="news-list__genre">

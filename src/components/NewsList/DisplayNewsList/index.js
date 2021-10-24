@@ -5,7 +5,6 @@ import "./styles.css";
 
 const DisplayNewsList = (props) => {
     const [newss, setNews] = useState([12, 24, 4, 1, 4, 5]);
-    console.log(newss);
     return newss ? (
         <div className="diplay-news__list">
             {newss.map((news) => (
