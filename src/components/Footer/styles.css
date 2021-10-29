@@ -7,6 +7,9 @@
     color: white;
     flex-wrap: wrap;
     line-height: 1.5rem;
+    position: relative;
+    bottom: 0;
+    padding-top: 1%;
 }
 
 .footer__main {
