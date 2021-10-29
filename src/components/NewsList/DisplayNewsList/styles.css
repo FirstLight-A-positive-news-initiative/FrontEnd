@@ -1,19 +1,20 @@
-.diplay-news__list {
+.display-news__list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.diplay-news__skeleton-container {
-    width: 100vw;
+.display-news__skeleton-container {
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.diplay-news__skeleton-container div:not(:first-child) {
+.display-news__skeleton-container div:not(:first-child) {
     margin-top: 10rem;
 }
 

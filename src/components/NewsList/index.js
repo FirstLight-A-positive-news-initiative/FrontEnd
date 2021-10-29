@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Cookies from "js-cookie";
 import { Avatar } from "@mui/material";
 import featured from "../../assets/images/NewsList/featured.png";
 import entertainment from "../../assets/images/NewsList/entertainment.jpg";
@@ -10,11 +11,33 @@ import "./styles.css";
 import DisplayNewsList from "./DisplayNewsList";
 
 const NewsList = () => {
+    const user_genres = Cookies.get("user_genres");
+    const user_positivity = Cookies.get("user_positivity");
+
     const [tab, setTab] = useState("featured");
+    const [skip, setSkip] = useState(0);
+
+    // shows only selected genre tabs
+    useEffect(() => {
+        const showGenres = () => {
+            user_genres.split(",").forEach((genre) => {
+                const list_item = document.getElementsByClassName(`news-list__genre-${genre}`);
+                list_item[0].style = "display: flex";
+            }
+            )
+        };
+        showGenres();
+    }, [])
+
+    const setTabGenre = (tab_name) => {
+        setTab(() => tab_name);
+        setSkip(0);
+    }
+
     return (
         <div className="news-list__container">
             <ul className="news-list__genre">
-                <li onClick={() => setTab(() => "featured")}>
+                <li key="featured" onClick={() => setTabGenre("featured")}>
                     <Avatar
                         sx={{ height: "50px", width: "50px" }}
                         src={featured}
@@ -26,7 +49,7 @@ const NewsList = () => {
                         }
                     />
                 </li>
-                <li onClick={() => setTab(() => "entertainment")}>
+                <li className="news-list__genre-Entertainment" key="Entertainment" onClick={() => setTabGenre("entertainment")}>
                     <Avatar
                         sx={{ height: "50px", width: "50px" }}
                         src={entertainment}
@@ -38,7 +61,7 @@ const NewsList = () => {
                         }
                     />
                 </li>
-                <li onClick={() => setTab(() => "politics")}>
+                <li className="news-list__genre-Politics" key="Politics" onClick={() => setTabGenre("politics")}>
                     <Avatar
                         sx={{ height: "50px", width: "50px" }}
                         src={politics}
@@ -50,7 +73,7 @@ const NewsList = () => {
                         }
                     />
                 </li>
-                <li onClick={() => setTab(() => "science")}>
+                <li className="news-list__genre-Science" key="Science" onClick={() => setTabGenre("science")}>
                     <Avatar
                         sx={{ height: "50px", width: "50px" }}
                         src={science}
@@ -62,7 +85,7 @@ const NewsList = () => {
                         }
                     />
                 </li>
-                <li onClick={() => setTab(() => "technology")}>
+                <li className="news-list__genre-Technology" key="Technology" onClick={() => setTabGenre("technology")}>
                     <Avatar
                         sx={{ height: "50px", width: "50px" }}
                         src={technology}
@@ -74,7 +97,7 @@ const NewsList = () => {
                         }
                     />
                 </li>
-                <li onClick={() => setTab(() => "sports")}>
+                <li className="news-list__genre-Sports" key="Sports" onClick={() => setTabGenre("sports")}>
                     <Avatar
                         sx={{ height: "50px", width: "50px" }}
                         src={sports}
@@ -88,7 +111,7 @@ const NewsList = () => {
                 </li>
             </ul>
             <div>
-                <DisplayNewsList genre={tab} />
+                <DisplayNewsList user_genres = {user_genres} user_positivity = {user_positivity} genre={tab} skip = {skip} />
             </div>
         </div>
     );

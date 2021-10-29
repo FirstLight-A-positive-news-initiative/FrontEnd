@@ -19,7 +19,7 @@ const App = () => {
             <div>
                 <Switch>
                     <Route path="/login" component={SignUp} />
-                    <Redirect to="/"></Redirect>
+                    <Redirect to="/login"></Redirect>
                 </Switch>
                 <Footer />
             </div>
