@@ -16,6 +16,8 @@ const NewsList = () => {
 
     const [tab, setTab] = useState("featured");
     const [skip, setSkip] = useState(0);
+    const [end, setEnd] = useState(false);
+    const [news, setNews] = useState([]);
 
     // shows only selected genre tabs
     useEffect(() => {
@@ -32,6 +34,8 @@ const NewsList = () => {
     const setTabGenre = (tab_name) => {
         setTab(() => tab_name);
         setSkip(0);
+        setEnd(false);
+        setNews([]);
     }
 
     return (
@@ -111,7 +115,16 @@ const NewsList = () => {
                 </li>
             </ul>
             <div>
-                <DisplayNewsList user_genres = {user_genres} user_positivity = {user_positivity} genre={tab} skip = {skip} />
+                <DisplayNewsList 
+                    user_genres = {user_genres} 
+                    user_positivity = {user_positivity} 
+                    genre={tab} 
+                    skip = {skip} 
+                    news = {news}
+                    setNews = {setNews}
+                    setSkip = {setSkip}
+                    end = {end}
+                    setEnd = {setEnd} />
             </div>
         </div>
     );
