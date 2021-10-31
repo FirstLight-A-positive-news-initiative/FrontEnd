@@ -12,7 +12,6 @@ const ChoosePositivity = ({
     poslevel,
     setPoslevel,
     genres,
-    setGenres,
 }) => {
     const { pos_25, pos_50, pos_75, pos_100 } = PositivityImages;
     const [user, setUser] = useContext(userContext);
@@ -43,10 +42,11 @@ const ChoosePositivity = ({
     };
 
     const handleSave = () => {
+        console.log(genres);
         axios
             .post(`${process.env.REACT_APP_API}/users`, {
                 ...user,
-                genres,
+                genre: genres,
                 positivity: poslevel,
             })
             .then((res) => {
@@ -115,7 +115,7 @@ const ChoosePositivity = ({
                     onClick={handleSave}
                     className="ChoosePositivity__save-button"
                 >
-                    Save
+                    Save Positivity and Exit
                 </Button>
             </div>
         </div>

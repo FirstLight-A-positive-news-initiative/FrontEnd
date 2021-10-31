@@ -61,8 +61,10 @@ const DisplayNewsList = ({ user_genres, user_positivity, news, setNews, genre, s
     }
 
     useEffect(() => {
-        fetchAllNews();
-    }, [genre, skip])
+        if(user_genres && user_positivity) {
+            fetchAllNews();
+        }
+    }, [user_genres, genre, skip])
 
     return news && news.length ? (
         <>

@@ -22,7 +22,8 @@ const SignUp = ({ history }) => {
 
                 Cookies.set("user_genres", res.data.genre);
                 Cookies.set("user_positivity", res.data.positivity);
-
+            })
+            .then(() => {
                 history.push("/news");
             })
             .catch((err) => {
