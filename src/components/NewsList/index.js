@@ -21,7 +21,6 @@ const NewsList = () => {
 
     // shows only selected genre tabs
     useEffect(() => {
-        console.log(user_genres);
         if (user_genres && user_genres.length) {
             const showGenres = () => {
                 user_genres.split(",").forEach((genre) => {
@@ -32,7 +31,7 @@ const NewsList = () => {
             };
             showGenres();
         }
-    }, [user_genres && user_genres.length])
+    }, [])
 
     const setTabGenre = (tab_name) => {
         setNews([]);

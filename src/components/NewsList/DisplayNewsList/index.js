@@ -70,7 +70,7 @@ const DisplayNewsList = ({ user_genres, user_positivity, news, setNews, genre, s
         <>
             <div className="display-news__list">
                 {news.map((news) => (
-                    <NewsCard key = {news.title} news={news} />
+                    <NewsCard key = {`${news.genre}-${news.title}`} news={news} />
                 ))}
             </div>
             <div ref={setElement} className="display-news__load-more">
@@ -90,7 +90,7 @@ const DisplayNewsList = ({ user_genres, user_positivity, news, setNews, genre, s
     ) : (
         <div className="display-news__skeleton-container">
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((skeleton) => (
-                <Card className = "display-news__skeleton-box">
+                <Card key = {skeleton} className = "display-news__skeleton-box">
                     <CardHeader
                         avatar={<Skeleton animation="wave" variant="circular" width={40} height={40} />}
                         title={<Skeleton

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
+import Cookies from "js-cookie";
 import userContext from "../../../context/userContext";
 import { Slider, Button } from "@mui/material";
 import "./styles.css";
@@ -42,7 +43,6 @@ const ChoosePositivity = ({
     };
 
     const handleSave = () => {
-        console.log(genres);
         axios
             .post(`${process.env.REACT_APP_API}/users`, {
                 ...user,
@@ -53,6 +53,10 @@ const ChoosePositivity = ({
                 setUser((prevUser) => {
                     return { ...prevUser, genre: genres, poslevel };
                 });
+                Cookies.set("user_genres", genres);
+                Cookies.set("user_positivity", poslevel);
+            })
+            .then(() => {
                 history.push("/news");
             });
     };
