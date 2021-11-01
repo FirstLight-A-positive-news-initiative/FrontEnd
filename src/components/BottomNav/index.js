@@ -66,7 +66,7 @@ const BottomNav = () => {
                     </Link>
                 </Button>
                 <Button value = "games" className = "BottomNav__nav-item">
-                    <Link className = "Bottom__nav-item-link" to = "/games">
+                    <Link className = "Bottom__nav-item-link" to = "/games/tic-tac-toe">
                         <IoGameControllerOutline className = "BottomNav__nav-item-icon" />
                         <h6 className = "BottomNav__nav-item-text">Games</h6>
                     </Link>
