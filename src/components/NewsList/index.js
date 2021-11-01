@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Avatar } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import Cookies from "js-cookie";
+import { Avatar, Tooltip } from "@mui/material";
 import featured from "../../assets/images/NewsList/featured.png";
 import entertainment from "../../assets/images/NewsList/entertainment.jpg";
 import politics from "../../assets/images/NewsList/politics.jpg";
@@ -10,11 +11,40 @@ import "./styles.css";
 import DisplayNewsList from "./DisplayNewsList";
 
 const NewsList = () => {
+    const user_genres = Cookies.get("user_genres");
+    const user_positivity = Cookies.get("user_positivity");
+
     const [tab, setTab] = useState("featured");
+    const [skip, setSkip] = useState(0);
+    const [end, setEnd] = useState(false);
+    const [news, setNews] = useState([]);
+
+    // shows only selected genre tabs
+    useEffect(() => {
+        if (user_genres && user_genres.length) {
+            const showGenres = () => {
+                user_genres.split(",").forEach((genre) => {
+                    const list_item = document.getElementsByClassName(`news-list__genre-${genre}`);
+                    list_item[0].style = "display: flex";
+                }
+                )
+            };
+            showGenres();
+        }
+    }, [])
+
+    const setTabGenre = (tab_name) => {
+        setNews([]);
+        setTab(tab_name);
+        setSkip(0);
+        setEnd(false);
+    }
+
     return (
         <div className="news-list__container">
             <ul className="news-list__genre">
-                <li onClick={() => setTab(() => "featured")}>
+                <Tooltip title = "Featured">
+                <li key="featured" onClick={() => setTabGenre("featured")}>
                     <Avatar
                         sx={{ height: "50px", width: "50px" }}
                         src={featured}
@@ -26,7 +56,9 @@ const NewsList = () => {
                         }
                     />
                 </li>
-                <li onClick={() => setTab(() => "entertainment")}>
+                </Tooltip>
+                <Tooltip title = "Entertainment">
+                <li className="news-list__genre-Entertainment" key="Entertainment" onClick={() => setTabGenre("entertainment")}>
                     <Avatar
                         sx={{ height: "50px", width: "50px" }}
                         src={entertainment}
@@ -38,7 +70,9 @@ const NewsList = () => {
                         }
                     />
                 </li>
-                <li onClick={() => setTab(() => "politics")}>
+                </Tooltip>
+                <Tooltip title = "Politics">
+                <li className="news-list__genre-Politics" key="Politics" onClick={() => setTabGenre("politics")}>
                     <Avatar
                         sx={{ height: "50px", width: "50px" }}
                         src={politics}
@@ -50,7 +84,9 @@ const NewsList = () => {
                         }
                     />
                 </li>
-                <li onClick={() => setTab(() => "science")}>
+                </Tooltip>
+                <Tooltip title = "Science">
+                <li className="news-list__genre-Science" key="Science" onClick={() => setTabGenre("science")}>
                     <Avatar
                         sx={{ height: "50px", width: "50px" }}
                         src={science}
@@ -62,7 +98,9 @@ const NewsList = () => {
                         }
                     />
                 </li>
-                <li onClick={() => setTab(() => "technology")}>
+                </Tooltip>
+                <Tooltip title = "Technology">
+                <li className="news-list__genre-Technology" key="Technology" onClick={() => setTabGenre("technology")}>
                     <Avatar
                         sx={{ height: "50px", width: "50px" }}
                         src={technology}
@@ -74,7 +112,9 @@ const NewsList = () => {
                         }
                     />
                 </li>
-                <li onClick={() => setTab(() => "sports")}>
+                </Tooltip>
+                <Tooltip title = "Sports">
+                <li className="news-list__genre-Sports" key="Sports" onClick={() => setTabGenre("sports")}>
                     <Avatar
                         sx={{ height: "50px", width: "50px" }}
                         src={sports}
@@ -86,9 +126,23 @@ const NewsList = () => {
                         }
                     />
                 </li>
+                </Tooltip>
             </ul>
             <div>
-                <DisplayNewsList genre={tab} />
+                {user_genres && user_genres.length ? (
+                    <DisplayNewsList
+                        user_genres={user_genres}
+                        user_positivity={user_positivity}
+                        genre={tab}
+                        skip={skip}
+                        news={news}
+                        setNews={setNews}
+                        setSkip={setSkip}
+                        end={end}
+                        setEnd={setEnd} />
+                ) : (
+                    <p>Fetching the latest news for you...</p>
+                )}
             </div>
         </div>
     );

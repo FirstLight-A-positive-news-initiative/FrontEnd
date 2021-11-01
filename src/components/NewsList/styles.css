@@ -11,6 +11,14 @@
     scrollbar-width: none;
 }
 
+.news-list__genre > li {
+    display: none;
+}
+
+.news-list__genre > li:first-child {
+    display: flex;
+}
+
 .news-list__genre::-webkit-scrollbar {
     display: none;
 }

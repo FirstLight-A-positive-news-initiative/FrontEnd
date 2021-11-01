@@ -13,7 +13,7 @@
 
     #BottomNav__search-backdrop {
         animation: search-backdrop 0.2s ease-in;
-        position: absolute !important;
+        position: fixed !important;
         top: 0 !important;
         width: 100%;
         background-color: black !important;

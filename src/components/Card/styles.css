@@ -1,7 +1,6 @@
 .newsCard {
     margin: 20px;
     display: inline-block;
-    margin-top: 10px;
 }
 .card__genre {
     display: inline;
@@ -20,5 +19,6 @@
         padding-top: 20px;
         padding-bottom: 20px;
         justify-content: center;
+        margin: 0;
     }
 }
