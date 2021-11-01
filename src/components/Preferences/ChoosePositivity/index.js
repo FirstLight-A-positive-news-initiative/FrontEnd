@@ -1,6 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
+import Cookies from "js-cookie";
 import userContext from "../../../context/userContext";
 import { Slider, Button } from "@mui/material";
 import "./styles.css";
@@ -12,7 +13,6 @@ const ChoosePositivity = ({
     poslevel,
     setPoslevel,
     genres,
-    setGenres,
 }) => {
     const { pos_25, pos_50, pos_75, pos_100 } = PositivityImages;
     const [user, setUser] = useContext(userContext);
@@ -46,13 +46,17 @@ const ChoosePositivity = ({
         axios
             .post(`${process.env.REACT_APP_API}/users`, {
                 ...user,
-                genres,
+                genre: genres,
                 positivity: poslevel,
             })
             .then((res) => {
                 setUser((prevUser) => {
                     return { ...prevUser, genre: genres, poslevel };
                 });
+                Cookies.set("user_genres", genres);
+                Cookies.set("user_positivity", poslevel);
+            })
+            .then(() => {
                 history.push("/news");
             });
     };
@@ -115,7 +119,7 @@ const ChoosePositivity = ({
                     onClick={handleSave}
                     className="ChoosePositivity__save-button"
                 >
-                    Save
+                    Save Positivity and Exit
                 </Button>
             </div>
         </div>

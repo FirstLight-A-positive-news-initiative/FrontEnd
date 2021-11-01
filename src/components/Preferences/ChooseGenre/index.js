@@ -1,17 +1,11 @@
-import React, { useState, useContext } from "react";
-import axios from "axios";
+import React from "react";
 import { withRouter } from "react-router-dom";
-import userContext from "../../../context/userContext";
 import GenreCard from "./GenreCard/index";
-import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
-import Alert from "@mui/material/Alert";
-
+import { Grid, Button, Alert } from "@mui/material";
 import GenreCardImages from "../../../assets/images/GenreCard";
 import "./styles.css";
 
-const ChooseGenre = ({ history, genres, setGenres, poslevel, setPoslevel }) => {
-    const [user, setUser] = useContext(userContext);
+const ChooseGenre = ({ genres, setGenres}) => {
 
     const genre_list = [
         {
@@ -47,21 +41,7 @@ const ChooseGenre = ({ history, genres, setGenres, poslevel, setPoslevel }) => {
             document.getElementById(
                 `ChooseGenre__alert-box`
             ).className = `ChooseGenre__alert-disable`;
-            axios
-                .post(`${process.env.REACT_APP_API}/users`, {
-                    ...user,
-                    genre: genres,
-                    positivity: poslevel,
-                })
-                .then((res) => {
-                    setUser((prevUser) => {
-                        return { ...prevUser, genres, poslevel };
-                    });
-                    history.push("/news");
-                });
         }
-
-        console.log("Selected Genres --> " + genres);
     };
 
     return (

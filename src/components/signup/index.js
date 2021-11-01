@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
 import Logo from "../../assets/images/FirstLight1.png";
 import Img from "../../assets/images/meditating.png";
 import { GoogleLogin } from "react-google-login";
@@ -14,12 +15,15 @@ const SignUp = ({ history }) => {
     const responseGoogle = async (res) => {
         const googleUser = res.profileObj;
         // check if user already had an account
-        console.log("hello");
         axios
             .get(`${process.env.REACT_APP_API}/users/${googleUser.email}`)
             .then((res) => {
-                console.log(res);
                 setUser(() => res.data);
+
+                Cookies.set("user_genres", res.data.genre);
+                Cookies.set("user_positivity", res.data.positivity);
+            })
+            .then(() => {
                 history.push("/news");
             })
             .catch((err) => {
