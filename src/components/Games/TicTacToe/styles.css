@@ -1,0 +1,44 @@
+.tictactoe{
+    background-image: url("../../../assets/images/pattern.jpg");
+    background-size: 500px;
+    background-repeat: repeat;
+    height: 100%;
+}
+.tictactoe__heading{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 500;
+    color: #fff;
+    padding: 1% 0% 0% 2%;
+}
+.tictactoe__wrapper{
+    margin: auto;
+    margin-top: 80px;
+    padding-bottom: 100px;
+    width: 306px;
+    display: grid;
+    grid-gap: 3px;
+    grid-template: repeat(3, 100px) / repeat(3, 100px);
+}
+.tictactoe__wrapper-element{
+    text-align: center;
+    font-size: 5rem;
+    background-image: radial-gradient(circle, #0dd2f5, #0d4bf5);
+    color: #ffffff;
+    opacity: 0.9;
+    cursor: pointer;
+
+    /* unselectable */
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.tictactoe__wrapper-element:hover{
+    opacity: 1.0;
+    background-image: radial-gradient(circle, #0d4bf5, #0dd2f5);
+}

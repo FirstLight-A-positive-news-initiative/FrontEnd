@@ -9,6 +9,7 @@ import NewsPage from "./components/NewsPage";
 import Card from "./components/Card";
 import NewsList from "./components/NewsList";
 import ComicsPage from "./components/ComicsPage";
+import TicTacToe from "./components/Games/TicTacToe";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
                     <Route exact path="/preferences" component={Preferences} />
                     <Route exact path="/news/:id" component={NewsPage} />
                     <Route exact path="/test/card" component={Card} />
+                    <Route exact path="/games/tic-tac-toe" component = {TicTacToe} />
                     <Route exact path="/comics" component={ComicsPage} />
                     <Redirect to="/news"></Redirect>
                 </Switch>
