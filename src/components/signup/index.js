@@ -58,7 +58,6 @@ const SignUp = ({ history }) => {
                             clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                             buttonText="Login with Google"
                             onSuccess={responseGoogle}
-                            isSignedIn={true}
                             cookiePolicy={"single_host_origin"}
                         />
                         <h3 className="sign-up__box-signin">

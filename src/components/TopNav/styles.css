@@ -57,6 +57,26 @@
     transform: translate(-4px, 4px);
 }
 
+.top-nav__settings {
+    background-color: #943c0b !important;
+}
+
+.top-nav__settings-menu {
+    z-index: 10 !important;
+    right: 100px !important;
+}
+
+.top-nav__settings-menu a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.top-nav__settings-menu-item {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-evenly !important;
+}
+
 @media only screen and (max-width: 992px) {
     .top-nav__header {
         display: none !important;

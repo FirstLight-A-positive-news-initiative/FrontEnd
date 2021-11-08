@@ -108,7 +108,7 @@ export default function TicTacToe() {
             setResult(0);
         }
 
-        else if(ev!=0){
+        else if(ev!==0){
             if(ev>0)
             setResult(1);
             else
@@ -142,7 +142,7 @@ export default function TicTacToe() {
                 setResult(0);
             }
 
-            else if(ev!=0){
+            else if(ev!==0){
                 if(ev>0)
                 setResult(1);
                 else
@@ -153,7 +153,7 @@ export default function TicTacToe() {
 
     const changeBoard = (row, column) =>{
         let tempBoard = [...board];
-        if(result!=null){
+        if(result!==null){
             console.log(result);
             setResult(null);
             setBoard([

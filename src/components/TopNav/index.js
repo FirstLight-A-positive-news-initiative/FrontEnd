@@ -1,14 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
+import userContext from "../../context/userContext";
 import "./styles.css";
 import Logo from "../../assets/images/FirstLight_text_crop.png";
+import { Avatar, Tooltip, Menu, MenuItem, Divider } from "@mui/material"
 import { BiNews, BiBookOpen } from "react-icons/bi";
 import { IoGameControllerOutline } from "react-icons/io5";
-import { AiOutlineSearch } from "react-icons/ai";
-import { FaTimes } from "react-icons/fa";
+import { AiOutlineSearch, AiOutlineLogout, AiOutlineEdit } from "react-icons/ai";
+import { FaTimes, FaRegUser } from "react-icons/fa";
 
 const TopNav = (props) => {
     const [search, setSearch] = useState("");
+    const [user, setUser] = useContext(userContext);
+
+    // for settings menu
+    const [menuopen, setMenuopen] = useState(false);
+    const handleClick = () => {
+        setMenuopen((prev) => !prev);
+    };
+    const handleClose = () => {
+        setMenuopen(false);
+    };
+
+    const handleLogout = () => {
+        handleClose();
+        setUser(() => null);
+        Cookies.remove('user_genres');
+        Cookies.remove('user_positivity');
+    }
 
     const updateSearch = (e) => {
         setSearch(() => e.target.value);
@@ -62,8 +82,29 @@ const TopNav = (props) => {
                             Comics
                         </Link>
                     </li>
+                    <li key="settings">
+                        <Tooltip title="Settings" placement="right">
+                            <Avatar className="top-nav__settings" onClick={handleClick}>
+                                <FaRegUser />
+                            </Avatar>
+                        </Tooltip>
+                    </li>
                 </ul>
             </nav>
+            <Menu
+                className="top-nav__settings-menu"
+                open={menuopen}
+                id="basic-menu"
+                onClose={handleClose}
+                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
+            >
+                <MenuItem className="top-nav__settings-menu-item" onClick={handleClose}>
+                    <Link to="/preferences"><AiOutlineEdit /> Preferences</Link>
+                </MenuItem>
+                <Divider />
+                <MenuItem className="top-nav__settings-menu-item" onClick={handleLogout}><AiOutlineLogout /> Logout</MenuItem>
+            </Menu>
         </header>
     );
 };
