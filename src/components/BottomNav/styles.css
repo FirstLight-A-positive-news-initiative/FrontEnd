@@ -89,6 +89,17 @@
         text-decoration: none;
         color: inherit;
     }
+
+    .BottomNav__settings-menu .MuiMenu-paper {
+        width: 200px !important;
+        height: fit-content !important;
+    }
+
+    .BottomNav__settings-menu-item {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-evenly !important;
+    }
 }
 
 @keyframes search-backdrop {
