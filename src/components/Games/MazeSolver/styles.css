@@ -1,0 +1,99 @@
+#canvas {
+    background: #99afa3;
+    max-width: 90vw;
+    display: block;
+    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#c {
+    background: #eeeeee;
+    display: block;
+    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 10%;
+    font-size: large;
+}
+#timerel {
+    display: block;
+    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    text-align: center;
+    font-size: large;
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #fff;
+    padding: 1% 0% 0% 2%;
+    margin: 1rem;
+}
+
+#maze {
+    background-image: url("../../../assets/images/pattern.jpg");
+    background-size: 500px;
+    background-repeat: repeat;
+    height: 100%;
+    padding-top: 1rem;
+    padding-bottom: 4rem;
+}
+
+#maze h1 {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 3.5rem;
+    font-weight: 500;
+    margin: 1rem;
+    color: #fff;
+    padding: 1% 0% 0% 2%;
+}
+
+#maze p {
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #fff;
+    padding: 1% 0% 0% 2%;
+}
+
+.maze__mobile-controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.4rem;
+}
+
+.maze__mobile-controls button {
+    padding: 1.2rem;
+    background-color: #aaaaaa;
+    font-size: 1.5rem;
+    margin: 10px;
+}
+
+.maze__mobile-controls-side {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.maze__mobile-controls-side button {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+@media screen and (min-width: 481px) {
+    .maze__mobile-controls {
+        display: none;
+    }
+}

@@ -38,7 +38,7 @@ const App = () => {
                     <Route
                         exact
                         path="/games/tic-tac-toe"
-                        component={TicTacToe}
+                        component={MazeSolver}
                     />
                     <Route
                         exact
