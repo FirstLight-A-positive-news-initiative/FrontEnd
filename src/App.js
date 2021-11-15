@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router";
 import userContext from "./context/userContext";
 import SignUp from "./components/signup";
@@ -17,6 +17,24 @@ import Sudoku from "./components/Games/Sudoku";
 const App = () => {
     var routes = null;
     const [user, setUser] = useContext(userContext);
+
+    const loadFromLocalStorage = () => {
+        try {
+            const serializedState = localStorage.getItem("state");
+            if (serializedState == null) return undefined;
+            return JSON.parse(serializedState);
+        } catch (err) {
+            console.log(err);
+            return null;
+        }
+    };
+
+    useEffect(() => {
+        const state = loadFromLocalStorage();
+        console.log("state: ", state);
+        setUser(state);
+    }, []);
+
     if (user == null) {
         routes = (
             <div>
