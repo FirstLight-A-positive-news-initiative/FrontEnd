@@ -92,6 +92,13 @@
     margin-right: 40px;
 }
 
+.maze__modal {
+    background-color: white;
+    color: black;
+    margin: auto;
+    height: 80vh;
+}
+
 @media screen and (min-width: 481px) {
     .maze__mobile-controls {
         display: none;

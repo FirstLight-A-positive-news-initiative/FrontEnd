@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
 import {
     AiOutlineArrowDown,
@@ -6,9 +6,17 @@ import {
     AiOutlineArrowLeft,
     AiOutlineArrowRight,
 } from "react-icons/ai";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 const MazeSolver = () => {
     //var now = new Date().getTime();
+    const [isModalOpen, setIsModalOpen] = useState(true);
+    const [modalText, setModalText] = useState(
+        "Oops! Looks like you are out of time"
+    );
 
     useEffect(() => {
         var playing,
@@ -52,7 +60,7 @@ const MazeSolver = () => {
         twominutes = 60;
         console.log("time");
         x = document.querySelector("#timerel");
-        startTimer(twominutes, x);
+        // startTimer(twominutes, x);
 
         playing = true;
         window.addEventListener("keydown", doKeyDown, true);
@@ -425,6 +433,18 @@ const MazeSolver = () => {
     }, []);
     // drawMoves();
 
+    const style = {
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: "80vw",
+        bgcolor: "background.paper",
+        border: "2px solid #000",
+        boxShadow: 24,
+        p: 4,
+    };
+
     return (
         <div>
             <div id="maze">
@@ -455,6 +475,31 @@ const MazeSolver = () => {
                         </button>
                     </div>
                 </div>
+                <Modal
+                    open={isModalOpen}
+                    onClose={() => setIsModalOpen(() => false)}
+                    class="maze__modal"
+                >
+                    <Box sx={style}>
+                        <Typography
+                            id="modal-modal-title"
+                            variant="h6"
+                            component="h2"
+                        >
+                            {modalText}
+                        </Typography>
+                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                            Try again?{" "}
+                            <button
+                                onClick={() => {
+                                    document.location.reload();
+                                }}
+                            >
+                                Play again
+                            </button>
+                        </Typography>
+                    </Box>
+                </Modal>
             </div>
         </div>
     );

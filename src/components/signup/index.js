@@ -19,7 +19,8 @@ const SignUp = ({ history }) => {
             .get(`${process.env.REACT_APP_API}/users/${googleUser.email}`)
             .then((res) => {
                 setUser(() => res.data);
-
+                console.log("Saving to local: ", res.data);
+                localStorage.setItem("state", JSON.stringify(res.data));
                 Cookies.set("user_genres", res.data.genre);
                 Cookies.set("user_positivity", res.data.positivity);
             })
@@ -27,7 +28,7 @@ const SignUp = ({ history }) => {
                 history.push("/news");
             })
             .catch((err) => {
-                console.log("err", err);
+                console.log("err: ", err);
             });
         // if user does not have account
         const firstLightUser = {
@@ -59,7 +60,6 @@ const SignUp = ({ history }) => {
                             buttonText="Login with Google"
                             onSuccess={responseGoogle}
                             cookiePolicy={"single_host_origin"}
-                            isSignedIn={true}
                         />
                         <h3 className="sign-up__box-signin">
                             Already have an account?{" "}
