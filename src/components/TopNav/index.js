@@ -65,7 +65,7 @@ const TopNav = (props) => {
                         </Link>
                     </li>
                     <li key="games">
-                        <Link to="/games/tic-tac-toe">
+                        <Link to="/games/sudoku">
                             <IoGameControllerOutline
                                 className="top-nav__links-icons"
                                 size="25px"
