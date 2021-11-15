@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
 import "./styles.css";
 import {
     AiOutlineArrowDown,
@@ -11,12 +12,13 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-const MazeSolver = () => {
+const MazeSolver = (props) => {
     //var now = new Date().getTime();
-    const [isModalOpen, setIsModalOpen] = useState(true);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalText, setModalText] = useState(
         "Oops! Looks like you are out of time"
     );
+    const history = props.history;
 
     useEffect(() => {
         var playing,
@@ -29,6 +31,16 @@ const MazeSolver = () => {
             x,
             cord,
             modelfunwin;
+
+        modelfungo = () => {
+            setIsModalOpen(() => true);
+            setModalText(() => "Oops! Looks like you are out of time");
+        };
+
+        modelfunwin = () => {
+            setIsModalOpen(() => true);
+            setModalText(() => "Congratulations you have won the game!");
+        };
 
         function startTimer(duration, display) {
             var start = Date.now(),
@@ -57,10 +69,10 @@ const MazeSolver = () => {
             timer();
             setInterval(timer, 1000);
         }
-        twominutes = 60;
+        twominutes = 30;
         console.log("time");
         x = document.querySelector("#timerel");
-        // startTimer(twominutes, x);
+        startTimer(twominutes, x);
 
         playing = true;
         window.addEventListener("keydown", doKeyDown, true);
@@ -270,7 +282,7 @@ const MazeSolver = () => {
                     x = randomChoice(temp);
                     //    console.log(temp)
                     this.Board[x[0]][x[1]] = "&";
-                    this.ctx.fillStyle = "#ffff00"; // color of moving dot
+                    this.ctx.fillStyle = "#39FF14"; // color of moving dot
                     this.ctx.fillRect(scale * x[0], scale * x[1], scale, scale);
                 }
             };
@@ -289,7 +301,7 @@ const MazeSolver = () => {
             this.moveclear = function (a, b) {
                 var scale = this.S;
                 this.ctx = this.canvas.getContext("2d");
-                this.ctx.fillStyle = "#aaaa0c"; // color of trace
+                this.ctx.fillStyle = "#B4FE98"; // color of trace
                 this.ctx.fillRect(scale * a, scale * b, scale, scale);
                 this.Board[a][b] = " ";
             };
@@ -297,7 +309,7 @@ const MazeSolver = () => {
             this.move = function (a, b) {
                 var scale = this.S;
                 this.ctx = this.canvas.getContext("2d");
-                this.ctx.fillStyle = "#ffff00"; // color of dot
+                this.ctx.fillStyle = "#39FF14"; // color of dot
                 this.ctx.fillRect(scale * a, scale * b, scale, scale);
                 this.Board[a][b] = "&";
             };
@@ -475,6 +487,28 @@ const MazeSolver = () => {
                         </button>
                     </div>
                 </div>
+                <div class="maze-buttons">
+                    <Button
+                        class="maze__button maze-solve"
+                        onClick={() => {
+                            console.log("push");
+                            history.push("/news");
+                            history.goBack();
+                        }}
+                    >
+                        SOLVE USING AI
+                    </Button>
+                    <Button
+                        class="maze__button maze-play-again"
+                        onClick={() => {
+                            console.log("push");
+                            history.push("/news");
+                            history.goBack();
+                        }}
+                    >
+                        NEW GAME
+                    </Button>
+                </div>
                 <Modal
                     open={isModalOpen}
                     onClose={() => setIsModalOpen(() => false)}
@@ -490,13 +524,16 @@ const MazeSolver = () => {
                         </Typography>
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                             Try again?{" "}
-                            <button
+                            <Button
+                                class="maze__button"
                                 onClick={() => {
-                                    document.location.reload();
+                                    console.log("push");
+                                    history.push("/news");
+                                    history.goBack();
                                 }}
                             >
-                                Play again
-                            </button>
+                                NEW GAME
+                            </Button>
                         </Typography>
                     </Box>
                 </Modal>
@@ -505,4 +542,4 @@ const MazeSolver = () => {
     );
 };
 
-export default MazeSolver;
+export default withRouter(MazeSolver);
