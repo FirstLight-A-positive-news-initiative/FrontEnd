@@ -5,6 +5,7 @@ import userContext from "../../context/userContext";
 import { AiOutlineSearch, AiOutlineLogout, AiOutlineEdit } from "react-icons/ai";
 import { BiNews, BiBookOpen } from "react-icons/bi";
 import { IoGameControllerOutline } from "react-icons/io5";
+import { MdGames } from "react-icons/md";
 import { FaTimes } from "react-icons/fa";
 import { Button, Menu, MenuItem } from "@mui/material";
 
@@ -109,12 +110,44 @@ const BottomNav = () => {
                         <h6 className="BottomNav__nav-item-text">Comics</h6>
                     </Link>
                 </Button>
-                <Button value="games" className="BottomNav__nav-item">
-                    <Link className="Bottom__nav-item-link" to="/games/tic-tac-toe">
-                        <IoGameControllerOutline className="BottomNav__nav-item-icon" />
-                        <h6 className="BottomNav__nav-item-text">Games</h6>
-                    </Link>
+                <Button onClick={handleClick} value="games" className="BottomNav__nav-item">
+                    <IoGameControllerOutline className="BottomNav__nav-item-icon" />
+                    <h6 className="BottomNav__nav-item-text">Games</h6>
                 </Button>
+                <Menu
+                    className="BottomNav__settings-menu"
+                    aria-labelledby="demo-positioned-button"
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'center',
+                    }}
+                    transformOrigin={{
+                        vertical: 'center',
+                        horizontal: 'center',
+                    }}
+                >
+                    <MenuItem className="top-nav__settings-menu-item" onClick={handleClose}>
+                        <Link to="/games/maze-solver">
+                            <MdGames />
+                            Maze
+                        </Link>
+                    </MenuItem>
+                    <MenuItem className="top-nav__settings-menu-item" onClick={handleClose}>
+                        <Link to="/games/sudoku">
+                            <MdGames />
+                            Sudoku
+                        </Link>
+                    </MenuItem>
+                    <MenuItem className="top-nav__settings-menu-item" onClick={handleClose}>
+                        <Link to="/games/tic-tac-toe">
+                            <MdGames />
+                            Tic Tac Toe
+                        </Link>
+                    </MenuItem>
+                </Menu>
             </div>
         </div>
     );

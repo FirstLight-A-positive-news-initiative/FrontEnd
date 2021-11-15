@@ -10,12 +10,9 @@ import Card from "./components/Card";
 import NewsList from "./components/NewsList";
 import ComicsPage from "./components/ComicsPage";
 import TicTacToe from "./components/Games/TicTacToe";
-<<<<<<< HEAD
-import Sudoku from "./components/Games/Sudoku";
-=======
 import MazeSolver from "./components/Games/MazeSolver";
->>>>>>> d5cc67f659b4f2f572e93462399d823a43012ef7
 import Footer from "./components/Footer";
+import Sudoku from "./components/Games/Sudoku";
 
 const App = () => {
     var routes = null;
@@ -42,12 +39,17 @@ const App = () => {
                     <Route
                         exact
                         path="/games/tic-tac-toe"
-                        component={MazeSolver}
+                        component={TicTacToe}
                     />
                     <Route
                         exact
                         path="/games/maze-solver"
                         component={MazeSolver}
+                    />
+                    <Route
+                        exact
+                        path="/games/sudoku"
+                        component={Sudoku}
                     />
                     <Route exact path="/comics" component={ComicsPage} />
                     <Redirect to="/news"></Redirect>

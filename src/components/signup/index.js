@@ -59,7 +59,6 @@ const SignUp = ({ history }) => {
                             buttonText="Login with Google"
                             onSuccess={responseGoogle}
                             cookiePolicy={"single_host_origin"}
-                            isSignedIn={true}
                         />
                         <h3 className="sign-up__box-signin">
                             Already have an account?{" "}

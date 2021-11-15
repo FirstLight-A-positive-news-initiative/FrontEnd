@@ -6,6 +6,7 @@ import userContext from "../../context/userContext";
 import "./styles.css";
 import Logo from "../../assets/images/FirstLight_text_crop.png";
 import { Avatar, Tooltip, Menu, MenuItem, Divider } from "@mui/material";
+import { MdGames } from "react-icons/md"
 import { BiNews, BiBookOpen } from "react-icons/bi";
 import { IoGameControllerOutline } from "react-icons/io5";
 import {
@@ -18,6 +19,15 @@ import { FaTimes, FaRegUser } from "react-icons/fa";
 const TopNav = (props) => {
     const [search, setSearch] = useState("");
     const [user, setUser] = useContext(userContext);
+
+    // for games menu
+    const [gamemenuopen, setGamemenuopen] = useState(false);
+    const handleGameClick = () => {
+        setGamemenuopen((prev) => (!prev));
+    };
+    const handleGameClose = () => {
+        setGamemenuopen(false);
+    };
 
     // for settings menu
     const [menuopen, setMenuopen] = useState(false);
@@ -69,14 +79,12 @@ const TopNav = (props) => {
                             News
                         </Link>
                     </li>
-                    <li key="games">
-                        <Link to="/games/sudoku">
-                            <IoGameControllerOutline
-                                className="top-nav__links-icons"
-                                size="25px"
-                            />
-                            Games
-                        </Link>
+                    <li key="games" onClick={handleGameClick}>
+                        <IoGameControllerOutline
+                            className="top-nav__links-icons"
+                            size="25px"
+                        />
+                        Games
                     </li>
                     <li key="comics">
                         <Link to="/comics">
@@ -99,6 +107,34 @@ const TopNav = (props) => {
                     </li>
                 </ul>
             </nav>
+            {/* Game Section */}
+            <Menu
+                open={gamemenuopen}
+                onClose={handleGameClose}
+                transformOrigin={{ horizontal: "right", vertical: "top" }}
+                anchorOrigin={{ horizontal: "right", vertical: "top" }}
+                className="top-nav__settings-menu"
+            >
+                <MenuItem className="top-nav__settings-menu-item" onClick={handleGameClose}>
+                    <Link to="/games/maze-solver">
+                        <MdGames />
+                        Maze
+                    </Link>
+                </MenuItem>
+                <MenuItem className="top-nav__settings-menu-item" onClick={handleGameClose}>
+                    <Link to="/games/sudoku">
+                        <MdGames />
+                        Sudoku
+                    </Link>
+                </MenuItem>
+                <MenuItem className="top-nav__settings-menu-item" onClick={handleGameClose}>
+                    <Link to="/games/tic-tac-toe">
+                        <MdGames />
+                        Tic Tac Toe
+                    </Link>
+                </MenuItem>
+            </Menu>
+            {/* user settings */}
             <Menu
                 className="top-nav__settings-menu"
                 open={menuopen}
