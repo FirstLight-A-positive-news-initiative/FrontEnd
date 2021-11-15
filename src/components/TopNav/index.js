@@ -1,13 +1,18 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import { GoogleLogout } from "react-google-login";
 import userContext from "../../context/userContext";
 import "./styles.css";
 import Logo from "../../assets/images/FirstLight_text_crop.png";
-import { Avatar, Tooltip, Menu, MenuItem, Divider } from "@mui/material"
+import { Avatar, Tooltip, Menu, MenuItem, Divider } from "@mui/material";
 import { BiNews, BiBookOpen } from "react-icons/bi";
 import { IoGameControllerOutline } from "react-icons/io5";
-import { AiOutlineSearch, AiOutlineLogout, AiOutlineEdit } from "react-icons/ai";
+import {
+    AiOutlineSearch,
+    AiOutlineLogout,
+    AiOutlineEdit,
+} from "react-icons/ai";
 import { FaTimes, FaRegUser } from "react-icons/fa";
 
 const TopNav = (props) => {
@@ -26,9 +31,9 @@ const TopNav = (props) => {
     const handleLogout = () => {
         handleClose();
         setUser(() => null);
-        Cookies.remove('user_genres');
-        Cookies.remove('user_positivity');
-    }
+        Cookies.remove("user_genres");
+        Cookies.remove("user_positivity");
+    };
 
     const updateSearch = (e) => {
         setSearch(() => e.target.value);
@@ -84,7 +89,10 @@ const TopNav = (props) => {
                     </li>
                     <li key="settings">
                         <Tooltip title="Settings" placement="right">
-                            <Avatar className="top-nav__settings" onClick={handleClick}>
+                            <Avatar
+                                className="top-nav__settings"
+                                onClick={handleClick}
+                            >
                                 <FaRegUser />
                             </Avatar>
                         </Tooltip>
@@ -96,14 +104,34 @@ const TopNav = (props) => {
                 open={menuopen}
                 id="basic-menu"
                 onClose={handleClose}
-                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
+                transformOrigin={{ horizontal: "right", vertical: "top" }}
+                anchorOrigin={{ horizontal: "right", vertical: "top" }}
             >
-                <MenuItem className="top-nav__settings-menu-item" onClick={handleClose}>
-                    <Link to="/preferences"><AiOutlineEdit /> Preferences</Link>
+                <MenuItem
+                    className="top-nav__settings-menu-item"
+                    onClick={handleClose}
+                >
+                    <Link to="/preferences">
+                        <AiOutlineEdit /> Preferences
+                    </Link>
                 </MenuItem>
                 <Divider />
-                <MenuItem className="top-nav__settings-menu-item" onClick={handleLogout}><AiOutlineLogout /> Logout</MenuItem>
+
+                <GoogleLogout
+                    clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                    buttonText="Logout"
+                    render={(renderProps) => (
+                        <MenuItem
+                            className="top-nav__settings-menu-item"
+                            onClick={handleLogout}
+                        >
+                            {" "}
+                            <AiOutlineLogout />
+                            Logout
+                        </MenuItem>
+                    )}
+                    onLogoutSuccess={handleLogout}
+                ></GoogleLogout>
             </Menu>
         </header>
     );

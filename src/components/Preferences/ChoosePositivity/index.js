@@ -8,12 +8,7 @@ import "./styles.css";
 
 import PositivityImages from "../../../assets/images/PositivityRange";
 
-const ChoosePositivity = ({
-    history,
-    poslevel,
-    setPoslevel,
-    genres,
-}) => {
+const ChoosePositivity = ({ history, poslevel, setPoslevel, genres }) => {
     const { pos_25, pos_50, pos_75, pos_100 } = PositivityImages;
     const [user, setUser] = useContext(userContext);
     const marks = [
