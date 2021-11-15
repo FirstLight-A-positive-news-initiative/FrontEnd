@@ -31,6 +31,7 @@ const TopNav = (props) => {
     const handleLogout = () => {
         handleClose();
         setUser(() => null);
+        localStorage.removeItem("state");
         Cookies.remove("user_genres");
         Cookies.remove("user_positivity");
     };
