@@ -21,25 +21,29 @@ const TopNav = (props) => {
     const [user, setUser] = useContext(userContext);
 
     // for games menu
-    const [gamemenuopen, setGamemenuopen] = useState(false);
-    const handleGameClick = () => {
-        setGamemenuopen((prev) => (!prev));
+    const [gameAnchor, setGameAnchor] = useState(null);
+    const gameMenuOpen = Boolean(gameAnchor);
+
+    const handleGameClick = (e) => {
+        setGameAnchor(e.currentTarget);
     };
     const handleGameClose = () => {
-        setGamemenuopen(false);
+        setGameAnchor(null);
     };
 
     // for settings menu
-    const [menuopen, setMenuopen] = useState(false);
-    const handleClick = () => {
-        setMenuopen((prev) => !prev);
+    const [settingAnchor, setSettingAnchor] = useState(null);
+    const settingMenuOpen = Boolean(settingAnchor);
+
+    const handleSettingClick = (e) => {
+        setSettingAnchor(e.currentTarget);
     };
-    const handleClose = () => {
-        setMenuopen(false);
+    const handleSettingClose = () => {
+        setSettingAnchor(null);
     };
 
     const handleLogout = () => {
-        handleClose();
+        handleSettingClose();
         setUser(() => null);
         Cookies.remove("user_genres");
         Cookies.remove("user_positivity");
@@ -80,11 +84,13 @@ const TopNav = (props) => {
                         </Link>
                     </li>
                     <li key="games" onClick={handleGameClick}>
-                        <IoGameControllerOutline
-                            className="top-nav__links-icons"
-                            size="25px"
-                        />
-                        Games
+                        <Link to="#">
+                            <IoGameControllerOutline
+                                className="top-nav__links-icons"
+                                size="25px"
+                            />
+                            Games
+                        </Link>
                     </li>
                     <li key="comics">
                         <Link to="/comics">
@@ -99,7 +105,7 @@ const TopNav = (props) => {
                         <Tooltip title="Settings" placement="right">
                             <Avatar
                                 className="top-nav__settings"
-                                onClick={handleClick}
+                                onClick={handleSettingClick}
                             >
                                 <FaRegUser />
                             </Avatar>
@@ -109,11 +115,12 @@ const TopNav = (props) => {
             </nav>
             {/* Game Section */}
             <Menu
-                open={gamemenuopen}
+                anchorEl={gameAnchor}
+                open={gameMenuOpen}
                 onClose={handleGameClose}
-                transformOrigin={{ horizontal: "right", vertical: "top" }}
-                anchorOrigin={{ horizontal: "right", vertical: "top" }}
-                className="top-nav__settings-menu"
+                className="top-nav__games-menu"
+                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
                 <MenuItem className="top-nav__settings-menu-item" onClick={handleGameClose}>
                     <Link to="/games/maze-solver">
@@ -121,12 +128,14 @@ const TopNav = (props) => {
                         Maze
                     </Link>
                 </MenuItem>
+                <Divider />
                 <MenuItem className="top-nav__settings-menu-item" onClick={handleGameClose}>
                     <Link to="/games/sudoku">
                         <MdGames />
                         Sudoku
                     </Link>
                 </MenuItem>
+                <Divider />
                 <MenuItem className="top-nav__settings-menu-item" onClick={handleGameClose}>
                     <Link to="/games/tic-tac-toe">
                         <MdGames />
@@ -136,16 +145,17 @@ const TopNav = (props) => {
             </Menu>
             {/* user settings */}
             <Menu
+                anchorEl={settingAnchor}
+                open={settingMenuOpen}
                 className="top-nav__settings-menu"
-                open={menuopen}
                 id="basic-menu"
-                onClose={handleClose}
+                onClose={handleSettingClose}
                 transformOrigin={{ horizontal: "right", vertical: "top" }}
-                anchorOrigin={{ horizontal: "right", vertical: "top" }}
+                anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
             >
                 <MenuItem
                     className="top-nav__settings-menu-item"
-                    onClick={handleClose}
+                    onClick={handleSettingClose}
                 >
                     <Link to="/preferences">
                         <AiOutlineEdit /> Preferences

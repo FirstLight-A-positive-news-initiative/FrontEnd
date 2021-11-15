@@ -11,7 +11,7 @@
   }
   
   .modal-container {
-    width: 500px;
+    width: 60%;
     height: auto;
     border-radius: 12px;
     background-color: white;
@@ -61,6 +61,7 @@
   .difficulty-selection-container {
     cursor: pointer;
     display: flex;
+    width: 100%;
     justify-content: space-around;
     flex-wrap: wrap;
   }
@@ -78,15 +79,27 @@
   }
   
   .easy {
-    border-color: lightgreen;
+    border-color: #B2EA70;
   }
   
   .medium {
-    border-color: orange;
+    border-color: #FBD148;
   }
   
   .hard {
-    border-color: red;
+    border-color: #FF5F7E;
+  }
+
+  .easy:hover {
+    background-color: #B2EA70;
+  }
+
+  .medium:hover {
+    background-color: #FBD148;
+  }
+
+  .hard:hover {
+    background-color: #FF5F7E;
   }
   
   .animation-container-difficulty {
