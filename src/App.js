@@ -17,8 +17,6 @@ import Sudoku from "./components/Games/Sudoku";
 const App = () => {
     var routes = null;
     const [user, setUser] = useContext(userContext);
-    console.log("app: ", user);
-    console.log(routes);
 
     if (user == null) {
         routes = (
@@ -49,11 +47,7 @@ const App = () => {
                         path="/games/maze-solver"
                         component={MazeSolver}
                     />
-                    <Route
-                        exact
-                        path="/games/sudoku"
-                        component={Sudoku}
-                    />
+                    <Route exact path="/games/sudoku" component={Sudoku} />
                     <Route exact path="/comics" component={ComicsPage} />
                     <Redirect to="/news"></Redirect>
                 </Switch>

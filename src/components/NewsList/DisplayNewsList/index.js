@@ -111,7 +111,7 @@ const DisplayNewsList = ({
                 <Modal
                     open={modalLink !== null}
                     onClose={() => setModalLink(() => null)}
-                    class="maze__modal"
+                    className="maze__modal"
                 >
                     <Box sx={style}>
                         <Typography
@@ -131,7 +131,6 @@ const DisplayNewsList = ({
                                     navigator.clipboard.writeText(
                                         `http://localhost:3000/news/${modalLink}`
                                     );
-                                    console.log("copied");
                                 }}
                             >
                                 Copy Link

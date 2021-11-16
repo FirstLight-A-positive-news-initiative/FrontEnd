@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="%PUBLIC_URL%/logo.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <meta
+            name="description"
+            content="This is TiTa, the complete online classroom management system"
+        />
+        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
+
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+            integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+            crossorigin="anonymous"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Bootstrap Scrips -->
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"
+        ></script>
+        <style>
+            main {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            h1 {
+                font-family: "Montserrat";
+                font-size: 3rem;
+            }
+
+            p {
+                font-size: 1.2rem;
+            }
+
+            button {
+                padding: 10px;
+                font-size: 1.2rem;
+                background-color: #6673fd;
+                color: white;
+                border: none;
+            }
+
+            .logo {
+                margin: 20px;
+                height: 100px;
+            }
+        </style>
+        <title>TiTa</title>
+    </head>
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <img class="logo" src="logo.png" alt="Logo" srcset="" />
+        <main>
+            <img src="socket.png" alt="" srcset="" />
+            <h1>Oops, seems like you're offline!</h1>
+            <p>
+                FirstLight, currently does not support offline mode, kindly try
+                connecting to network!
+            </p>
+            <button>Reconnect</button>
+        </main>
+    </body>
+    <script>
+        document.querySelector("button").addEventListener("click", () => {
+            window.location.reload();
+        });
+        window.addEventListener("online", () => {
+            window.location.reload();
+        });
+        // async function checkNetworkAndReload() {
+        //     try {
+        //         const response = await fetch(".");
+        //         if (response.status >= 200 && response.status < 500) {
+        //             window.location.reload();
+        //             return;
+        //         }
+        //     } catch {}
+        //     window.setTimeout(checkNetworkAndReload, 2500);
+        // }
+        // checkNetworkAndReload();
+    </script>
+</html>

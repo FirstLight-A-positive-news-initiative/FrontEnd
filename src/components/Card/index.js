@@ -15,7 +15,6 @@ import ShareIcon from "@mui/icons-material/Share";
 import "./styles.css";
 
 export default function NewsCard({ news, modalLink, setModalLink }) {
-    console.log(news);
     function toTitleCase(str) {
         return str.replace(/\w\S*/g, function (txt) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -39,7 +38,7 @@ export default function NewsCard({ news, modalLink, setModalLink }) {
                     display: "inline-block",
                 }}
             >
-                <Link to={`/news/${news._id}`} class="news-list__link">
+                <Link to={`/news/${news._id}`} className="news-list__link">
                     <CardActionArea>
                         <CardHeader
                             avatar={
