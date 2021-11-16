@@ -301,7 +301,7 @@ const MazeSolver = (props) => {
             this.moveclear = function (a, b) {
                 var scale = this.S;
                 this.ctx = this.canvas.getContext("2d");
-                this.ctx.fillStyle = "#B4FE98"; // color of trace
+                this.ctx.fillStyle = "#288803"; // color of trace
                 this.ctx.fillRect(scale * a, scale * b, scale, scale);
                 this.Board[a][b] = " ";
             };
