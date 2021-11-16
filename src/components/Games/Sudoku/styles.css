@@ -1,0 +1,108 @@
+.Game {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    background: url("../../../assets/images/pattern.jpg");
+    background-size: 500px;
+    background-repeat: repeat;
+    color: white;
+  }
+  
+  .action-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 80%;
+  }
+  
+  .main-title {
+    margin-bottom: 10px;
+    text-decoration: underline;
+  }
+  
+  .show-game-detail-container-button {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 10px 20px;
+  }
+  
+  .show-game-detail-container-button button {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+  }
+
+  .Sudoku__title {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 500;
+    color: #fff;
+    padding: 1% 0% 0% 2%;
+    margin: 5% 0;
+  }
+
+  .Sudoku__rules-btn {
+    background-color: #FF5151 !important;
+    color: white !important;
+    padding: 1% !important;
+  }
+
+  .Sudoku__rules {
+    display: none;
+  }
+
+  .Sudoku__rules-active {
+    margin-top: 20px;
+    padding-top: 1%;
+    background-color: rgba(148, 59, 11, 0.2);
+  }
+
+  .Sudoku__rules-text > h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .Sudoku__rules-item-icon {
+    color: white !important;
+  }
+
+  .Sudoku__action-button {
+    margin-top: 50px !important;
+    margin-bottom: 100px !important;
+    padding: 1% 2% !important;
+    color: white !important;
+    font-size: 1.25rem !important;
+    font-weight: bold !important    ;
+  }
+
+  #Sudoku__action-button-clear {
+    background-color: #94B3FD;
+  }
+
+  #Sudoku__action-button-solve {
+    background-color: #B2EA70;
+  }
+
+  #Sudoku__action-button-hint {
+    background-color: #FBD148;
+  }
+
+  #Sudoku__action-button-newgame {
+    background-color: #FF5F7E;
+  }
+
+  @media only screen and (max-width: 992px) {
+    .Sudoku__action-button {
+      margin-top: 20px !important;
+      margin-bottom: 20px !important;
+    }
+  }

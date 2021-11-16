@@ -1,0 +1,22 @@
+.Grid {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+  }
+  
+  tr {
+    border: 1px solid white;
+  }
+
+  tr td {
+    padding: 10px;
+    font-size: x-large;
+    border: 2px solid white !important;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  
+  table {
+    border: 3px solid white;
+    border-collapse: collapse;
+    margin: 50px auto;
+  }
