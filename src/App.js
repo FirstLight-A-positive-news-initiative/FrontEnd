@@ -18,23 +18,6 @@ const App = () => {
     var routes = null;
     const [user, setUser] = useContext(userContext);
 
-    const loadFromLocalStorage = () => {
-        try {
-            const serializedState = localStorage.getItem("state");
-            if (serializedState == null) return undefined;
-            return JSON.parse(serializedState);
-        } catch (err) {
-            console.log(err);
-            return null;
-        }
-    };
-
-    useEffect(() => {
-        const state = loadFromLocalStorage();
-        console.log("state: ", state);
-        setUser(state);
-    }, []);
-
     if (user == null) {
         routes = (
             <div>
@@ -64,11 +47,7 @@ const App = () => {
                         path="/games/maze-solver"
                         component={MazeSolver}
                     />
-                    <Route
-                        exact
-                        path="/games/sudoku"
-                        component={Sudoku}
-                    />
+                    <Route exact path="/games/sudoku" component={Sudoku} />
                     <Route exact path="/comics" component={ComicsPage} />
                     <Redirect to="/news"></Redirect>
                 </Switch>

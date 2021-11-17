@@ -12,6 +12,10 @@
     padding: 0.3rem;
 }
 
+.news-list__link {
+    text-decoration: none;
+}
+
 @media only screen and (max-width: 500px) {
     .newsCard {
         display: flex;

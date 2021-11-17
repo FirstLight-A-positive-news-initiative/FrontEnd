@@ -14,23 +14,23 @@ const SignUp = ({ history }) => {
 
     const responseGoogle = async (res) => {
         const googleUser = res.profileObj;
+        var curUser = null;
         // check if user already had an account
         axios
             .get(`${process.env.REACT_APP_API}/users/${googleUser.email}`)
             .then((res) => {
                 setUser(() => res.data);
-                console.log("Saving to local: ", res.data);
+                curUser = res.data;
                 localStorage.setItem("state", JSON.stringify(res.data));
                 Cookies.set("user_genres", res.data.genre);
                 Cookies.set("user_positivity", res.data.positivity);
             })
-            .then(() => {
-                history.push("/news");
-            })
+            .then(() => {})
             .catch((err) => {
                 console.log("err: ", err);
             });
         // if user does not have account
+        if (res.data !== null) return;
         const firstLightUser = {
             name: googleUser.givenName + " " + googleUser.familyName,
             email: googleUser.email,
