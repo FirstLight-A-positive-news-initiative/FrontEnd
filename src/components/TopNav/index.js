@@ -61,7 +61,7 @@ const TopNav = (props) => {
 
     return (
         <header className="top-nav__header">
-            <img src={Logo} className="top-nav__image" alt="logo" />
+            <Link to="/"><img src={Logo} className="top-nav__image" alt="logo" /></Link>
             <div className="top-nav__search">
                 <AiOutlineSearch />
                 <input
