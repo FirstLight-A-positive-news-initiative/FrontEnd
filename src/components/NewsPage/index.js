@@ -12,7 +12,6 @@ const NewsPage = () => {
             const res = await axios.get(
                 `${process.env.REACT_APP_API}/news/${id}`
             );
-            console.log(res.data);
             setNews(() => res.data);
         } catch (e) {
             console.log(e);

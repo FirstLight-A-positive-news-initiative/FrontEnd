@@ -1,17 +1,17 @@
 import BC from "./Comic_BC.jpeg";
 import Calvin from "./Comic_Calvin.jpeg";
 import Dennis from "./Comic_Dennis.jpeg";
-import Garfield from "./Comic_Dilbert.jpeg";
-import Peanuts from "./Comic_Garfield.png";
-import Dilbert from "./Comic_Peanuts.png"; 
+import Garfield from "./Comic_Garfield.png";
+import Peanuts from "./Comic_Peanuts.png";
+import Dilbert from "./Comic_Dilbert.jpeg"; 
 
 const Comics = [
-    ["BC", BC],
-    ["Calvin", Calvin],
-    ["Dennis", Dennis],
-    ["Garfield", Garfield],
-    ["Peanuts", Peanuts],
-    ["Dilbert", Dilbert]
+    ["b.c.", BC],
+    ["calvinandhobbes", Calvin],
+    ["dennis", Dennis],
+    ["dilbert", Dilbert],
+    ["garfield", Garfield],
+    ["peanuts", Peanuts],
 ]
 
 export default Comics;
