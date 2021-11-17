@@ -111,15 +111,14 @@ const DisplayNewsList = ({
                 <Modal
                     open={modalLink !== null}
                     onClose={() => setModalLink(() => null)}
-                    className="maze__modal"
                 >
-                    <Box sx={style}>
+                    <Box className="display-news__share-modal" sx={style}>
                         <Typography
                             id="modal-modal-title"
                             variant="h6"
                             component="h2"
                         >
-                            Share the news with your friends!
+                            Share this news with your friends!
                         </Typography>
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                             <Input
@@ -129,7 +128,7 @@ const DisplayNewsList = ({
                             <Button
                                 onClick={() => {
                                     navigator.clipboard.writeText(
-                                        `http://localhost:3000/news/${modalLink}`
+                                        `Hey! Check out this news on Firstlight. Firstlight is the best news app ever!\n\nhttp://localhost:3000/news/${modalLink}`
                                     );
                                 }}
                             >
