@@ -13,6 +13,7 @@ import TicTacToe from "./components/Games/TicTacToe";
 import MazeSolver from "./components/Games/MazeSolver";
 import Footer from "./components/Footer";
 import Sudoku from "./components/Games/Sudoku";
+import SingleComic from "./components/ComicsPage/SingleComicPage";
 
 const App = () => {
     var routes = null;
@@ -23,6 +24,7 @@ const App = () => {
             <div>
                 <Switch>
                     <Route path="/login" component={SignUp} />
+                    <Route exact path="/comics/:id" component={SingleComic} />
                     <Redirect to="/login"></Redirect>
                 </Switch>
                 <Footer />
@@ -49,6 +51,7 @@ const App = () => {
                     />
                     <Route exact path="/games/sudoku" component={Sudoku} />
                     <Route exact path="/comics" component={ComicsPage} />
+                    <Route exact path="/comics/:id" component={SingleComic} />
                     <Redirect to="/news"></Redirect>
                 </Switch>
                 <Footer />
