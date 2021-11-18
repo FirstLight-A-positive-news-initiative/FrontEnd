@@ -15,7 +15,6 @@ import ShareIcon from "@mui/icons-material/Share";
 import "./styles.css";
 
 export default function NewsCard({ news, modalLink, setModalLink }) {
-    console.log(news);
     function toTitleCase(str) {
         return str.replace(/\w\S*/g, function (txt) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -39,7 +38,7 @@ export default function NewsCard({ news, modalLink, setModalLink }) {
                     display: "inline-block",
                 }}
             >
-                <Link to={`/news/${news._id}`} class="news-list__link">
+                <Link to={`/news/${news._id}`} className="news-list__link">
                     <CardActionArea>
                         <CardHeader
                             avatar={
@@ -100,7 +99,7 @@ export default function NewsCard({ news, modalLink, setModalLink }) {
                             if (navigator.share) {
                                 navigator.share({
                                     title: `${news.title}`,
-                                    url: `http://localhost:3000/news/${news._id}`,
+                                    url: `Hey! Check out this news on Firstlight. Firstlight is the best news app ever!\n\nhttp://localhost:3000/news/${news._id}`,
                                 });
                             } else {
                                 setModalLink(() => news._id);

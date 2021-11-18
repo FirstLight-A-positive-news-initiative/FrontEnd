@@ -53,6 +53,16 @@
     padding: 5px;
 }
 
+.display-news__share-modal {
+    width: 50vw !important;
+    display: block;
+    text-align: center;
+}
+
+.display-news__share-modal input {
+    width: 50vw !important;
+}
+
 @media only screen and (min-width: 993px) {
     .display-news__skeleton-box {
         margin: 2rem;

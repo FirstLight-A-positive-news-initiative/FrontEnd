@@ -47,7 +47,6 @@ const MazeSolver = (props) => {
                 diff,
                 minutes,
                 seconds;
-            console.log("time");
             function timer() {
                 if (playing) {
                     diff = duration - (((Date.now() - start) / 1000) | 0);
@@ -70,7 +69,6 @@ const MazeSolver = (props) => {
             setInterval(timer, 1000);
         }
         twominutes = 30;
-        console.log("time");
         x = document.querySelector("#timerel");
         // startTimer(twominutes, x);
 
@@ -115,7 +113,6 @@ const MazeSolver = (props) => {
                         break;
                 }
                 if (m.checker("canvas")) playing = false;
-                console.log(m.getMoves());
             }
             if (handled) evt.preventDefault(); // prevent arrow keys from scrolling the page (supported in IE9+ and all other browsers)
         }
@@ -282,7 +279,6 @@ const MazeSolver = (props) => {
                         }
                     }
                     x = randomChoice(temp);
-                    //    console.log(temp)
                     this.Board[x[0]][x[1]] = "&";
                     this.ctx.fillStyle = "#39FF14"; // color of moving dot
                     this.ctx.fillRect(scale * x[0], scale * x[1], scale, scale);
@@ -481,45 +477,33 @@ const MazeSolver = (props) => {
         document
             .getElementById("mobile_move-up")
             .addEventListener("click", () => {
-                console.log("up");
                 doKeyDown({
                     keyCode: 38,
-                    preventDefault: () => {
-                        console.log("helo");
-                    },
+                    preventDefault: () => {},
                 });
             });
         document
             .getElementById("mobile_move-left")
             .addEventListener("click", () => {
-                console.log("up");
                 doKeyDown({
                     keyCode: 37,
-                    preventDefault: () => {
-                        console.log("helo");
-                    },
+                    preventDefault: () => {},
                 });
             });
         document
             .getElementById("mobile_move-right")
             .addEventListener("click", () => {
-                console.log("up");
                 doKeyDown({
                     keyCode: 39,
-                    preventDefault: () => {
-                        console.log("helo");
-                    },
+                    preventDefault: () => {},
                 });
             });
         document
             .getElementById("mobile_move-down")
             .addEventListener("click", () => {
-                console.log("up");
                 doKeyDown({
                     keyCode: 40,
-                    preventDefault: () => {
-                        console.log("helo");
-                    },
+                    preventDefault: () => {},
                 });
             });
         document.getElementById("maze-solve").addEventListener("click", () => {
@@ -575,9 +559,8 @@ const MazeSolver = (props) => {
                         SOLVE USING AI
                     </Button>
                     <Button
-                        class="maze__button maze-play-again"
+                        className="maze__button maze-play-again"
                         onClick={() => {
-                            console.log("push");
                             history.push("/news");
                             history.goBack();
                         }}
@@ -588,7 +571,7 @@ const MazeSolver = (props) => {
                 <Modal
                     open={isModalOpen}
                     onClose={() => setIsModalOpen(() => false)}
-                    class="maze__modal"
+                    className="maze__modal"
                 >
                     <Box sx={style}>
                         <Typography
@@ -601,9 +584,8 @@ const MazeSolver = (props) => {
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                             Try again?{" "}
                             <Button
-                                class="maze__button"
+                                className="maze__button"
                                 onClick={() => {
-                                    console.log("push");
                                     history.push("/news");
                                     history.goBack();
                                 }}

@@ -1,0 +1,40 @@
+.SingleComic {
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.SingleComic__heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 5% 0;
+}
+
+.SingleComic__ComicCard {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2%;
+}
+
+.SingleComic__img {
+    height: 30vh;
+}
+
+.SingleComic__btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.SingleComic button {
+    border: solid 1px black;
+}
+
+.SingleComic button a {
+    text-decoration: none;
+    color: black;
+}

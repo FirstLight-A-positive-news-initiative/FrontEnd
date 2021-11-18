@@ -19,7 +19,6 @@ export const UserProvider = (props) => {
 
     useEffect(() => {
         const state = loadFromLocalStorage();
-        console.log("state: ", state);
         setUser(state);
         setIsReady(true);
     }, []);
