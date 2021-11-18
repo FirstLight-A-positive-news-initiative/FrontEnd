@@ -6,7 +6,7 @@ import userContext from "../../context/userContext";
 import "./styles.css";
 import Logo from "../../assets/images/FirstLight_text_crop.png";
 import { Avatar, Tooltip, Menu, MenuItem, Divider } from "@mui/material";
-import { MdGames } from "react-icons/md"
+import { MdGames } from "react-icons/md";
 import { BiNews, BiBookOpen } from "react-icons/bi";
 import { IoGameControllerOutline } from "react-icons/io5";
 import {
@@ -45,7 +45,7 @@ const TopNav = (props) => {
     const handleLogout = () => {
         handleSettingClose();
         setUser(() => null);
-        localStorage.removeItem("state");
+        localStorage.removeItem("firstlightUser");
         Cookies.remove("user_genres");
         Cookies.remove("user_positivity");
     };
@@ -120,24 +120,33 @@ const TopNav = (props) => {
                 open={gameMenuOpen}
                 onClose={handleGameClose}
                 className="top-nav__games-menu"
-                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                transformOrigin={{ horizontal: "right", vertical: "top" }}
+                anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
             >
-                <MenuItem className="top-nav__settings-menu-item" onClick={handleGameClose}>
+                <MenuItem
+                    className="top-nav__settings-menu-item"
+                    onClick={handleGameClose}
+                >
                     <Link to="/games/maze-solver">
                         <MdGames />
                         Maze
                     </Link>
                 </MenuItem>
                 <Divider />
-                <MenuItem className="top-nav__settings-menu-item" onClick={handleGameClose}>
+                <MenuItem
+                    className="top-nav__settings-menu-item"
+                    onClick={handleGameClose}
+                >
                     <Link to="/games/sudoku">
                         <MdGames />
                         Sudoku
                     </Link>
                 </MenuItem>
                 <Divider />
-                <MenuItem className="top-nav__settings-menu-item" onClick={handleGameClose}>
+                <MenuItem
+                    className="top-nav__settings-menu-item"
+                    onClick={handleGameClose}
+                >
                     <Link to="/games/tic-tac-toe">
                         <MdGames />
                         Tic Tac Toe

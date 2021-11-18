@@ -14,7 +14,7 @@ const SignUp = ({ history }) => {
 
     const responseGoogle = async (res) => {
         const googleUser = res.profileObj;
-        const curUser = null;
+        var curUser = null;
         // check if user already had an account
         axios
             .get(`${process.env.REACT_APP_API}/users/${googleUser.email}`)
@@ -22,7 +22,10 @@ const SignUp = ({ history }) => {
                 setUser(() => res.data);
                 curUser = res.data;
                 console.log("Saving to local: ", res.data);
-                localStorage.setItem("state", JSON.stringify(res.data));
+                localStorage.setItem(
+                    "firstlightUser",
+                    JSON.stringify(res.data)
+                );
                 Cookies.set("user_genres", res.data.genre);
                 Cookies.set("user_positivity", res.data.positivity);
             })
