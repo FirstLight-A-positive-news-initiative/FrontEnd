@@ -9,7 +9,7 @@
 }
 
 .ComicCard__heading {
-    width: 70%;
+    width: 50%;
     text-align: center;
     font-size: large;
     font-weight: bold;
@@ -17,10 +17,20 @@
 }
 
 .ComicCard__buttons {
-    width: 30%;
+    width: 50%;
     display: inline-block;
-    text-align: right;
+    text-align: justify;
     font-size: x-large;
+}
+
+.ComicCard__buttons button {
+    color: black !important;
+    border-color: black;
+}
+
+.ComicCard__buttons button a {
+    text-decoration: none;
+    color: black;
 }
 
 .ComicCard__card-image {

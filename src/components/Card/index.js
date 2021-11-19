@@ -119,7 +119,7 @@ export default function NewsCard({ news, modalLink, setModalLink }) {
                             if (navigator.share) {
                                 navigator.share({
                                     title: `${news.title}`,
-                                    url: `http://localhost:3000/news/${news._id}`,
+                                    url: `Hey! Check out this news on Firstlight. Firstlight is the best news app ever!\n\nhttp://localhost:3000/news/${news._id}`,
                                 });
                             } else {
                                 setModalLink(() => news._id);
