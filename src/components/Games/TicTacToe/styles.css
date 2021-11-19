@@ -11,9 +11,44 @@
     color: #fff;
     padding: 1% 0% 0% 2%;
 }
+.tictactoe__button{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+.tictactoe__button-btn {
+    background: #8400ff;
+    background-image: -webkit-linear-gradient(top, #8400ff, #a131bd);
+    background-image: -moz-linear-gradient(top, #8400ff, #a131bd);
+    background-image: -ms-linear-gradient(top, #8400ff, #a131bd);
+    background-image: -o-linear-gradient(top, #8400ff, #a131bd);
+    background-image: linear-gradient(to bottom, #8400ff, #a131bd);
+    -webkit-border-radius: 7;
+    -moz-border-radius: 7;
+    border-radius: 7px;
+    margin: 0.5rem;
+    font-family: 'Ubuntu', sans-serif;
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 500;
+    padding: 7px 14px 7px 14px;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: var(--opacity);
+  }
+  
+  .tictactoe__button-btn:hover {
+    background: #4417e8;
+    background-image: -webkit-linear-gradient(top, #4417e8, #9a39f5);
+    background-image: -moz-linear-gradient(top, #4417e8, #9a39f5);
+    background-image: -ms-linear-gradient(top, #4417e8, #9a39f5);
+    background-image: -o-linear-gradient(top, #4417e8, #9a39f5);
+    background-image: linear-gradient(to bottom, #4417e8, #9a39f5);
+    text-decoration: none;
+  }
 .tictactoe__wrapper{
     margin: auto;
-    margin-top: 80px;
+    margin-top: 10px;
     padding-bottom: 100px;
     width: 306px;
     display: grid;

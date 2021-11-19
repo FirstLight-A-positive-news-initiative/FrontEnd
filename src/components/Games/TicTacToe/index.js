@@ -9,6 +9,7 @@ export default function TicTacToe() {
     ]);
 
     const [result, setResult] = useState(null);
+    const [difficulty, setDifficulty] = useState(0);
 
     const isComplete = (board) => {
         for (let i = 0; i < 3; i++) {
@@ -96,7 +97,7 @@ export default function TicTacToe() {
             setResult(0);
         } else if (ev !== 0) {
             if (ev > 0) setResult(1);
-            else setResult(-1);
+            else if(ev < 0) setResult(-1);
         } else {
             let row = null;
             let column = null;
@@ -124,15 +125,44 @@ export default function TicTacToe() {
                 setResult(0);
             } else if (ev !== 0) {
                 if (ev > 0) setResult(1);
-                else setResult(-1);
+                else if(ev < 0) setResult(-1);
             }
         }
     };
 
+    const playrand = (board)=>{
+        let ev = evaluate(board, 1);
+
+        if (ev === 0 && isComplete(board)) {
+            setResult(0);
+        } else if (ev !== 0) {
+            if (ev > 0) setResult(1);
+            else if(ev < 0) setResult(-1);
+        } else {
+            let row = Math.floor(Math.random()*3);
+            let column = Math.floor(Math.random()*3);
+            let value = 1000;
+            while(board[row][column]!==null){
+                row = Math.floor(Math.random()*3);
+                column = Math.floor(Math.random()*3);
+            }
+            board[row][column] = "O";
+            setBoard(board);
+
+            ev = evaluate(board, 1);
+
+            if (ev === 0 && isComplete(board)) {
+                setResult(0);
+            } else if (ev !== 0) {
+                if (ev > 0) setResult(1);
+                else if(ev < 0) setResult(-1);
+            }
+        }
+    }
+
     const changeBoard = (row, column) => {
         let tempBoard = [...board];
         if (result !== null) {
-            console.log(result);
             setResult(null);
             setBoard([
                 [null, null, null],
@@ -142,13 +172,14 @@ export default function TicTacToe() {
         } else if (tempBoard[row][column] === null) {
             tempBoard[row][column] = "X";
             setBoard(tempBoard);
-            play(tempBoard);
+            difficulty?play(tempBoard):playrand(tempBoard);
         }
     };
 
     return (
         <div className="tictactoe">
             <h1 className="tictactoe__heading">Tic Tac Toe</h1>
+            <div className="tictactoe__button"><button style={{"--opacity": difficulty?'0.6':'0.9'}} onClick={()=>{setDifficulty(0)}} className="tictactoe__button-btn">Easy</button><button style={{opacity: difficulty?'0.9':'0.6'}} onClick={()=>{setDifficulty(1)}} className="tictactoe__button-btn">Hard</button></div>
             <div className="tictactoe__wrapper">
                 <button
                     onClick={() => changeBoard(0, 0)}
