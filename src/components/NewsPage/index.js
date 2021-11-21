@@ -77,7 +77,7 @@ const NewsPage = () => {
                 </div>
             </div>
             <div className="news-page__content">
-                <a href={news.link}>Read complete article</a>
+                <a href={news.link} target="_blank">Read complete article</a>
                 <h1 className="news-page__content-title">{news.title}</h1>
                 <p>{news.summary}</p>
             </div>

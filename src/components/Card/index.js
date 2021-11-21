@@ -12,9 +12,15 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import ShareIcon from "@mui/icons-material/Share";
+import TC from "../../assets/images/NewsLogos/techcrunch.png";
+import BBC from "../../assets/images/NewsLogos/bbc.png";
+import CNN from "../../assets/images/NewsLogos/cnn.jpg";
+import NDTV from "../../assets/images/NewsLogos/ndtv.png";
+import FL from "../../assets/images/FirstLight_No_Text.png";
 import "./styles.css";
 
 export default function NewsCard({ news, modalLink, setModalLink }) {
+
     function toTitleCase(str) {
         return str.replace(/\w\S*/g, function (txt) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -26,6 +32,20 @@ export default function NewsCard({ news, modalLink, setModalLink }) {
             return str.substr(0, 100) + "...";
         } else return str;
     };
+
+    const linklogo = (str)=>{
+        if(str.includes('techcrunch')){
+            return TC;
+        } else if(str.includes('bbc')){
+            return BBC;
+        } else if(str.includes('cnn')){
+            return CNN;
+        } else if(str.includes('ndtv')){
+            return NDTV;
+        } else{
+            return FL;
+        }
+    }
 
     return (
         <div className="newsCard">
@@ -44,7 +64,7 @@ export default function NewsCard({ news, modalLink, setModalLink }) {
                             avatar={
                                 <Avatar
                                     sx={{ height: "30px", width: "30px" }}
-                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/TechCrunch_logo.svg/1200px-TechCrunch_logo.svg.png"
+                                    src={linklogo(news.link)}
                                     alt="source"
                                 />
                             }
