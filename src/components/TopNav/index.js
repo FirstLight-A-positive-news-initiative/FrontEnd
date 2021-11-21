@@ -1,11 +1,12 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import axios from "axios";
 import { GoogleLogout } from "react-google-login";
 import userContext from "../../context/userContext";
 import "./styles.css";
 import Logo from "../../assets/images/FirstLight_text_crop.png";
-import { Avatar, Tooltip, Menu, MenuItem, Divider } from "@mui/material";
+import { Avatar, Tooltip, Menu, MenuItem, Divider, List, ListItem, ListItemText } from "@mui/material";
 import { MdGames } from "react-icons/md";
 import { BiNews, BiBookOpen } from "react-icons/bi";
 import { IoGameControllerOutline } from "react-icons/io5";
@@ -16,8 +17,16 @@ import {
 } from "react-icons/ai";
 import { FaTimes, FaRegUser } from "react-icons/fa";
 
+import TC from "../../assets/images/NewsLogos/techcrunch.png";
+import BBC from "../../assets/images/NewsLogos/bbc.png";
+import CNN from "../../assets/images/NewsLogos/cnn.jpg";
+import NDTV from "../../assets/images/NewsLogos/ndtv.png";
+import FL from "../../assets/images/FirstLight_No_Text.png";
+
 const TopNav = (props) => {
     const [search, setSearch] = useState("");
+    const [searchresults, setSearchresults] = useState([]);
+    const [nores, setNores] = useState(false);
     const [user, setUser] = useContext(userContext);
 
     // for games menu
@@ -51,26 +60,100 @@ const TopNav = (props) => {
     };
 
     const updateSearch = (e) => {
-        setSearch(() => e.target.value);
-        console.log(search);
+        setSearch(e.target.value);
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (search.trim() !== "") {
+            const results = await axios(
+                {
+                    url: `${process.env.REACT_APP_API}/news/search/${search}`,
+                    method: "GET",
+                }
+            )
+            if (results.data.length === 0) {
+                setNores(true);
+            } else {
+                setNores(false);
+            }
+
+            setSearchresults(results.data);
+        } else {
+            setSearchresults([]);
+        }
+    }
+
     const clearSearch = () => {
-        setSearch(() => "");
+        setSearch("");
+        setSearchresults([]);
     };
+
+    function toTitleCase(str) {
+        return str.replace(/\w\S*/g, function (txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        });
+    }
+
+    const linklogo = (str)=>{
+        if(str.includes('techcrunch')){
+            return TC;
+        } else if(str.includes('bbc')){
+            return BBC;
+        } else if(str.includes('cnn')){
+            return CNN;
+        } else if(str.includes('ndtv')){
+            return NDTV;
+        } else{
+            return FL;
+        }
+    }
 
     return (
         <header className="top-nav__header">
             <Link to="/"><img src={Logo} className="top-nav__image" alt="logo" /></Link>
             <div className="top-nav__search">
-                <AiOutlineSearch />
-                <input
-                    type="text"
-                    placeholder="Search"
-                    onChange={updateSearch}
-                    value={search}
-                ></input>
-                <FaTimes onClick={clearSearch} />
+                <form onSubmit={handleSubmit}>
+                    <AiOutlineSearch />
+                    <input
+                        type="text"
+                        placeholder="Search"
+                        onChange={updateSearch}
+                        value={search}
+                    ></input>
+                    <FaTimes onClick={clearSearch} />
+                </form>
+
+                {searchresults && searchresults.length ? (
+                    <div className="top-nav__search-results">
+                        <h3>Results</h3>
+                        <hr />
+                        <List>
+                            {searchresults.map((s) => (
+                                <ListItem className="top-nav__search-results-item">
+                                    <img src={s.image_link} alt="news-img" />
+                                    <Link to={`/news/${s._id}`} target="_blank">
+                                        <ListItemText
+                                            primary={s.title}
+                                            secondary={toTitleCase(s.genre)}
+                                        />
+                                        <img className="top-nav__search-results-source" src={linklogo(s.link)} alt="source" />
+                                    </Link>
+                                </ListItem>
+                            ))}
+                        </List>
+                    </div>
+
+                ) : (
+                        nores ? (
+                            <div className="top-nav__search-results">
+                                <h3>No results found.</h3>
+                            </div>
+                        ) : (
+                            <></>
+                        )
+                )}
             </div>
 
             <nav>
