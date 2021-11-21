@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "@mui/material/Modal"
 import "./styles.css";
 
@@ -14,6 +14,9 @@ export default function TicTacToe() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalHeading, setModalHeading] = useState("Better Luck next time!");
   const [modalDesc, setModalDesc] = useState("AI won this match!!");
+  useEffect(() => {
+      changeModal(result);
+  })
 
   const isComplete = (board) => {
     for (let i = 0; i < 3; i++) {
@@ -158,25 +161,28 @@ export default function TicTacToe() {
     }
   };
 
+  const changeModal = (result)=>{
+    if(result==1){
+        setModalHeading("Congratulations! 🎊🪅");
+        setModalDesc("You won this match!!");
+    } else if(result==0){
+        setModalHeading("Tie! ♾️");
+        setModalDesc("Looks like we reached Stalemate!!");
+    } else if(result==-1) {
+        setModalHeading("Better luck next time! 🤖");
+        setModalDesc("AI won this match!!");
+    }
+    if(result!==null)
+    setModalOpen(true);
+  }
+
   const changeBoard = (row, column) => {
     let tempBoard = [...board];
-    if (result !== null) {
-        if(result==1){
-            setModalHeading("Congratulations! 🎊🪅");
-            setModalDesc("You won this match!!");
-        } else if(result==0){
-            setModalHeading("Tie! ♾️");
-            setModalDesc("Looks like we reached Stalemate!!");
-        } else if(result==-1) {
-            setModalHeading("Better luck next time! 🤖");
-            setModalDesc("AI won this match!!");
-        }
-        setModalOpen(true);
-    } else if (tempBoard[row][column] === null) {
-        tempBoard[row][column] = "X";
-        setBoard(tempBoard);
-        difficulty ? play(tempBoard) : playrand(tempBoard);
-    }
+    tempBoard[row][column] = "X";
+    setBoard(tempBoard);
+    difficulty ? play(tempBoard) : playrand(tempBoard);
+    if(result!==null)
+    changeBoard(row, column);
   };
 
   const closeModal = ()=>{

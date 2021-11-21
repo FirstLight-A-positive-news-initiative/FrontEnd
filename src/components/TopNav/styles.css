@@ -59,11 +59,12 @@
 
 .top-nav__settings {
     background-color: #943c0b !important;
+    cursor: pointer;
 }
 
 .top-nav__settings-menu {
     z-index: 10 !important;
-    right: 100px !important;
+    right: 100px !important;    
 }
 
 .top-nav__settings-menu a, .top-nav__games-menu a{
@@ -75,6 +76,10 @@
     display: flex !important;
     flex-wrap: nowrap !important;
     justify-content: space-evenly !important;
+    margin-top: -8px !important;
+    margin-bottom: -8px !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
 }
 
 @media only screen and (max-width: 992px) {
