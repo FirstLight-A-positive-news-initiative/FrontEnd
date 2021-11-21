@@ -8,7 +8,7 @@ export const UserProvider = (props) => {
 
     const loadFromLocalStorage = () => {
         try {
-            const serializedState = localStorage.getItem("state");
+            const serializedState = localStorage.getItem("firstlightUser");
             if (serializedState == null) return undefined;
             return JSON.parse(serializedState);
         } catch (err) {
