@@ -11,6 +11,29 @@
     color: #fff;
     padding: 1% 0% 0% 2%;
 }
+.tictactoe__modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 150px;
+    width: 370px;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    opacity: 0.85;
+}
+.tictactoe__modal-heading{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.8rem;
+    padding: 2.2rem 0rem 0.5rem 0rem;
+    font-weight: bold;
+}
+.tictactoe__modal-desc{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.5rem;
+    padding: 0.5rem 0rem 2.2rem 0rem;
+}
 .tictactoe__button{
     display: flex;
     justify-content: center;
