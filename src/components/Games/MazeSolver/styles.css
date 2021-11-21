@@ -94,7 +94,7 @@
 }
 
 .maze__modal {
-    background-color: white;
+    background-color: transparent;
     color: black;
     margin: auto;
     height: 80vh;
@@ -107,15 +107,15 @@
 }
 
 .maze__button {
-    padding: 1rem;
-    border-radius: 0.1rem;
-    background-color: #fe5e7e;
-    color: white;
-    margin: 1rem;
+    padding: 1rem !important;
+    border-radius: 0.1rem !important;
+    background-color: #fe5e7e !important;
+    color: white !important;
+    margin: 1rem !important;
 }
 
 .maze-solve {
-    background-color: #b2ea6f;
+    background-color: #b2ea6f !important;
 }
 
 @media screen and (min-width: 481px) {

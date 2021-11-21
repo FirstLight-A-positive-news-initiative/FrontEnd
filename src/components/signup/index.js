@@ -21,7 +21,11 @@ const SignUp = ({ history }) => {
             .then((res) => {
                 setUser(() => res.data);
                 curUser = res.data;
-                localStorage.setItem("state", JSON.stringify(res.data));
+                console.log("Saving to local: ", res.data);
+                localStorage.setItem(
+                    "firstlightUser",
+                    JSON.stringify(res.data)
+                );
                 Cookies.set("user_genres", res.data.genre);
                 Cookies.set("user_positivity", res.data.positivity);
             })
