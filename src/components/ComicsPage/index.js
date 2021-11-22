@@ -123,11 +123,14 @@ const ComicsPage = () => {
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                             <Input
                                 value={`${window.location.origin}/comics/${modalLink}`}
+                                id="copy_link-comics"
                             ></Input>{" "}
                             <Button
                                 onClick={() => {
                                     const copy_text =
-                                        document.getElementById("copy_link");
+                                        document.getElementById(
+                                            "copy_link-comics"
+                                        );
                                     copy_text.select();
                                     console.log(copy_text);
                                     document.execCommand("copy");
