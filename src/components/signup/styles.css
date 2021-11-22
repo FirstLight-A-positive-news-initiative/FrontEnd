@@ -99,12 +99,11 @@ body{
     }
     .sign-up__box-mobileImage{
         display: inline-block;
-        height: 100px;
+        height: 250px;
         position: absolute;
-        height: 30%;
         left: 0;
         right: 0;
         margin: auto;
-        top: 68%;
+        top: 70%;
     }
 }
