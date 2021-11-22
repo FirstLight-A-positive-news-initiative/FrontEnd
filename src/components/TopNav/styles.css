@@ -64,6 +64,12 @@
     border-radius: 10px;
 }
 
+.top-nav__search-results a{
+    text-decoration: none;
+    color: rgb(54, 54, 54);
+}
+
+
 .top-nav__search-results-info {
     display: flex;
     justify-content: left;
@@ -109,6 +115,8 @@
 
 .top-nav__links {
     list-style: none;
+    display: flex;
+    align-items: center;
 }
 
 .top-nav__links li {
@@ -130,12 +138,19 @@
 }
 
 .top-nav__settings {
-    background-color: #943c0b !important;
+    cursor: pointer;
+    overflow: hidden;
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.top-nav__settings img{
+    width: 100%;
 }
 
 .top-nav__settings-menu {
     z-index: 10 !important;
-    right: 100px !important;
+    right: 100px !important;    
 }
 
 .top-nav__settings-menu a, .top-nav__games-menu a{
@@ -147,6 +162,10 @@
     display: flex !important;
     flex-wrap: nowrap !important;
     justify-content: space-evenly !important;
+    margin-top: -8px !important;
+    margin-bottom: -8px !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
 }
 
 @media only screen and (max-width: 992px) {

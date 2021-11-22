@@ -25,6 +25,9 @@ const SignUp = ({ history }) => {
                     "firstlightUser",
                     JSON.stringify(res.data)
                 );
+                localStorage.setItem(
+                    "avatar", googleUser.imageUrl
+                )
                 Cookies.set("user_genres", res.data.genre);
                 Cookies.set("user_positivity", res.data.positivity);
                 setUser(() => res.data);
@@ -54,7 +57,7 @@ const SignUp = ({ history }) => {
                         <p className="sign-up__box-description">
                             First Light is a Positive News Initiative, news from
                             your favourite sources all at one place!
-                            <br /> Join Us Today!!
+                            <br /> <p className="sign-up__box-join">Join Us Today!!</p>
                         </p>
                         <GoogleLogin
                             clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}

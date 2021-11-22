@@ -166,7 +166,7 @@ const DisplayNewsList = ({
         </>
     ) : (
         <div className="display-news__skeleton-container">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((skeleton) => (
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((skeleton) => (
                 <Card key={skeleton} className="display-news__skeleton-box">
                     <CardHeader
                         avatar={
@@ -175,31 +175,33 @@ const DisplayNewsList = ({
                                 variant="circular"
                                 width={40}
                                 height={40}
+                                style={{ marginTop: 5, marginBottom: 10 }}
                             />
                         }
                         title={
                             <Skeleton
                                 animation="wave"
-                                height={10}
+                                height={15}
                                 width="80%"
-                                style={{ marginBottom: 6 }}
+                                style={{ marginTop: 10 , marginBottom: 15 }}
                             />
                         }
                     />
                     <CardMedia>
                         <Skeleton
-                            sx={{ height: 190 }}
+                            sx={{ height: 194}}
                             animation="wave"
                             variant="rectangular"
+                            style={{ marginBottom: 20 }}
                         />
                     </CardMedia>
                     <CardContent>
                         <Skeleton
                             animation="wave"
-                            height={10}
+                            height={15}
                             style={{ marginBottom: 6 }}
                         />
-                        <Skeleton animation="wave" height={10} width="80%" />
+                        <Skeleton animation="wave" height={15} width="80%" />
                     </CardContent>
                 </Card>
             ))}
