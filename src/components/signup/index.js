@@ -10,11 +10,11 @@ import "./styles.css";
 
 const SignUp = ({ history }) => {
     const [signUp, onSignUpChange] = useState(1);
-    const [ setUser ] = useContext(userContext);
+    // eslint-disable-next-line
+    const [user, setUser] = useContext(userContext);
 
     const responseGoogle = async (res) => {
         const googleUser = res.profileObj;
-        var curUser = null;
         // check if user already had an account
         axios
             .get(`${process.env.REACT_APP_API}/users/${googleUser.email}`)

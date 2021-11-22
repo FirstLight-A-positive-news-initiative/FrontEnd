@@ -139,6 +139,7 @@ const ComicsPage = () => {
                             id={c._id}
                             modalLink={modalLink}
                             setModalLink={setModalLink}
+                            key={c._id}
                         />
                     ))
                 ) : (

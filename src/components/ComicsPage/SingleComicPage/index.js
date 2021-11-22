@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Modal, Card, Button, CardContent } from "@mui/material";
 
-import ComicCard from "../ComicCard";
 import Logo from "../../../assets/images/FirstLight_No_Text.png";
 import "./styles.css";
 
@@ -41,7 +40,7 @@ const SingleComic = () => {
                         <p className="ComicCard__heading">{curr.name}</p>
                         <div class="ComicCard__buttons">
                             <Button>
-                                <a href={curr.source} target="_blank">
+                                <a href={curr.source} target="_blank" rel="noopener noreferrer">
                                     {curr.source.split(`.`)[1]}
                                 </a>
                             </Button>
@@ -59,7 +58,7 @@ const SingleComic = () => {
                         <img className="ComicsPage__modal-image" src={curr.link} alt="comic-large" />
                     </Modal>
                     <h1 className="SingleComic__heading">For more such comics, visit FirstLight- A Positive News Initiative.</h1>
-                    <div className="SingleComic__btn"><Button variant="outlined"><a href={`localhost:3000/comics/`}>Click Here to visit FirstLight</a></Button></div>
+                    <div className="SingleComic__btn"><Button variant="outlined"><a href={`www.firstlight.live`}>Click Here to visit FirstLight</a></Button></div>
                 </div>
             ) : (
                 <p>

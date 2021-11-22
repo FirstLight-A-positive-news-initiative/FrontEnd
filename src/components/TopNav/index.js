@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie"
 import { GoogleLogout } from "react-google-login";
 import userContext from "../../context/userContext";
 import "./styles.css";
@@ -26,7 +27,8 @@ const TopNav = (props) => {
     const [search, setSearch] = useState("");
     const [searchresults, setSearchresults] = useState([]);
     const [nores, setNores] = useState(false);
-    const [user, setUser] = useContext(userContext);
+    // eslint-disable-next-line
+    const [user, setUser ] = useContext(userContext);
     const [loading, setLoading] = useState(false);
 
     // for games menu
@@ -55,6 +57,8 @@ const TopNav = (props) => {
         handleSettingClose();
         setUser(() => null);
         localStorage.removeItem("firstlightUser");
+        Cookies.remove("user_genres");
+        Cookies.remove("user_positivity");
     };
 
     const updateSearch = (e) => {

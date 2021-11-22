@@ -66,6 +66,8 @@ const ChoosePositivity = ({ history, poslevel, setPoslevel, genres }) => {
                 setUser((prevUser) => {
                     return { ...prevUser, genre: genres, poslevel };
                 });
+                Cookies.set("user_genres", genres);
+                Cookies.set("user_positivity", poslevel);
             })
             .then(() => {
                 history.push("/news");

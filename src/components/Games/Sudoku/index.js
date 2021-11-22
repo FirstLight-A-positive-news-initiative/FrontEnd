@@ -51,7 +51,7 @@ const Sudoku = () => {
   );
 
   // Logic for modal
-  const [showInformationModal, setShowInformationModal] = useState(false);
+  
   const [showNoSolutionFoundModal, setShowNoSolutionFoundModal] =
     useState(false);
   const [showGameDetails, setShowGameDetails] = useState(false);
@@ -173,8 +173,6 @@ const Sudoku = () => {
     setGrid(newGrid);
   };
 
-  console.log("....");
-
   // If we donot have anything in the local storage
   if (grid == null && startingGrid == null) handleNewGame(gameMode);
 
@@ -208,9 +206,9 @@ const Sudoku = () => {
           <List>
             {rules.map((text) => (
               (text === "Divider") ? (
-                <Divider />
+                <Divider key={text} />
               ) : (
-                <ListItem className="Sudoku__rules-item" key="index">
+                <ListItem className="Sudoku__rules-item" key={text}>
                   <ListItemIcon className="Sudoku__rules-item-icon">
                     <DoubleArrow />
                   </ListItemIcon>

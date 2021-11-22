@@ -1,6 +1,6 @@
 import React from "react";
-import { Card, CardContent, IconButton, Button } from "@mui/material";
-import { Bookmark, Share } from "@mui/icons-material";
+import { Card, CardContent, Button } from "@mui/material";
+import { Share } from "@mui/icons-material";
 
 import "./styles.css";
 
@@ -14,13 +14,13 @@ const ComicCard = ({ name, image, setCurrent, open, source, id, modalLink, setMo
     return (
         <Card className="ComicCard">
             <p className="ComicCard__heading">{name}</p>
-            <div class="ComicCard__buttons">
+            <div className="ComicCard__buttons">
                 <Button>
-                    <a href = {source} target = "_blank">
+                    <a href={source} target="_blank" rel="noopener noreferrer">
                         {source.split(`.`)[1]}
                     </a>
                 </Button>
-                <Button 
+                <Button
                     variant="outlined"
                     onClick={() => {
                         if (navigator.share) {
@@ -34,9 +34,7 @@ const ComicCard = ({ name, image, setCurrent, open, source, id, modalLink, setMo
                     }}
                 >
                     Share
-                    <IconButton aria-label="share">
-                        <Share sx={{ fontSize: "1.25rem", color: 'black' }} />
-                    </IconButton>
+                    <Share sx={{ fontSize: "1.25rem", color: 'black' }} />
                 </Button>
 
                 {/* <IconButton aria-label="share">
