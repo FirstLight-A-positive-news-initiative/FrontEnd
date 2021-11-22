@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import axios from "axios";
-import { withRouter } from "react-router-dom";
 import Cookies from "js-cookie";
+import { withRouter } from "react-router-dom";
 import userContext from "../../../context/userContext";
 import { Slider, Button } from "@mui/material";
 import "./styles.css";
@@ -38,9 +38,10 @@ const ChoosePositivity = ({ history, poslevel, setPoslevel, genres }) => {
     };
 
     const handleSave = () => {
-        axios
-            .post(`${process.env.REACT_APP_API}/users`, {
-                ...user,
+        if(Cookies.get("user_genres") && Cookies.get("user_positivity")) {
+            axios
+            .post(`${process.env.REACT_APP_API}/users/preferences/`, {
+                id: user._id,
                 genre: genres,
                 positivity: poslevel,
             })
@@ -54,6 +55,22 @@ const ChoosePositivity = ({ history, poslevel, setPoslevel, genres }) => {
             .then(() => {
                 history.push("/news");
             });
+        } else {
+            axios
+            .post(`${process.env.REACT_APP_API}/users/`, {
+                ...user,
+                genre: genres,
+                positivity: poslevel,
+            })
+            .then((res) => {
+                setUser((prevUser) => {
+                    return { ...prevUser, genre: genres, poslevel };
+                });
+            })
+            .then(() => {
+                history.push("/news");
+            });
+        }
     };
 
     return (
