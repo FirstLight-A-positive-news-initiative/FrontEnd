@@ -169,6 +169,71 @@
         text-align: center;
         flex-wrap: wrap;
     }
+
+    .BottomNav__search-results {
+        border-radius: 10px;
+        max-height: 50vh;
+        overflow-y: scroll;
+        width: 100%;
+    }
+
+    .BottomNav__search-results h3 {
+        width: 100%;
+        text-align: center;
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .BottomNav__search-results hr {
+        border: 1px solid grey;
+    }
+
+    .BottomNav__search-results a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .BottomNav__search_results-item {
+        border-bottom: 0.1em solid black;
+    }
+
+    .BottomNav__search_results-item img {
+        width: 20%;
+        height: 50px;
+        margin: 0;
+        margin-right: 10px;
+    }
+
+    .BottomNav__search_results-item p {
+        width: fit-content;
+        color: white;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    .BottomNav__search-results-info {
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .BottomNav__search-results-genre {
+        background-color: #943c0b;
+    }
+
+    .BottomNav__search-results-positivity {
+        background-color: #34BE82;
+    }
+
+    .BottomNav__search-load {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        flex-wrap: wrap;
+    }
 }
 
 @keyframes search-backdrop {
