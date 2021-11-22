@@ -26,7 +26,8 @@ const ComicCard = ({ name, image, setCurrent, open, source, id, modalLink, setMo
                         if (navigator.share) {
                             navigator.share({
                                 title: `${name}`,
-                                url: `Hey! Check out this Comic on Firstlight.\n\nhttp://localhost:3000/comics/${id}`,
+                                url: `/comics/${id}`,
+                                text: "Hey! Check out this comic on FirstLight - A Positive News Initiative!",
                             });
                         } else {
                             setModalLink(() => id);

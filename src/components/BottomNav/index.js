@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Cookies from "js-cookie";
 import userContext from "../../context/userContext";
 import {
     AiOutlineSearch,
@@ -58,8 +57,7 @@ const BottomNav = () => {
         handleSettingClose();
         setUser(() => null);
         localStorage.removeItem("firstlightUser");
-        Cookies.remove("user_genres");
-        Cookies.remove("user_positivity");
+        localStorage.removeItem("avatar");
     };
 
     const updateSearch = (e) => {

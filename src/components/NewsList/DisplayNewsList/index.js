@@ -64,7 +64,7 @@ const DisplayNewsList = ({
 
     const fetchAllNews = async () => {
         let genres = "";
-        user_genres.split(",").forEach((genre) => {
+        user_genres.forEach((genre) => {
             genres += genre.toLowerCase();
             genres += ",";
         });
@@ -123,12 +123,12 @@ const DisplayNewsList = ({
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                             <Input
                                 disabled={true}
-                                value={`http://localhost:3000/news/${modalLink}`}
+                                value={`${window.location.origin}/news/${modalLink}`}
                             ></Input>{" "}
                             <Button
                                 onClick={() => {
                                     navigator.clipboard.writeText(
-                                        `Hey! Check out this news on Firstlight. Firstlight is the best news app ever!\n\nhttp://localhost:3000/news/${modalLink}`
+                                        `Hey! Check out this news on Firstlight. Firstlight is the best news app ever!\n\n${window.location.origin}/news/${modalLink}`
                                     );
                                 }}
                             >

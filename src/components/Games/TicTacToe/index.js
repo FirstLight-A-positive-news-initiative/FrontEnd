@@ -177,12 +177,14 @@ export default function TicTacToe() {
   }
 
   const changeBoard = (row, column) => {
-    let tempBoard = [...board];
-    tempBoard[row][column] = "X";
-    setBoard(tempBoard);
-    difficulty ? play(tempBoard) : playrand(tempBoard);
-    if(result!==null)
-    changeBoard(row, column);
+    if(board[row][column]===null){
+      let tempBoard = [...board];
+      tempBoard[row][column] = "X";
+      setBoard(tempBoard);
+      difficulty ? play(tempBoard) : playrand(tempBoard);
+      if(result!==null)
+      changeBoard(row, column);
+    }
   };
 
   const closeModal = ()=>{

@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
-import Cookies from "js-cookie";
 import Logo from "../../assets/images/FirstLight1.png";
 import Img from "../../assets/images/meditating.png";
 import { GoogleLogin } from "react-google-login";
@@ -28,8 +27,6 @@ const SignUp = ({ history }) => {
                 localStorage.setItem(
                     "avatar", googleUser.imageUrl
                 )
-                Cookies.set("user_genres", res.data.genre);
-                Cookies.set("user_positivity", res.data.positivity);
                 setUser(() => res.data);
             })
             .catch((err) => {
@@ -38,6 +35,13 @@ const SignUp = ({ history }) => {
                     name: googleUser.givenName + " " + googleUser.familyName,
                     email: googleUser.email,
                 };
+                localStorage.setItem(
+                    "firstlightUser",
+                    JSON.stringify(firstLightUser)
+                );
+                localStorage.setItem(
+                    "avatar", googleUser.imageUrl
+                )
                 setUser(() => firstLightUser);
                 history.push("/preferences");
             });

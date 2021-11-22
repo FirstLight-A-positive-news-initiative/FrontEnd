@@ -112,12 +112,12 @@ const ComicsPage = () => {
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                             <Input
                                 disabled={true}
-                                value={`http://localhost:3000/comics/${modalLink}`}
+                                value={`${window.location.origin}/comics/${modalLink}`}
                             ></Input>{" "}
                             <Button
                                 onClick={() => {
                                     navigator.clipboard.writeText(
-                                        `Hey! Check out this Comic on Firstlight. FirstLight is the best news app ever!\n\nhttp://localhost:3000/comics/${modalLink}`
+                                        `Hey! Check out this Comic on Firstlight. FirstLight is the best news app ever!\n\n${window.location.origin}/comics/${modalLink}`
                                     );
                                 }}
                             >

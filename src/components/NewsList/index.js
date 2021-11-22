@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Cookies from "js-cookie";
 import { Avatar, Tooltip } from "@mui/material";
 import featured from "../../assets/images/NewsList/featured.png";
 import entertainment from "../../assets/images/NewsList/entertainment.jpg";
@@ -11,8 +10,8 @@ import "./styles.css";
 import DisplayNewsList from "./DisplayNewsList";
 
 const NewsList = () => {
-    const user_genres = Cookies.get("user_genres");
-    const user_positivity = Cookies.get("user_positivity");
+    const user_genres = JSON.parse(localStorage.getItem("firstlightUser")).genre;
+    const user_positivity = JSON.parse(localStorage.getItem("firstlightUser")).positivity;
 
     const [tab, setTab] = useState("featured");
     const [skip, setSkip] = useState(0);
@@ -23,7 +22,7 @@ const NewsList = () => {
     useEffect(() => {
         if (user_genres && user_genres.length) {
             const showGenres = () => {
-                user_genres.split(",").forEach((genre) => {
+                user_genres.forEach((genre) => {
                     const list_item = document.getElementsByClassName(`news-list__genre-${genre}`);
                     list_item[0].style = "display: flex";
                 }

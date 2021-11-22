@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
 import { withRouter } from "react-router-dom";
 import userContext from "../../../context/userContext";
 import { Slider, Button } from "@mui/material";
@@ -38,7 +37,7 @@ const ChoosePositivity = ({ history, poslevel, setPoslevel, genres }) => {
     };
 
     const handleSave = () => {
-        if(Cookies.get("user_genres") && Cookies.get("user_positivity")) {
+        if(JSON.parse(localStorage.getItem("firstlightUser")).genre && JSON.parse(localStorage.getItem("firstlightUser")).positivity) {
             axios
             .post(`${process.env.REACT_APP_API}/users/preferences/`, {
                 id: user._id,
@@ -49,8 +48,10 @@ const ChoosePositivity = ({ history, poslevel, setPoslevel, genres }) => {
                 setUser((prevUser) => {
                     return { ...prevUser, genre: genres, poslevel };
                 });
-                Cookies.set("user_genres", genres);
-                Cookies.set("user_positivity", poslevel);
+                localStorage.setItem(
+                    "firstlightUser",
+                    JSON.stringify({...res.data, "genre": genres, "positivity": poslevel})
+                );
             })
             .then(() => {
                 history.push("/news");
@@ -66,8 +67,10 @@ const ChoosePositivity = ({ history, poslevel, setPoslevel, genres }) => {
                 setUser((prevUser) => {
                     return { ...prevUser, genre: genres, poslevel };
                 });
-                Cookies.set("user_genres", genres);
-                Cookies.set("user_positivity", poslevel);
+                localStorage.setItem(
+                    "firstlightUser",
+                    JSON.stringify({...res.data, "genre": genres, "positivity": poslevel})
+                );
             })
             .then(() => {
                 history.push("/news");

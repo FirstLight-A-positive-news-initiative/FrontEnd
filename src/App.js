@@ -31,6 +31,16 @@ const App = () => {
                 <Footer />
             </div>
         );
+    } else if(!(("genre" in user) || ("positivity" in user))){
+        routes = (
+            <div>
+                <Switch>
+                    <Route exact path="/preferences" component={Preferences} />
+                    <Redirect to="/preferences"></Redirect>
+                </Switch>
+                <Footer />
+            </div>
+        );
     } else {
         routes = (
             <div>
