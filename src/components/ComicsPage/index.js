@@ -132,7 +132,7 @@ const ComicsPage = () => {
                                     console.log(copy_text);
                                     document.execCommand("copy");
                                     navigator.clipboard.writeText(
-                                        `Hey! Check out this news on Firstlight. Firstlight is the best news app ever!\n\n${window.location.origin}/news/${modalLink}`
+                                        `Hey! Check out this comic on Firstlight. Firstlight is the best news app ever!\n\n${window.location.origin}/comics/${modalLink}`
                                     );
                                 }}
                             >
