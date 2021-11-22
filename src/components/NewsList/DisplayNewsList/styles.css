@@ -14,7 +14,8 @@
 
 .display-news__skeleton-box {
     margin: 1rem;
-    width: 80%;
+    width: 345px;
+    height: 430px;
     border-radius: 1rem !important;
 }
 
@@ -66,7 +67,7 @@
 @media only screen and (min-width: 993px) {
     .display-news__skeleton-box {
         margin: 2rem;
-        width: 20%;
+        width: 345px;
     }
     
     .display-news__load-more > p {

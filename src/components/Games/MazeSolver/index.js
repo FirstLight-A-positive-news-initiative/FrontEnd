@@ -70,7 +70,7 @@ const MazeSolver = (props) => {
         }
         twominutes = 30;
         x = document.querySelector("#timerel");
-        // startTimer(twominutes, x);
+        startTimer(twominutes, x);
 
         playing = true;
         window.addEventListener("keydown", doKeyDown, true);
@@ -522,6 +522,8 @@ const MazeSolver = (props) => {
         border: "2px solid #000",
         boxShadow: 24,
         p: 4,
+        borderRadius: "10px",
+        opacity: "0.85",
     };
 
     return (
