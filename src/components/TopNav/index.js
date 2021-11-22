@@ -15,7 +15,8 @@ import {
     AiOutlineLogout,
     AiOutlineEdit,
 } from "react-icons/ai";
-import { FaTimes, FaRegUser } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
+import Modal from "@mui/material/Modal"
 
 import TC from "../../assets/images/NewsLogos/techcrunch.png";
 import BBC from "../../assets/images/NewsLogos/bbc.png";
@@ -130,25 +131,30 @@ const TopNav = (props) => {
                 </form>
 
                 {searchresults && searchresults.length ? (
-                    <div className="top-nav__search-results">
-                        <List>
-                            {searchresults.map((s) => (
-                                <ListItem className="top-nav__search-results-item">
-                                    <img src={s.image_link} alt="news-img" />
-                                    <Link to={`/news/${s._id}`} target="_blank">
-                                        <ListItemText
-                                            primary={s.title}
-                                        />
-                                        <div className="top-nav__search-results-info">
-                                            <p className="top-nav__search-results-genre">{toTitleCase(s.genre)}</p>
-                                            <p className="top-nav__search-results-positivity">Score: {s.positivity_score}</p>
-                                            <img className="top-nav__search-results-source" src={linklogo(s.link)} alt="source" />
-                                        </div>
-                                    </Link>
-                                </ListItem>
-                            ))}
-                        </List>
-                    </div>
+                    <Modal
+                        open={!loading}
+                        onClose={()=>{clearSearch()}}
+                    >
+                        <div className="top-nav__search-results">
+                            <List>
+                                {searchresults.map((s) => (
+                                    <ListItem className="top-nav__search-results-item">
+                                        <img src={s.image_link} alt="news-img" />
+                                        <Link to={`/news/${s._id}`} target="_blank">
+                                            <ListItemText
+                                                primary={s.title}
+                                            />
+                                            <div className="top-nav__search-results-info">
+                                                <p className="top-nav__search-results-genre">{toTitleCase(s.genre)}</p>
+                                                <p className="top-nav__search-results-positivity">Score: {s.positivity_score}</p>
+                                                <img className="top-nav__search-results-source" src={linklogo(s.link)} alt="source" />
+                                            </div>
+                                        </Link>
+                                    </ListItem>
+                                ))}
+                            </List>
+                        </div>
+                    </Modal>
                 ) : (
                     loading ? (
                         <div className="top-nav__search-results top-nav__search-load">
@@ -201,9 +207,12 @@ const TopNav = (props) => {
                             <Avatar
                                 className="top-nav__settings"
                                 onClick={handleSettingClick}
+                                // src={localStorage.avatar}
+                                // alt="avatar"
                             >
-                                <FaRegUser />
+                                <img src={localStorage.avatar}/>
                             </Avatar>
+                            {/* <img className="top-nav__settings" onClick={handleSettingClick}  src={localStorage.avatar}/> */}
                         </Tooltip>
                     </li>
                 </ul>

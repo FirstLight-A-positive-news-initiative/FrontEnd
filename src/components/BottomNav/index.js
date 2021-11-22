@@ -13,6 +13,7 @@ import { IoGameControllerOutline } from "react-icons/io5";
 import { MdGames } from "react-icons/md";
 import { FaTimes } from "react-icons/fa";
 import { Button, Menu, MenuItem, Divider, List, ListItem, ListItemText } from "@mui/material";
+import Modal from "@mui/material/Modal"
 
 import "./styles.css";
 import FirstLight from "../../assets/images/FirstLight_No_Text.png";
@@ -152,26 +153,30 @@ const BottomNav = () => {
                 </form>
 
                 {searchresults && searchresults.length ? (
-                    <div className="BottomNav__search-results">
-                        <List>
-                            {searchresults.map((s) => (
-                                <ListItem className="BottomNav__search_results-item">
-                                    <img src={s.image_link} alt="news-img" />
-                                    <Link to={`/news/${s._id}`} target="_blank">
-                                        <ListItemText
-                                            primary={s.title}
-                                        />
-                                        <div className="BottomNav__search-results-info">
-                                            <p className="BottomNav__search-results-genre">{toTitleCase(s.genre)}</p>
-                                            <p className="BottomNav__search-results-positivity">Score: {s.positivity_score}</p>
-                                            <img className="BottomNav__search-results-source" src={linklogo(s.link)} alt="source" />    
-                                        </div>
-                                    </Link>
-                                </ListItem>
-                            ))}
-                        </List>
-                    </div>
-
+                    <Modal
+                        open={!loading}
+                        onClose={()=>{clearSearch(); handleSearch();}}
+                    >
+                        <div className="BottomNav__search-results">
+                            <List>
+                                {searchresults.map((s) => (
+                                    <ListItem className="BottomNav__search_results-item">
+                                        <img src={s.image_link} alt="news-img" />
+                                        <Link to={`/news/${s._id}`} target="_blank">
+                                            <ListItemText
+                                                primary={s.title}
+                                            />
+                                            <div className="BottomNav__search-results-info">
+                                                <p className="BottomNav__search-results-genre">{toTitleCase(s.genre)}</p>
+                                                <p className="BottomNav__search-results-positivity">Score: {s.positivity_score}</p>
+                                                <img className="BottomNav__search-results-source" src={linklogo(s.link)} alt="source" />    
+                                            </div>
+                                        </Link>
+                                    </ListItem>
+                                ))}
+                            </List>
+                        </div>
+                    </Modal>
                 ) : (
                     loading ? (
                         <div className="BottomNav__search-results BottomNav__search-load">

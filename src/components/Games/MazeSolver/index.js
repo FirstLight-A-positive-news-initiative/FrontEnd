@@ -28,45 +28,47 @@ const MazeSolver = (props) => {
             j,
             x,
             cord,
+            modelfungo,
+            twominutes,
             modelfunwin;
 
-        // modelfungo = () => {
-        //     setIsModalOpen(() => true);
-        //     setModalText(() => "Oops! Looks like you are out of time");
-        // };
+        modelfungo = () => {
+            setIsModalOpen(() => true);
+            setModalText(() => "Oops! Looks like you are out of time");
+        };
 
         modelfunwin = () => {
             setIsModalOpen(() => true);
             setModalText(() => "Congratulations you have won the game!");
         };
 
-        // function startTimer(duration, display) {
-        //     var start = Date.now(),
-        //         diff,
-        //         minutes,
-        //         seconds;
-        //     function timer() {
-        //         if (playing) {
-        //             diff = duration - (((Date.now() - start) / 1000) | 0);
-        //             minutes = (diff / 60) | 0;
-        //             seconds = diff % 60 | 0;
-        //             minutes = minutes < 10 ? "0" + minutes : minutes;
-        //             seconds = seconds < 10 ? "0" + seconds : seconds;
-        //             display.textContent =
-        //                 "Game ends in " + minutes + ":" + seconds;
+        function startTimer(duration, display) {
+            var start = Date.now(),
+                diff,
+                minutes,
+                seconds;
+            function timer() {
+                if (playing) {
+                    diff = duration - (((Date.now() - start) / 1000) | 0);
+                    minutes = (diff / 60) | 0;
+                    seconds = diff % 60 | 0;
+                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                    seconds = seconds < 10 ? "0" + seconds : seconds;
+                    display.textContent =
+                        "Game ends in " + minutes + ":" + seconds;
 
-        //             if (diff <= 0) {
-        //                 display.textContent = "Game Over";
-        //                 start = Date.now() + 1000;
-        //                 playing = false;
-        //                 modelfungo();
-        //             }
-        //         }
-        //     }
-        //     timer();
-        //     setInterval(timer, 1000);
-        // }
-        // twominutes = 30;
+                    if (diff <= 0) {
+                        display.textContent = "Game Over";
+                        start = Date.now() + 1000;
+                        playing = false;
+                        modelfungo();
+                    }
+                }
+            }
+            timer();
+            setInterval(timer, 1000);
+        }
+        twominutes = 30;
         x = document.querySelector("#timerel");
         startTimer(twominutes, x);
 

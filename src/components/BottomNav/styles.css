@@ -110,6 +110,8 @@
         max-height: 50vh;
         overflow-y: scroll;
         width: 100%;
+        background-color: white;
+        margin-top: 20%;
     }
 
     .BottomNav__search-results h3 {
@@ -127,10 +129,6 @@
     .BottomNav__search-results a {
         text-decoration: none;
         color: black;
-    }
-
-    .BottomNav__search_results-item {
-        border-bottom: 0.1em solid black;
     }
 
     .BottomNav__search_results-item img {
@@ -192,10 +190,6 @@
     .BottomNav__search-results a {
         text-decoration: none;
         color: black;
-    }
-
-    .BottomNav__search_results-item {
-        border-bottom: 0.1em solid black;
     }
 
     .BottomNav__search_results-item img {

@@ -38,6 +38,12 @@ body{
     margin-bottom: 30px;
     color: #4d4d4d;
 }
+.sign-up__box-join{
+    color: #4d4d4d;
+    font-size: 1.2rem;    
+    font-weight: 500;
+    margin-top: 5px;
+}
 .sign-up__box-welcome{
     color: #4d4d4d;
     margin-top: -25px;

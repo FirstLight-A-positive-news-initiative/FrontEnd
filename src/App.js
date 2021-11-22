@@ -25,6 +25,7 @@ const App = () => {
                 <Switch>
                     <Route path="/login" component={SignUp} />
                     <Route exact path="/comics/:id" component={SingleComic} />
+                    <Route exact path="/news/:id" component={NewsPage} />
                     <Redirect to="/login"></Redirect>
                 </Switch>
                 <Footer />
