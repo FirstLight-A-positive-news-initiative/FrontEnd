@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import Cookies from "js-cookie";
 import axios from "axios";
 import { GoogleLogout } from "react-google-login";
 import userContext from "../../context/userContext";
@@ -28,6 +27,7 @@ const TopNav = (props) => {
     const [searchresults, setSearchresults] = useState([]);
     const [nores, setNores] = useState(false);
     const [user, setUser] = useContext(userContext);
+    const [loading, setLoading] = useState(false);
 
     // for games menu
     const [gameAnchor, setGameAnchor] = useState(null);
@@ -55,8 +55,6 @@ const TopNav = (props) => {
         handleSettingClose();
         setUser(() => null);
         localStorage.removeItem("firstlightUser");
-        Cookies.remove("user_genres");
-        Cookies.remove("user_positivity");
     };
 
     const updateSearch = (e) => {
@@ -65,8 +63,9 @@ const TopNav = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        setSearchresults([]);
         if (search.trim() !== "") {
+            setLoading(true);
             const results = await axios(
                 {
                     url: `${process.env.REACT_APP_API}/news/search/${search}`,
@@ -79,6 +78,7 @@ const TopNav = (props) => {
                 setNores(false);
             }
 
+            setLoading(false);
             setSearchresults(results.data);
         } else {
             setSearchresults([]);
@@ -96,20 +96,20 @@ const TopNav = (props) => {
         });
     }
 
-    const linklogo = (str)=>{
-        if(str.includes('techcrunch')){
+    const linklogo = (str) => {
+        if (str.includes('techcrunch')) {
             return TC;
-        } else if(str.includes('bbc')){
+        } else if (str.includes('bbc')) {
             return BBC;
-        } else if(str.includes('cnn')){
+        } else if (str.includes('cnn')) {
             return CNN;
-        } else if(str.includes('ndtv')){
+        } else if (str.includes('ndtv')) {
             return NDTV;
-        } else{
+        } else {
             return FL;
         }
     }
-
+    
     return (
         <header className="top-nav__header">
             <Link to="/"><img src={Logo} className="top-nav__image" alt="logo" /></Link>
@@ -127,8 +127,6 @@ const TopNav = (props) => {
 
                 {searchresults && searchresults.length ? (
                     <div className="top-nav__search-results">
-                        <h3>Results</h3>
-                        <hr />
                         <List>
                             {searchresults.map((s) => (
                                 <ListItem className="top-nav__search-results-item">
@@ -136,16 +134,24 @@ const TopNav = (props) => {
                                     <Link to={`/news/${s._id}`} target="_blank">
                                         <ListItemText
                                             primary={s.title}
-                                            secondary={toTitleCase(s.genre)}
                                         />
-                                        <img className="top-nav__search-results-source" src={linklogo(s.link)} alt="source" />
+                                        <div className="top-nav__search-results-info">
+                                            <p className="top-nav__search-results-genre">{toTitleCase(s.genre)}</p>
+                                            <p className="top-nav__search-results-positivity">Score: {s.positivity_score}</p>
+                                            <img className="top-nav__search-results-source" src={linklogo(s.link)} alt="source" />
+                                        </div>
                                     </Link>
                                 </ListItem>
                             ))}
                         </List>
                     </div>
-
                 ) : (
+                    loading ? (
+                        <div className="top-nav__search-results top-nav__search-load">
+                            <h3>Loading...</h3>
+                            <img src={FL} alt="loader" className="top-nav__search-loader" />
+                        </div>
+                    ) : (
                         nores ? (
                             <div className="top-nav__search-results">
                                 <h3>No results found.</h3>
@@ -153,6 +159,7 @@ const TopNav = (props) => {
                         ) : (
                             <></>
                         )
+                    )
                 )}
             </div>
 
