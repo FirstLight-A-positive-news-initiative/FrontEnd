@@ -4,12 +4,20 @@ import { Share } from "@mui/icons-material";
 
 import "./styles.css";
 
-const ComicCard = ({ name, image, setCurrent, open, source, id, modalLink, setModalLink }) => {
-
+const ComicCard = ({
+    name,
+    image,
+    setCurrent,
+    open,
+    source,
+    id,
+    modalLink,
+    setModalLink,
+}) => {
     const handleClick = () => {
         setCurrent(image);
         open();
-    }
+    };
 
     return (
         <Card className="ComicCard">
@@ -35,7 +43,7 @@ const ComicCard = ({ name, image, setCurrent, open, source, id, modalLink, setMo
                     }}
                 >
                     Share
-                    <Share sx={{ fontSize: "1.25rem", color: 'black' }} />
+                    <Share sx={{ fontSize: "1.25rem", color: "black" }} />
                 </Button>
 
                 {/* <IconButton aria-label="share">
@@ -51,7 +59,7 @@ const ComicCard = ({ name, image, setCurrent, open, source, id, modalLink, setMo
                 />
             </CardContent>
         </Card>
-    )
-}
+    );
+};
 
 export default ComicCard;
