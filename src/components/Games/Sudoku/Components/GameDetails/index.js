@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { Button } from "@mui/material";
 
@@ -31,7 +31,7 @@ const GameDetails = ({
         </div>
         <div className="modal-body">
           <h1 className="Details__emote">
-            🤩
+            <span role="img" aria-label="lovely">🤩</span>
           </h1>
           {isPlayerWon && <p>You Won !</p>}
           {!isPlayerWon && <p>Keep Playing you will surely complete it!</p>}
@@ -43,7 +43,6 @@ const GameDetails = ({
         <div className="modal-footer">
           <Button
             onClick={closeModal}
-            buttonStyle="btn--primary--solid"
             text="Continue"
           />
         </div>
