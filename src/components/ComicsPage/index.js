@@ -21,7 +21,7 @@ const style = {
 };
 
 const ComicsPage = () => {
-    const [tab, setTab] = useState("b.c.");
+    const [tab, setTab] = useState("calvinandhobbes");
     const [open, setOpen] = useState(false);
     const [page, setPage] = useState(0);
     const [current_comic, setCurrent_comic] = useState("");
@@ -139,6 +139,7 @@ const ComicsPage = () => {
                             id={c._id}
                             modalLink={modalLink}
                             setModalLink={setModalLink}
+                            key={c._id}
                         />
                     ))
                 ) : (

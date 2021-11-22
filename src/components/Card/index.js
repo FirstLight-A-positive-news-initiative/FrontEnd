@@ -8,9 +8,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import BookmarkIcon from "@mui/icons-material/Bookmark";
 import ShareIcon from "@mui/icons-material/Share";
 import TC from "../../assets/images/NewsLogos/techcrunch.png";
 import BBC from "../../assets/images/NewsLogos/bbc.png";
@@ -33,16 +31,16 @@ export default function NewsCard({ news, modalLink, setModalLink }) {
         } else return str;
     };
 
-    const linklogo = (str)=>{
-        if(str.includes('techcrunch')){
+    const linklogo = (str) => {
+        if (str.includes('techcrunch')) {
             return TC;
-        } else if(str.includes('bbc')){
+        } else if (str.includes('bbc')) {
             return BBC;
-        } else if(str.includes('cnn')){
+        } else if (str.includes('cnn')) {
             return CNN;
-        } else if(str.includes('ndtv')){
+        } else if (str.includes('ndtv')) {
             return NDTV;
-        } else{
+        } else {
             return FL;
         }
     }
@@ -126,11 +124,10 @@ export default function NewsCard({ news, modalLink, setModalLink }) {
                             }
                         }}
                     >
-                        <IconButton aria-label="share">
-                            <ShareIcon
-                                sx={{ fontSize: "2rem", color: "black" }}
-                            />
-                        </IconButton>
+
+                        <ShareIcon
+                            sx={{ fontSize: "2rem", color: "black" }}
+                        />
                     </Button>
                 </CardActions>
             </Card>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router";
 import userContext from "./context/userContext";
 import SignUp from "./components/signup";
@@ -17,7 +17,7 @@ import SingleComic from "./components/ComicsPage/SingleComicPage";
 
 const App = () => {
     var routes = null;
-    const [user, setUser] = useContext(userContext);
+    const [ user ] = useContext(userContext);
 
     if (user == null) {
         routes = (

@@ -12,7 +12,7 @@ const NoSolutionFoundModal = ({ closeModal }) => {
         </div>
         <div className="modal-title">
           <h1>No Solution Found</h1>
-          <h1 className="NoSolFound__emote">😔</h1>
+          <h1 className="NoSolFound__emote"><span aria-label="sad" role="img">😔</span></h1>
         </div>
         <div className="modal-body">
           <p>

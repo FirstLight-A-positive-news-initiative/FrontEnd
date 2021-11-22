@@ -26,49 +26,47 @@ const MazeSolver = (props) => {
             m,
             i,
             j,
-            modelfungo,
-            twominutes,
             x,
             cord,
             modelfunwin;
 
-        modelfungo = () => {
-            setIsModalOpen(() => true);
-            setModalText(() => "Oops! Looks like you are out of time");
-        };
+        // modelfungo = () => {
+        //     setIsModalOpen(() => true);
+        //     setModalText(() => "Oops! Looks like you are out of time");
+        // };
 
         modelfunwin = () => {
             setIsModalOpen(() => true);
             setModalText(() => "Congratulations you have won the game!");
         };
 
-        function startTimer(duration, display) {
-            var start = Date.now(),
-                diff,
-                minutes,
-                seconds;
-            function timer() {
-                if (playing) {
-                    diff = duration - (((Date.now() - start) / 1000) | 0);
-                    minutes = (diff / 60) | 0;
-                    seconds = diff % 60 | 0;
-                    minutes = minutes < 10 ? "0" + minutes : minutes;
-                    seconds = seconds < 10 ? "0" + seconds : seconds;
-                    display.textContent =
-                        "Game ends in " + minutes + ":" + seconds;
+        // function startTimer(duration, display) {
+        //     var start = Date.now(),
+        //         diff,
+        //         minutes,
+        //         seconds;
+        //     function timer() {
+        //         if (playing) {
+        //             diff = duration - (((Date.now() - start) / 1000) | 0);
+        //             minutes = (diff / 60) | 0;
+        //             seconds = diff % 60 | 0;
+        //             minutes = minutes < 10 ? "0" + minutes : minutes;
+        //             seconds = seconds < 10 ? "0" + seconds : seconds;
+        //             display.textContent =
+        //                 "Game ends in " + minutes + ":" + seconds;
 
-                    if (diff <= 0) {
-                        display.textContent = "Game Over";
-                        start = Date.now() + 1000;
-                        playing = false;
-                        modelfungo();
-                    }
-                }
-            }
-            timer();
-            setInterval(timer, 1000);
-        }
-        twominutes = 30;
+        //             if (diff <= 0) {
+        //                 display.textContent = "Game Over";
+        //                 start = Date.now() + 1000;
+        //                 playing = false;
+        //                 modelfungo();
+        //             }
+        //         }
+        //     }
+        //     timer();
+        //     setInterval(timer, 1000);
+        // }
+        // twominutes = 30;
         x = document.querySelector("#timerel");
         startTimer(twominutes, x);
 
@@ -110,6 +108,8 @@ const MazeSolver = (props) => {
                     case 68 /* Right arrow was pressed */:
                         m.moveright("canvas");
                         handled = true;
+                        break;
+                    default:
                         break;
                 }
                 if (m.checker("canvas")) playing = false;
@@ -161,18 +161,18 @@ const MazeSolver = (props) => {
             this.moves = 0;
             this.Board = new Array(2 * this.N + 1);
             this.visited = new Array(2 * this.N + 1);
-            this.EL = new Array();
+            this.EL = [];
             this.vis = new Array(2 * this.N + 1);
             this.delay = 2;
             this.x = 1;
             this.init = function () {
-                for (var i = 0; i < 2 * this.N + 1; i++) {
+                for (let i = 0; i < 2 * this.N + 1; i++) {
                     this.Board[i] = new Array(2 * this.M + 1);
                     this.visited[i] = new Array(2 * this.N + 1);
                     this.vis[i] = new Array(2 * this.M + 1);
                 }
 
-                for (var i = 0; i < 2 * this.N + 1; i++) {
+                for (let i = 0; i < 2 * this.N + 1; i++) {
                     for (var j = 0; j < 2 * this.M + 1; j++) {
                         if (!(i % 2) && !(j % 2)) {
                             this.Board[i][j] = "+";
@@ -314,7 +314,7 @@ const MazeSolver = (props) => {
 
             this.moveup = function (id) {
                 cord = this.checkPos(id);
-                var scale = this.S;
+                // var scale = this.S;
                 i = cord[0];
                 j = cord[1];
                 j -= 1;
@@ -329,7 +329,7 @@ const MazeSolver = (props) => {
 
             this.movedown = function (id) {
                 cord = this.checkPos(id);
-                var scale = this.S;
+                // var scale = this.S;
                 i = cord[0];
                 j = cord[1];
                 j += 1;
@@ -344,7 +344,7 @@ const MazeSolver = (props) => {
 
             this.moveleft = function (id) {
                 cord = this.checkPos(id);
-                var scale = this.S;
+                // var scale = this.S;
                 i = cord[0];
                 j = cord[1];
                 i -= 1;
@@ -359,7 +359,7 @@ const MazeSolver = (props) => {
 
             this.moveright = function (id) {
                 cord = this.checkPos(id);
-                var scale = this.S;
+                // var scale = this.S;
                 i = cord[0];
                 j = cord[1];
                 i += 1;
@@ -394,22 +394,22 @@ const MazeSolver = (props) => {
                 if (x > 20 || y > 20 || x < 1 || y < 1 || this.visited[x][y])
                     return false;
                 this.visited[x][y] = true;
-                if (x == 20 && y == 20) {
+                if (x===20 && y===20) {
                     var scale = this.S;
                     this.ctx = this.canvas.getContext("2d");
-                    if (x != orgx || y != orgy) this.ctx.fillStyle = "#FF0000"; // color of dot
+                    if (x!==orgx || y!==orgy) this.ctx.fillStyle = "#FF0000"; // color of dot
                     return true;
                 }
-                if (this.Board[x][y] == " " || this.Board[x][y] == "&") {
-                    var scale = this.S;
+                if (this.Board[x][y]===" " || this.Board[x][y]==="&") {
+                    scale = this.S;
                     this.ctx = this.canvas.getContext("2d");
                     console.log(x, y);
-                    if (x != orgx || y != orgy) this.ctx.fillStyle = "#FBFF00"; // color of dot
+                    if (x!==orgx || y!==orgy) this.ctx.fillStyle = "#FBFF00"; // color of dot
                     this.ctx.fillRect(scale * x, scale * y, scale, scale);
-                    if (x == 20 && y == 20) return true;
+                    if (x===20 && y===20) return true;
                     if (this.dfs(x + 1, y, orgx, orgy)) {
                         this.ctx.fillStyle = "#FF0000"; // color of dot
-                        if (x != orgx || y != orgy)
+                        if (x!==orgx || y!==orgy)
                             this.ctx.fillRect(
                                 scale * x,
                                 scale * y,
@@ -420,7 +420,7 @@ const MazeSolver = (props) => {
                     }
                     if (this.dfs(x, y + 1, orgx, orgy)) {
                         this.ctx.fillStyle = "#FF0000"; // color of dot
-                        if (x != orgx || y != orgy)
+                        if (x!==orgx || y!==orgy)
                             this.ctx.fillRect(
                                 scale * x,
                                 scale * y,
@@ -431,7 +431,7 @@ const MazeSolver = (props) => {
                     }
                     if (this.dfs(x - 1, y, orgx, orgy)) {
                         this.ctx.fillStyle = "#FF0000"; // color of dot
-                        if (x != orgx || y != orgy)
+                        if (x!==orgx || y!==orgy)
                             this.ctx.fillRect(
                                 scale * x,
                                 scale * y,
@@ -442,7 +442,7 @@ const MazeSolver = (props) => {
                     }
                     if (this.dfs(x, y - 1, orgx, orgy)) {
                         this.ctx.fillStyle = "#FF0000"; // color of dot
-                        if (x != orgx || y != orgy)
+                        if (x!==orgx || y!==orgy)
                             this.ctx.fillRect(
                                 scale * x,
                                 scale * y,
@@ -473,7 +473,6 @@ const MazeSolver = (props) => {
         m.add_edges();
         m.gen_maze();
         m.draw_canvas("canvas");
-        console.log(m.Board);
         document
             .getElementById("mobile_move-up")
             .addEventListener("click", () => {
@@ -556,8 +555,8 @@ const MazeSolver = (props) => {
                         </button>
                     </div>
                 </div>
-                <div class="maze-buttons">
-                    <Button class="maze__button maze-solve" id="maze-solve">
+                <div className="maze-buttons">
+                    <Button className="maze__button maze-solve" id="maze-solve">
                         SOLVE USING AI
                     </Button>
                     <Button

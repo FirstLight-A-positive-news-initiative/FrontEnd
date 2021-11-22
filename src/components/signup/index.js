@@ -10,17 +10,16 @@ import "./styles.css";
 
 const SignUp = ({ history }) => {
     const [signUp, onSignUpChange] = useState(1);
+    // eslint-disable-next-line
     const [user, setUser] = useContext(userContext);
 
     const responseGoogle = async (res) => {
         const googleUser = res.profileObj;
-        var curUser = null;
         // check if user already had an account
         axios
             .get(`${process.env.REACT_APP_API}/users/${googleUser.email}`)
             .then((res) => {
-                setUser(() => res.data);
-                curUser = res.data;
+                console.log(res.data);
                 console.log("Saving to local: ", res.data);
                 localStorage.setItem(
                     "firstlightUser",
@@ -28,19 +27,17 @@ const SignUp = ({ history }) => {
                 );
                 Cookies.set("user_genres", res.data.genre);
                 Cookies.set("user_positivity", res.data.positivity);
+                setUser(() => res.data);
             })
-            .then(() => {})
             .catch((err) => {
                 console.log("err: ", err);
+                const firstLightUser = {
+                    name: googleUser.givenName + " " + googleUser.familyName,
+                    email: googleUser.email,
+                };
+                setUser(() => firstLightUser);
+                history.push("/preferences");
             });
-        // if user does not have account
-        if (res.data !== null) return;
-        const firstLightUser = {
-            name: googleUser.givenName + " " + googleUser.familyName,
-            email: googleUser.email,
-        };
-        setUser(() => firstLightUser);
-        history.push("/preferences");
     };
 
     return (
@@ -67,12 +64,12 @@ const SignUp = ({ history }) => {
                         />
                         <h3 className="sign-up__box-signin">
                             Already have an account?{" "}
-                            <a
-                                href="www.google.com"
+                            <p
                                 onClick={() => onSignUpChange(!signUp)}
+                                style={{cursor: "pointer"}}
                             >
                                 Sign In
-                            </a>
+                            </p>
                         </h3>
                     </div>
                 ) : (
@@ -101,12 +98,12 @@ const SignUp = ({ history }) => {
                         />
                         <h3 className="sign-up__box-signin">
                             Don't have an account?{" "}
-                            <a
-                                href="www.google.com"
+                            <p
                                 onClick={() => onSignUpChange(!signUp)}
+                                style={{cursor: "pointer"}}
                             >
                                 Sign Up
-                            </a>
+                            </p>
                         </h3>
                     </div>
                 )}
