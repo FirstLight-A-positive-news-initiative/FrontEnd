@@ -29,7 +29,7 @@ const ComicsPage = () => {
     const [end, setEnd] = useState(false);
     const [modalLink, setModalLink] = useState(null);
 
-    const handleOpen = () => setOpen((prev) => (!prev));
+    const handleOpen = () => setOpen((prev) => !prev);
 
     // infinite scroll intersection observer
     const [element, setElement] = useState(null);
@@ -68,33 +68,44 @@ const ComicsPage = () => {
         const response = await axios({
             url: `${process.env.REACT_APP_API}/comics/${tab}`,
             method: "GET",
-            params: { page: page }
-        })
+            params: { page: page },
+        });
         if (response.data.length === 0) {
             setEnd(true);
         }
         setComics([...comics, ...response.data]);
-    }
+    };
 
     const setTabComic = (tab_name) => {
         setComics([]);
         setTab(tab_name);
         setPage(0);
         setEnd(false);
-    }
+    };
 
     useEffect(() => {
         listComics();
-    }, [tab, page])
+    }, [tab, page]);
 
     return (
         <div className="ComicsPage">
             <div className="ComicsPage__header">
-                {Comics && Comics.map((c) => (
-                    <img key={c[0]} onClick={() => { setTabComic(c[0]) }} className={(tab === c[0]) ?
-                        `ComicsPage__header-image-active` :
-                        `ComicsPage__header-image`} src={c[1]} alt="comic-logo" />
-                ))}
+                {Comics &&
+                    Comics.map((c) => (
+                        <img
+                            key={c[0]}
+                            onClick={() => {
+                                setTabComic(c[0]);
+                            }}
+                            className={
+                                tab === c[0]
+                                    ? `ComicsPage__header-image-active`
+                                    : `ComicsPage__header-image`
+                            }
+                            src={c[1]}
+                            alt="comic-logo"
+                        />
+                    ))}
             </div>
             <div className="ComicsPage__comics">
                 <Modal
@@ -111,13 +122,17 @@ const ComicsPage = () => {
                         </Typography>
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                             <Input
-                                disabled={true}
                                 value={`${window.location.origin}/comics/${modalLink}`}
                             ></Input>{" "}
                             <Button
                                 onClick={() => {
+                                    const copy_text =
+                                        document.getElementById("copy_link");
+                                    copy_text.select();
+                                    console.log(copy_text);
+                                    document.execCommand("copy");
                                     navigator.clipboard.writeText(
-                                        `Hey! Check out this Comic on Firstlight. FirstLight is the best news app ever!\n\n${window.location.origin}/comics/${modalLink}`
+                                        `Hey! Check out this news on Firstlight. Firstlight is the best news app ever!\n\n${window.location.origin}/news/${modalLink}`
                                     );
                                 }}
                             >
@@ -126,7 +141,6 @@ const ComicsPage = () => {
                         </Typography>
                     </Box>
                 </Modal>
-
 
                 {comics && comics.length ? (
                     comics.map((c) => (
@@ -146,11 +160,22 @@ const ComicsPage = () => {
                     <></>
                 )}
             </div>
-            <Modal className="ComicsPage__modal" open={open} onClose={handleOpen}>
-                <img className="ComicsPage__modal-image" src={current_comic} alt="comic-large" />
+            <Modal
+                className="ComicsPage__modal"
+                open={open}
+                onClose={handleOpen}
+            >
+                <img
+                    className="ComicsPage__modal-image"
+                    src={current_comic}
+                    alt="comic-large"
+                />
             </Modal>
 
-            <div ref={setElement} className="display-news__load-more display-comics__load-more">
+            <div
+                ref={setElement}
+                className="display-news__load-more display-comics__load-more"
+            >
                 {(comics.length || page === 0) && !end ? (
                     <p>
                         Loading Comics...
@@ -168,7 +193,7 @@ const ComicsPage = () => {
                 )}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default ComicsPage;

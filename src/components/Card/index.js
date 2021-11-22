@@ -18,7 +18,6 @@ import FL from "../../assets/images/FirstLight_No_Text.png";
 import "./styles.css";
 
 export default function NewsCard({ news, modalLink, setModalLink }) {
-
     function toTitleCase(str) {
         return str.replace(/\w\S*/g, function (txt) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -32,18 +31,18 @@ export default function NewsCard({ news, modalLink, setModalLink }) {
     };
 
     const linklogo = (str) => {
-        if (str.includes('techcrunch')) {
+        if (str.includes("techcrunch")) {
             return TC;
-        } else if (str.includes('bbc')) {
+        } else if (str.includes("bbc")) {
             return BBC;
-        } else if (str.includes('cnn')) {
+        } else if (str.includes("cnn")) {
             return CNN;
-        } else if (str.includes('ndtv')) {
+        } else if (str.includes("ndtv")) {
             return NDTV;
         } else {
             return FL;
         }
-    }
+    };
 
     return (
         <div className="newsCard">
@@ -125,10 +124,7 @@ export default function NewsCard({ news, modalLink, setModalLink }) {
                             }
                         }}
                     >
-
-                        <ShareIcon
-                            sx={{ fontSize: "2rem", color: "black" }}
-                        />
+                        <ShareIcon sx={{ fontSize: "2rem", color: "black" }} />
                     </Button>
                 </CardActions>
             </Card>

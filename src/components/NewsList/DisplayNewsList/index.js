@@ -122,11 +122,16 @@ const DisplayNewsList = ({
                         </Typography>
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                             <Input
-                                disabled={true}
                                 value={`${window.location.origin}/news/${modalLink}`}
+                                id="copy_link"
                             ></Input>{" "}
                             <Button
                                 onClick={() => {
+                                    const copy_text =
+                                        document.getElementById("copy_link");
+                                    copy_text.select();
+                                    console.log(copy_text);
+                                    document.execCommand("copy");
                                     navigator.clipboard.writeText(
                                         `Hey! Check out this news on Firstlight. Firstlight is the best news app ever!\n\n${window.location.origin}/news/${modalLink}`
                                     );
@@ -183,13 +188,13 @@ const DisplayNewsList = ({
                                 animation="wave"
                                 height={15}
                                 width="80%"
-                                style={{ marginTop: 10 , marginBottom: 15 }}
+                                style={{ marginTop: 10, marginBottom: 15 }}
                             />
                         }
                     />
                     <CardMedia>
                         <Skeleton
-                            sx={{ height: 194}}
+                            sx={{ height: 194 }}
                             animation="wave"
                             variant="rectangular"
                             style={{ marginBottom: 20 }}
