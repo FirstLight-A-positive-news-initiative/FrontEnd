@@ -1,6 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Cookies from "js-cookie";
 import userContext from "../../context/userContext";
 import {
     AiOutlineSearch,
@@ -24,12 +25,30 @@ import NDTV from "../../assets/images/NewsLogos/ndtv.png";
 import FL from "../../assets/images/FirstLight_No_Text.png";
 
 const BottomNav = () => {
+    const ref = useRef();
     const [search, setSearch] = useState("");
     const [searchresults, setSearchresults] = useState([]);
     const [nores, setNores] = useState(false);
     // eslint-disable-next-line
     const [user, setUser] = useContext(userContext);
     const [loading, setLoading] = useState(false);
+    const [searchOpen, setSearchOpen] = useState(false);
+
+    useEffect(() => {
+        const checkIfClickedOutside = e => {
+          if (searchOpen && ref.current && !ref.current.contains(e.target)) {
+            handleSearch();
+            clearSearch();
+          }
+        }
+    
+        document.addEventListener("mousedown", checkIfClickedOutside)
+    
+        return () => {
+          // Cleanup the event listener
+          document.removeEventListener("mousedown", checkIfClickedOutside)
+        }
+      }, [searchOpen]);
 
     // for games menu
     const [gameAnchor, setGameAnchor] = useState(null);
@@ -57,7 +76,8 @@ const BottomNav = () => {
         handleSettingClose();
         setUser(() => null);
         localStorage.removeItem("firstlightUser");
-        localStorage.removeItem("avatar");
+        Cookies.remove("user_genres");
+        Cookies.remove("user_positivity");
     };
 
     const updateSearch = (e) => {
@@ -112,6 +132,7 @@ const BottomNav = () => {
                 `BottomNav__search-box`
             ).className = `BottomNav__search`;
         }
+        setSearchOpen(!searchOpen);
     };
 
     function toTitleCase(str) {
@@ -138,7 +159,7 @@ const BottomNav = () => {
         <div className="BottomNav">
             <div id="BottomNav__search-backdrop-disable"></div>
 
-            <div id="BottomNav__search-box" className="BottomNav__search">
+            <div id="BottomNav__search-box" className="BottomNav__search" ref={ref}>
                 <form onSubmit={handleSubmit}>
                     <AiOutlineSearch />
                     <input
@@ -151,30 +172,25 @@ const BottomNav = () => {
                 </form>
 
                 {searchresults && searchresults.length ? (
-                    <Modal
-                        open={!loading}
-                        onClose={()=>{clearSearch(); handleSearch();}}
-                    >
-                        <div className="BottomNav__search-results">
-                            <List>
-                                {searchresults.map((s) => (
-                                    <ListItem className="BottomNav__search_results-item">
-                                        <img src={s.image_link} alt="news-img" />
-                                        <Link to={`/news/${s._id}`} target="_blank">
-                                            <ListItemText
-                                                primary={s.title}
-                                            />
-                                            <div className="BottomNav__search-results-info">
-                                                <p className="BottomNav__search-results-genre">{toTitleCase(s.genre)}</p>
-                                                <p className="BottomNav__search-results-positivity">Score: {s.positivity_score}</p>
-                                                <img className="BottomNav__search-results-source" src={linklogo(s.link)} alt="source" />    
-                                            </div>
-                                        </Link>
-                                    </ListItem>
-                                ))}
-                            </List>
-                        </div>
-                    </Modal>
+                    <div className="BottomNav__search-results">
+                        <List>
+                            {searchresults.map((s) => (
+                                <ListItem className="BottomNav__search_results-item">
+                                    <img src={s.image_link} alt="news-img" />
+                                    <Link to={`/news/${s._id}`} target="_blank">
+                                        <ListItemText
+                                            primary={s.title}
+                                        />
+                                        <div className="BottomNav__search-results-info">
+                                            <p className="BottomNav__search-results-genre">{toTitleCase(s.genre)}</p>
+                                            <p className="BottomNav__search-results-positivity">Score: {s.positivity_score}</p>
+                                            <img className="BottomNav__search-results-source" src={linklogo(s.link)} alt="source" />    
+                                        </div>
+                                    </Link>
+                                </ListItem>
+                            ))}
+                        </List>
+                    </div>
                 ) : (
                     loading ? (
                         <div className="BottomNav__search-results BottomNav__search-load">
