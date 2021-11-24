@@ -21,7 +21,7 @@ const style = {
 };
 
 const ComicsPage = () => {
-    const [tab, setTab] = useState("calvinandhobbes");
+    const [tab, setTab] = useState("bignate");
     const [open, setOpen] = useState(false);
     const [page, setPage] = useState(0);
     const [current_comic, setCurrent_comic] = useState("");
@@ -65,15 +65,16 @@ const ComicsPage = () => {
     }, [element]);
 
     const listComics = async () => {
+        setEnd(false);
         const response = await axios({
             url: `${process.env.REACT_APP_API}/comics/${tab}`,
             method: "GET",
             params: { page: page },
         });
+        setComics([...comics, ...response.data]);
         if (response.data.length === 0) {
             setEnd(true);
         }
-        setComics([...comics, ...response.data]);
     };
 
     const setTabComic = (tab_name) => {
@@ -170,7 +171,7 @@ const ComicsPage = () => {
                 </Modal>
 
                 {comics && comics.length ? (
-                    comics.map((c) => (
+                    comics.map((c, index) => (
                         <ComicCard
                             name={c.name}
                             open={handleOpen}
@@ -180,7 +181,7 @@ const ComicsPage = () => {
                             id={c._id}
                             modalLink={modalLink}
                             setModalLink={setModalLink}
-                            key={c._id}
+                            key={c.index}
                         />
                     ))
                 ) : (
@@ -203,7 +204,7 @@ const ComicsPage = () => {
                 ref={setElement}
                 className="display-news__load-more display-comics__load-more"
             >
-                {(comics.length || page === 0) && !end ? (
+                {(comics.length) && !end ? (
                     <p>
                         Loading Comics...
                         <img
