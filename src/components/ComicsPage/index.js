@@ -3,7 +3,7 @@ import axios from "axios";
 import Comics from "../../assets/images/Comics";
 import ComicCard from "./ComicCard";
 import { Modal, Box, Typography, Input, Button } from "@mui/material";
-import { CheckRounded } from "@mui/icons-material";
+import { CheckRounded, KeyboardArrowUp } from "@mui/icons-material";
 
 import "./styles.css";
 import Logo from "../../assets/images/FirstLight_No_Text.png";
@@ -21,7 +21,7 @@ const style = {
 };
 
 const ComicsPage = () => {
-    const [tab, setTab] = useState("calvinandhobbes");
+    const [tab, setTab] = useState("bignate");
     const [open, setOpen] = useState(false);
     const [page, setPage] = useState(0);
     const [current_comic, setCurrent_comic] = useState("");
@@ -65,15 +65,16 @@ const ComicsPage = () => {
     }, [element]);
 
     const listComics = async () => {
+        setEnd(false);
         const response = await axios({
             url: `${process.env.REACT_APP_API}/comics/${tab}`,
             method: "GET",
             params: { page: page },
         });
+        setComics([...comics, ...response.data]);
         if (response.data.length === 0) {
             setEnd(true);
         }
-        setComics([...comics, ...response.data]);
     };
 
     const setTabComic = (tab_name) => {
@@ -85,7 +86,31 @@ const ComicsPage = () => {
 
     useEffect(() => {
         listComics();
+        if (document.getElementById(`move-to-top`)) {
+            document.addEventListener("scroll", handleScroll)
+        }
     }, [tab, page]);
+
+    const handleScroll = () => {
+        var scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrollToTopBtn = document.getElementById(`move-to-top`);
+        if (scrollToTopBtn) {
+            if ((document.documentElement.scrollTop / scrollTotal) > 0.10) {
+                // Show button
+                scrollToTopBtn.classList.add("showBtn")
+            } else {
+                // Hide button
+                scrollToTopBtn.classList.remove("showBtn")
+            }
+        }
+    }
+
+    const scrollToTop = () => {
+        document.documentElement.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }
 
     return (
         <div className="ComicsPage">
@@ -146,7 +171,7 @@ const ComicsPage = () => {
                 </Modal>
 
                 {comics && comics.length ? (
-                    comics.map((c) => (
+                    comics.map((c, index) => (
                         <ComicCard
                             name={c.name}
                             open={handleOpen}
@@ -156,7 +181,7 @@ const ComicsPage = () => {
                             id={c._id}
                             modalLink={modalLink}
                             setModalLink={setModalLink}
-                            key={c._id}
+                            key={c.index}
                         />
                     ))
                 ) : (
@@ -179,7 +204,7 @@ const ComicsPage = () => {
                 ref={setElement}
                 className="display-news__load-more display-comics__load-more"
             >
-                {(comics.length || page === 0) && !end ? (
+                {(comics.length) && !end ? (
                     <p>
                         Loading Comics...
                         <img
@@ -194,6 +219,12 @@ const ComicsPage = () => {
                         <CheckRounded id="display-news__check" />
                     </p>
                 )}
+            </div>
+            <div id="move-to-top">
+                <Button
+                    onClick={scrollToTop}>
+                    <KeyboardArrowUp />
+                </Button>
             </div>
         </div>
     );

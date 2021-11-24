@@ -13,7 +13,6 @@ import { IoGameControllerOutline } from "react-icons/io5";
 import { MdGames } from "react-icons/md";
 import { FaTimes } from "react-icons/fa";
 import { Button, Menu, MenuItem, Divider, List, ListItem, ListItemText } from "@mui/material";
-import Modal from "@mui/material/Modal"
 
 import "./styles.css";
 import FirstLight from "../../assets/images/FirstLight_No_Text.png";

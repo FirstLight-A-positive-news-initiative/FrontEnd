@@ -91,7 +91,7 @@ const DisplayNewsList = ({
         if (user_genres && user_positivity) {
             fetchAllNews();
         }
-    }, [user_genres, genre, skip]);
+    }, [genre, skip]);
 
     const style = {
         position: "absolute",

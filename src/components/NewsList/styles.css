@@ -39,6 +39,35 @@
     transform: scale(1.4);
 }
 
+#move-to-top {
+    position: fixed;
+    bottom: 10%;
+    right: 3%;
+    display: flex;
+    justify-content: center;
+    transform: translateX(1000px);
+    transition: ease-out 1s !important;
+}
+
+#move-to-top button {
+    border-radius: 50px;
+    background-color: black;
+    color: white;
+    opacity: 0.8;
+    padding: 10px;
+}
+
+.showBtn {
+    transform: translateX(0px) !important;
+    transition: ease-in 1s !important;
+}
+
+.move-to-top button:hover {
+    border: 0.1rem solid black;
+    background-color: white;
+    color: black;
+}
+
 @media only screen and (min-width: 993px) {
     .news-list__container {
         margin-top: 0;

@@ -208,7 +208,7 @@ const TopNav = (props) => {
                                 // src={localStorage.avatar}
                                 // alt="avatar"
                             >
-                                <img src={localStorage.avatar}/>
+                                <img src={localStorage.avatar} alt="logo" />
                             </Avatar>
                             {/* <img className="top-nav__settings" onClick={handleSettingClick}  src={localStorage.avatar}/> */}
                         </Tooltip>
