@@ -5,7 +5,6 @@ const getSavedValue = (key,initialValue) => {
 
     if(savedValue) return savedValue;
 
-    console.log('Saved value');
     if(initialValue instanceof Function) return initialValue();
 
     return initialValue;

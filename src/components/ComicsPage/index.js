@@ -3,7 +3,7 @@ import axios from "axios";
 import Comics from "../../assets/images/Comics";
 import ComicCard from "./ComicCard";
 import { Modal, Box, Typography, Input, Button } from "@mui/material";
-import { CheckRounded } from "@mui/icons-material";
+import { CheckRounded, KeyboardArrowUp } from "@mui/icons-material";
 
 import "./styles.css";
 import Logo from "../../assets/images/FirstLight_No_Text.png";
@@ -85,7 +85,31 @@ const ComicsPage = () => {
 
     useEffect(() => {
         listComics();
+        if (document.getElementById(`move-to-top`)) {
+            document.addEventListener("scroll", handleScroll)
+        }
     }, [tab, page]);
+
+    const handleScroll = () => {
+        var scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrollToTopBtn = document.getElementById(`move-to-top`);
+        if (scrollToTopBtn) {
+            if ((document.documentElement.scrollTop / scrollTotal) > 0.10) {
+                // Show button
+                scrollToTopBtn.classList.add("showBtn")
+            } else {
+                // Hide button
+                scrollToTopBtn.classList.remove("showBtn")
+            }
+        }
+    }
+
+    const scrollToTop = () => {
+        document.documentElement.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }
 
     return (
         <div className="ComicsPage">
@@ -194,6 +218,12 @@ const ComicsPage = () => {
                         <CheckRounded id="display-news__check" />
                     </p>
                 )}
+            </div>
+            <div id="move-to-top">
+                <Button
+                    onClick={scrollToTop}>
+                    <KeyboardArrowUp />
+                </Button>
             </div>
         </div>
     );

@@ -162,13 +162,13 @@ export default function TicTacToe() {
   };
 
   const changeModal = (result)=>{
-    if(result==1){
+    if(result===1){
         setModalHeading("Congratulations! 🎊🪅");
         setModalDesc("You won this match!!");
-    } else if(result==0){
+    } else if(result===0){
         setModalHeading("Tie! ♾️");
         setModalDesc("Looks like we reached Stalemate!!");
-    } else if(result==-1) {
+    } else if(result===-1) {
         setModalHeading("Better luck next time! 🤖");
         setModalDesc("AI won this match!!");
     }

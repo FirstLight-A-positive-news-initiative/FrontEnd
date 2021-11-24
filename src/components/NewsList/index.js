@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Avatar, Tooltip } from "@mui/material";
+import { Avatar, Tooltip, Button } from "@mui/material";
+import { KeyboardArrowUp } from "@mui/icons-material";
 import featured from "../../assets/images/NewsList/featured.png";
 import entertainment from "../../assets/images/NewsList/entertainment.jpg";
 import politics from "../../assets/images/NewsList/politics.jpg";
@@ -30,6 +31,9 @@ const NewsList = () => {
             };
             showGenres();
         }
+        if(document.getElementById(`move-to-top`)) {
+            document.addEventListener("scroll", handleScroll)
+        }
     }, [])
 
     const setTabGenre = (tab_name) => {
@@ -38,93 +42,114 @@ const NewsList = () => {
         setSkip(0);
         setEnd(false);
     }
+    
+    const handleScroll = () => {
+        var scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrollToTopBtn = document.getElementById(`move-to-top`);
+        if(scrollToTopBtn) {
+            if ((document.documentElement.scrollTop / scrollTotal) > 0.10) {
+                // Show button
+                scrollToTopBtn.classList.add("showBtn")
+            } else {
+                // Hide button
+                scrollToTopBtn.classList.remove("showBtn")
+            }
+        }
+    }
+
+    const scrollToTop = () => {
+        document.documentElement.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }
 
     return (
         <div className="news-list__container">
             <ul className="news-list__genre">
-                <Tooltip title = "Featured">
-                <li key="featured" onClick={() => setTabGenre("featured")}>
-                    <Avatar
-                        sx={{ height: "50px", width: "50px" }}
-                        src={featured}
-                        alt="featured"
-                        className={
-                            tab === "featured"
-                                ? "news-list__genre-item active"
-                                : "news-list__genre-item"
-                        }
-                    />
-                </li>
+                <Tooltip title="Featured">
+                    <li key="featured" onClick={() => setTabGenre("featured")}>
+                        <Avatar
+                            sx={{ height: "50px", width: "50px" }}
+                            src={featured}
+                            alt="featured"
+                            className={
+                                tab === "featured"
+                                    ? "news-list__genre-item active"
+                                    : "news-list__genre-item"
+                            }
+                        />
+                    </li>
                 </Tooltip>
-                <Tooltip title = "Entertainment">
-                <li className="news-list__genre-Entertainment" key="Entertainment" onClick={() => setTabGenre("entertainment")}>
-                    <Avatar
-                        sx={{ height: "50px", width: "50px" }}
-                        src={entertainment}
-                        alt="entertainment"
-                        className={
-                            tab === "entertainment"
-                                ? "news-list__genre-item active"
-                                : "news-list__genre-item"
-                        }
-                    />
-                </li>
+                <Tooltip title="Entertainment">
+                    <li className="news-list__genre-Entertainment" key="Entertainment" onClick={() => setTabGenre("entertainment")}>
+                        <Avatar
+                            sx={{ height: "50px", width: "50px" }}
+                            src={entertainment}
+                            alt="entertainment"
+                            className={
+                                tab === "entertainment"
+                                    ? "news-list__genre-item active"
+                                    : "news-list__genre-item"
+                            }
+                        />
+                    </li>
                 </Tooltip>
-                <Tooltip title = "Politics">
-                <li className="news-list__genre-Politics" key="Politics" onClick={() => setTabGenre("politics")}>
-                    <Avatar
-                        sx={{ height: "50px", width: "50px" }}
-                        src={politics}
-                        alt="politics"
-                        className={
-                            tab === "politics"
-                                ? "news-list__genre-item active"
-                                : "news-list__genre-item"
-                        }
-                    />
-                </li>
+                <Tooltip title="Politics">
+                    <li className="news-list__genre-Politics" key="Politics" onClick={() => setTabGenre("politics")}>
+                        <Avatar
+                            sx={{ height: "50px", width: "50px" }}
+                            src={politics}
+                            alt="politics"
+                            className={
+                                tab === "politics"
+                                    ? "news-list__genre-item active"
+                                    : "news-list__genre-item"
+                            }
+                        />
+                    </li>
                 </Tooltip>
-                <Tooltip title = "Science">
-                <li className="news-list__genre-Science" key="Science" onClick={() => setTabGenre("science")}>
-                    <Avatar
-                        sx={{ height: "50px", width: "50px" }}
-                        src={science}
-                        alt="science"
-                        className={
-                            tab === "science"
-                                ? "news-list__genre-item active"
-                                : "news-list__genre-item"
-                        }
-                    />
-                </li>
+                <Tooltip title="Science">
+                    <li className="news-list__genre-Science" key="Science" onClick={() => setTabGenre("science")}>
+                        <Avatar
+                            sx={{ height: "50px", width: "50px" }}
+                            src={science}
+                            alt="science"
+                            className={
+                                tab === "science"
+                                    ? "news-list__genre-item active"
+                                    : "news-list__genre-item"
+                            }
+                        />
+                    </li>
                 </Tooltip>
-                <Tooltip title = "Technology">
-                <li className="news-list__genre-Technology" key="Technology" onClick={() => setTabGenre("technology")}>
-                    <Avatar
-                        sx={{ height: "50px", width: "50px" }}
-                        src={technology}
-                        alt="technology"
-                        className={
-                            tab === "technology"
-                                ? "news-list__genre-item active"
-                                : "news-list__genre-item"
-                        }
-                    />
-                </li>
+                <Tooltip title="Technology">
+                    <li className="news-list__genre-Technology" key="Technology" onClick={() => setTabGenre("technology")}>
+                        <Avatar
+                            sx={{ height: "50px", width: "50px" }}
+                            src={technology}
+                            alt="technology"
+                            className={
+                                tab === "technology"
+                                    ? "news-list__genre-item active"
+                                    : "news-list__genre-item"
+                            }
+                        />
+                    </li>
                 </Tooltip>
-                <Tooltip title = "Sports">
-                <li className="news-list__genre-Sports" key="Sports" onClick={() => setTabGenre("sports")}>
-                    <Avatar
-                        sx={{ height: "50px", width: "50px" }}
-                        src={sports}
-                        alt="sports"
-                        className={
-                            tab === "sports"
-                                ? "news-list__genre-item active"
-                                : "news-list__genre-item"
-                        }
-                    />
-                </li>
+                <Tooltip title="Sports">
+                    <li className="news-list__genre-Sports" key="Sports" onClick={() => setTabGenre("sports")}>
+                        <Avatar
+                            sx={{ height: "50px", width: "50px" }}
+                            src={sports}
+                            alt="sports"
+                            className={
+                                tab === "sports"
+                                    ? "news-list__genre-item active"
+                                    : "news-list__genre-item"
+                            }
+                        />
+                    </li>
                 </Tooltip>
             </ul>
             <div>
@@ -142,6 +167,12 @@ const NewsList = () => {
                 ) : (
                     <p>Fetching the latest news for you...</p>
                 )}
+            </div>
+            <div id="move-to-top">
+                <Button
+                    onClick={scrollToTop}>
+                    <KeyboardArrowUp />
+                </Button>
             </div>
         </div>
     );
