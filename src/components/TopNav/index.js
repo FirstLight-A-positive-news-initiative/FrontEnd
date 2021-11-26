@@ -99,6 +99,14 @@ const TopNav = (props) => {
         });
     }
 
+    function trim(str) {
+        if (str.length > 100) {
+            return str.substr(0, 100) + "...";
+        }
+        return str;
+    }
+
+
     const linklogo = (str) => {
         if (str.includes('techcrunch')) {
             return TC;
@@ -137,10 +145,10 @@ const TopNav = (props) => {
                             <List>
                                 {searchresults.map((s) => (
                                     <ListItem className="top-nav__search-results-item">
-                                        <img src={s.image_link} alt="news-img" />
+                                        <img className="top-nav__search-results-item-image" src={s.image_link} alt="news-img" />
                                         <Link to={`/news/${s._id}`} target="_blank">
                                             <ListItemText
-                                                primary={s.title}
+                                                primary={trim(s.title)}
                                             />
                                             <div className="top-nav__search-results-info">
                                                 <p className="top-nav__search-results-genre">{toTitleCase(s.genre)}</p>
@@ -205,8 +213,6 @@ const TopNav = (props) => {
                             <Avatar
                                 className="top-nav__settings"
                                 onClick={handleSettingClick}
-                                // src={localStorage.avatar}
-                                // alt="avatar"
                             >
                                 <img src={localStorage.avatar} alt="logo" />
                             </Avatar>

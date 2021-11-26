@@ -140,6 +140,13 @@ const BottomNav = () => {
         });
     }
 
+    function trim(str) {
+        if (str.length > 30) {
+            return str.substr(0, 30) + "...";
+        }
+        return str;
+    }
+
     const linklogo = (str) => {
         if (str.includes('techcrunch')) {
             return TC;
@@ -178,7 +185,7 @@ const BottomNav = () => {
                                     <img src={s.image_link} alt="news-img" />
                                     <Link to={`/news/${s._id}`} target="_blank">
                                         <ListItemText
-                                            primary={s.title}
+                                            primary={trim(s.title)}
                                         />
                                         <div className="BottomNav__search-results-info">
                                             <p className="BottomNav__search-results-genre">{toTitleCase(s.genre)}</p>

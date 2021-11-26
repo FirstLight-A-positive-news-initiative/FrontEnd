@@ -221,6 +221,11 @@
         background-color: #34BE82;
     }
 
+    .BottomNav__search-results-source {
+        width: 30px !important;
+        height: 30px !important;
+    }
+
     .BottomNav__search-load {
         display: flex;
         justify-content: center;

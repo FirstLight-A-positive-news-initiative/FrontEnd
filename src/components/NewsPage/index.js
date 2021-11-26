@@ -22,9 +22,13 @@ const NewsPage = () => {
         fetchNews();
     }, [id]);
 
+    useEffect(() => {
+        scroll(0, 0);
+    }, [news])
+
     function trim(str) {
-        if (str.length > 75) {
-            return str.substr(0, 75) + "...";
+        if (str.length > 70) {
+            return str.substr(0, 70) + "...";
         }
         return str;
     }
@@ -36,7 +40,7 @@ const NewsPage = () => {
     }
 
     return news ? (
-        <div className="news-page">
+        <div id="news-page" className="news-page">
             <div className="news-page__header">
                 <div className="news-page__header-bg">
                     <div className="news-page__header-bg-image" style={{backgroundImage: `url(${news.image_link})`}}>
@@ -65,7 +69,8 @@ const NewsPage = () => {
             </div>
         </div>
     ) : (
-        <div></div>
+        <div className="news-page__loading">
+        </div>
     );
 };
 

@@ -1,5 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap");
 
+.news-page__loading{
+    height: 330px;
+    width: 100%;
+    background-image: url(../../assets/images/FirstLight_No_Text.png);
+    background-size: 120px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .news-page {
     display: flex;
     height: auto;

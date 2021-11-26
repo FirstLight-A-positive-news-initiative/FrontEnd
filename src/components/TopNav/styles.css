@@ -89,7 +89,8 @@
 }
 
 .top-nav__search-results-source {
-    width: 50px !important;
+    height: 26px !important;
+    width: 26px !important;
 }
 
 .top-nav__search-results hr {
@@ -108,8 +109,10 @@
     width: 100%;
 }
 
-.top-nav__search-results img {
-    width: 100px;
+.top-nav__search-results-item-image{
+    height: 80px;
+    min-width: 100px;
+    max-width: 100px;
     margin-right: 10px;
 }
 
