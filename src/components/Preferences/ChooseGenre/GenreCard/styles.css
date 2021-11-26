@@ -6,6 +6,7 @@
     border-radius: 5% !important;
     color: black;
     width: 200px;
+    cursor: pointer;
 }
 
 .GenreCard__choice-button {

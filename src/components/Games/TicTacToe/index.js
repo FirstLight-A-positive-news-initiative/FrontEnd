@@ -16,7 +16,7 @@ export default function TicTacToe() {
   const [modalDesc, setModalDesc] = useState("AI won this match!!");
   useEffect(() => {
       changeModal(result);
-  })
+  }, [result])
 
   const isComplete = (board) => {
     for (let i = 0; i < 3; i++) {
@@ -163,7 +163,7 @@ export default function TicTacToe() {
 
   const changeModal = (result)=>{
     if(result===1){
-        setModalHeading("Congratulations! 🎊🪅");
+        setModalHeading("Congratulations! 🎊");
         setModalDesc("You won this match!!");
     } else if(result===0){
         setModalHeading("Tie! ♾️");

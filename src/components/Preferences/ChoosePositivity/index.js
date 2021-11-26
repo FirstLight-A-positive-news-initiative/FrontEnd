@@ -93,6 +93,7 @@ const ChoosePositivity = ({ history, poslevel, setPoslevel, genres }) => {
                             className="ChoosePositivity__emoji-img"
                             src={pos_25}
                             alt="pos_range"
+                            style={{display: 'none'}}
                         />
                     </li>
                     <li>
@@ -101,6 +102,7 @@ const ChoosePositivity = ({ history, poslevel, setPoslevel, genres }) => {
                             className="ChoosePositivity__emoji-img"
                             src={pos_50}
                             alt="pos_range"
+                            style={{display: 'none'}}
                         />
                     </li>
                     <li>
@@ -109,6 +111,7 @@ const ChoosePositivity = ({ history, poslevel, setPoslevel, genres }) => {
                             className="ChoosePositivity__emoji-img"
                             src={pos_75}
                             alt="pos_range"
+                            style={{display: 'none'}}
                         />
                     </li>
                     <li>

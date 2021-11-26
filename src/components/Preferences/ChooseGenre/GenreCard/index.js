@@ -32,7 +32,7 @@ const GenreCard = ({ genre, image, selected_genres, set_genres }) => {
 
     return (
         <Box className = "GenreCard__box">
-            <Card variant = "outlined" className = "GenreCard__card">
+            <Card variant = "outlined" className = "GenreCard__card" onClick = {()=>document.getElementById(`GenreCard__genre-button-${genre}`).click()}>
                 <CardContent>
                     <CardMedia
                         component = "img"
