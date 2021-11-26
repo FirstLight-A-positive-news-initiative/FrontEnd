@@ -23,8 +23,8 @@ const NewsPage = () => {
     }, [id]);
 
     function trim(str) {
-        if (str.length > 100) {
-            return str.substr(0, 100) + "...";
+        if (str.length > 75) {
+            return str.substr(0, 75) + "...";
         }
         return str;
     }
@@ -42,11 +42,13 @@ const NewsPage = () => {
                     <div className="news-page__header-bg-image" style={{backgroundImage: `url(${news.image_link})`}}>
                     </div>
                 </div>
-                <img
-                    src={news.image_link}
-                    className="news-page__header-image"
-                    alt="news"
-                />
+                <div className="news-page__header-image-wrap">
+                    <img
+                        src={news.image_link}
+                        className="news-page__header-image"
+                        alt="news"
+                    />
+                </div>
                 <div className="news-page__overlay">
                     <p className="news-page__header-genre">
                         {toTitleCase(news.genre)}
