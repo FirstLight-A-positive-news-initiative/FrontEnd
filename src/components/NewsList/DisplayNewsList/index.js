@@ -38,7 +38,7 @@ const DisplayNewsList = ({
                 const first = entries[0];
 
                 if (first.isIntersecting) {
-                    setSkip((prev) => prev + 10);
+                    setSkip((prev) => prev + 12);
                 }
             },
             {
