@@ -141,8 +141,8 @@ const BottomNav = () => {
     }
 
     function trim(str) {
-        if (str.length > 30) {
-            return str.substr(0, 30) + "...";
+        if (str.length > 25) {
+            return str.substr(0, 25) + "...";
         }
         return str;
     }

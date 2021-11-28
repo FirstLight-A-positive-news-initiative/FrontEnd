@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
+import Placeholder from "../../assets/images/placeholder.svg";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -27,8 +28,8 @@ const NewsPage = () => {
     }, [news])
 
     function trim(str) {
-        if (str.length > 70) {
-            return str.substr(0, 70) + "...";
+        if (str.length > 65) {
+            return str.substr(0, 65) + "...";
         }
         return str;
     }
@@ -43,12 +44,12 @@ const NewsPage = () => {
         <div id="news-page" className="news-page">
             <div className="news-page__header">
                 <div className="news-page__header-bg">
-                    <div className="news-page__header-bg-image" style={{backgroundImage: `url(${news.image_link})`}}>
+                    <div className="news-page__header-bg-image" style={{backgroundImage: `url(${news.image_link.length===0 ? Placeholder : news.image_link})`}}>
                     </div>
                 </div>
                 <div className="news-page__header-image-wrap">
                     <img
-                        src={news.image_link}
+                        src={news.image_link.length===0 ? Placeholder : news.image_link}
                         className="news-page__header-image"
                         alt="news"
                     />
