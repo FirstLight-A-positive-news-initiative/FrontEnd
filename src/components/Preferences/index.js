@@ -10,14 +10,6 @@ const Preferences = () => {
     const [poslevel, setPoslevel] = useState(50);
     const [genres, setGenres] = useState([]);
 
-    const showPositivity = () => {
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
-        document.getElementById(`Preferences__genre-active`).id =
-            "Preferences__genre-disable";
-        document.getElementById(`Preferences__positivity-disable`).id =
-            "Preferences__positivity-active";
-    };
-
     const showGenre = () => {
         document.body.scrollTop = document.documentElement.scrollTop = 0;
         document.getElementById(`Preferences__positivity-active`).id =
@@ -35,15 +27,6 @@ const Preferences = () => {
                     genres={genres}
                     setGenres={setGenres}
                 />
-                <div className="Preferences__show">
-                    <Button
-                        onClick={showPositivity}
-                        className="Preferences__show-button"
-                        variant="outlined"
-                    >
-                        Set Positivity
-                    </Button>
-                </div>
             </div>
             <div id="Preferences__positivity-disable">
                 <ChoosePositivity

@@ -18,8 +18,6 @@ const SignUp = ({ history }) => {
         axios
             .get(`${process.env.REACT_APP_API}/users/${googleUser.email}`)
             .then((res) => {
-                console.log(res.data);
-                console.log("Saving to local: ", res.data);
                 localStorage.setItem(
                     "firstlightUser",
                     JSON.stringify(res.data)

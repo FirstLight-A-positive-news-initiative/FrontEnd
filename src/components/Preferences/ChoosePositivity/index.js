@@ -8,11 +8,14 @@ import "./styles.css";
 import PositivityImages from "../../../assets/images/PositivityRange";
 
 const ChoosePositivity = ({ history, poslevel, setPoslevel, genres }) => {
-    const { pos_25, pos_50, pos_75, pos_100 } = PositivityImages;
+    const { pos_0, pos_33, pos_66, pos_90 } = PositivityImages;
     const [user, setUser] = useContext(userContext);
     const marks = [
         {
-            value: 20,
+            value: 0,
+        },
+        {
+            value: 25,
         },
         {
             value: 50,
@@ -20,13 +23,10 @@ const ChoosePositivity = ({ history, poslevel, setPoslevel, genres }) => {
         {
             value: 75,
         },
-        {
-            value: 100,
-        },
     ];
 
     const handleChange = (e) => {
-        [25, 50, 75, 100].forEach(
+        [0, 25, 50, 75].forEach(
             (val) =>
                 (document.getElementById(`pos_${val}`).style = "display: none;")
         );
@@ -37,44 +37,52 @@ const ChoosePositivity = ({ history, poslevel, setPoslevel, genres }) => {
     };
 
     const handleSave = () => {
-        if(JSON.parse(localStorage.getItem("firstlightUser")).genre && JSON.parse(localStorage.getItem("firstlightUser")).positivity) {
-            axios
-            .post(`${process.env.REACT_APP_API}/users/preferences/`, {
-                id: user._id,
-                genre: genres,
-                positivity: poslevel,
-            })
-            .then((res) => {
-                setUser((prevUser) => {
-                    return { ...prevUser, genre: genres, poslevel };
-                });
-                localStorage.setItem(
-                    "firstlightUser",
-                    JSON.stringify({...res.data, "genre": genres, "positivity": poslevel})
-                );
-            })
-            .then(() => {
-                history.push("/news");
-            });
+        if (JSON.parse(localStorage.getItem("firstlightUser")).genre && JSON.parse(localStorage.getItem("firstlightUser")).positivity >= 0) {
+            let id = null;
+            if (JSON.parse(localStorage.getItem("firstlightUser"))[0]) {
+                id = JSON.parse(localStorage.getItem("firstlightUser"))[0]["_id"];
+            } else if (JSON.parse(localStorage.getItem("firstlightUser"))["_id"]) {
+                id = JSON.parse(localStorage.getItem("firstlightUser"))["_id"];
+            }
+            if (id) {
+                axios
+                    .post(`${process.env.REACT_APP_API}/users/preferences/`, {
+                        id,
+                        genre: genres,
+                        positivity: poslevel,
+                    })
+                    .then((res) => {
+                        setUser((prevUser) => {
+                            return { ...prevUser, genre: genres, poslevel };
+                        });
+                        localStorage.setItem(
+                            "firstlightUser",
+                            JSON.stringify({ ...res.data, "genre": genres, "positivity": poslevel })
+                        );
+                    })
+                    .then(() => {
+                        history.push("/news");
+                    });
+            }
         } else {
             axios
-            .post(`${process.env.REACT_APP_API}/users/`, {
-                ...user,
-                genre: genres,
-                positivity: poslevel,
-            })
-            .then((res) => {
-                setUser((prevUser) => {
-                    return { ...prevUser, genre: genres, poslevel };
+                .post(`${process.env.REACT_APP_API}/users/`, {
+                    ...user,
+                    genre: genres,
+                    positivity: poslevel,
+                })
+                .then((res) => {
+                    setUser((prevUser) => {
+                        return { ...prevUser, genre: genres, poslevel };
+                    });
+                    localStorage.setItem(
+                        "firstlightUser",
+                        JSON.stringify({ ...res.data, "genre": genres, "positivity": poslevel })
+                    );
+                })
+                .then(() => {
+                    history.push("/news");
                 });
-                localStorage.setItem(
-                    "firstlightUser",
-                    JSON.stringify({...res.data, "genre": genres, "positivity": poslevel})
-                );
-            })
-            .then(() => {
-                history.push("/news");
-            });
         }
     };
 
@@ -89,36 +97,36 @@ const ChoosePositivity = ({ history, poslevel, setPoslevel, genres }) => {
                 <ul>
                     <li>
                         <img
+                            id="pos_0"
+                            className="ChoosePositivity__emoji-img"
+                            src={pos_0}
+                            alt="pos_range"
+                            style={{ display: 'none' }}
+                        />
+                    </li>
+                    <li>
+                        <img
                             id="pos_25"
                             className="ChoosePositivity__emoji-img"
-                            src={pos_25}
+                            src={pos_33}
                             alt="pos_range"
-                            style={{display: 'none'}}
+                            style={{ display: 'none' }}
                         />
                     </li>
                     <li>
                         <img
                             id="pos_50"
                             className="ChoosePositivity__emoji-img"
-                            src={pos_50}
+                            src={pos_66}
                             alt="pos_range"
-                            style={{display: 'none'}}
+                            style={{ display: 'none' }}
                         />
                     </li>
                     <li>
                         <img
                             id="pos_75"
                             className="ChoosePositivity__emoji-img"
-                            src={pos_75}
-                            alt="pos_range"
-                            style={{display: 'none'}}
-                        />
-                    </li>
-                    <li>
-                        <img
-                            id="pos_100"
-                            className="ChoosePositivity__emoji-img"
-                            src={pos_100}
+                            src={pos_90}
                             alt="pos_range"
                         />
                     </li>
@@ -127,11 +135,11 @@ const ChoosePositivity = ({ history, poslevel, setPoslevel, genres }) => {
             <Slider
                 className="ChoosePositivity__slider"
                 aria-label="positivity"
-                defaultValue={100}
+                defaultValue={75}
                 marks={marks}
                 step={null}
-                min={25}
-                max={100}
+                min={0}
+                max={75}
                 onChange={(e) => handleChange(e)}
             />
             <div className="ChoosePositivity__save">

@@ -5,7 +5,7 @@ import { Grid, Button, Alert } from "@mui/material";
 import GenreCardImages from "../../../assets/images/GenreCard";
 import "./styles.css";
 
-const ChooseGenre = ({ genres, setGenres}) => {
+const ChooseGenre = ({ genres, setGenres }) => {
 
     const genre_list = [
         {
@@ -43,8 +43,6 @@ const ChooseGenre = ({ genres, setGenres}) => {
     ];
 
     const handleClick = () => {
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
-
         if (genres.length < 3) {
             document.getElementById(
                 `ChooseGenre__alert-box`
@@ -53,6 +51,11 @@ const ChooseGenre = ({ genres, setGenres}) => {
             document.getElementById(
                 `ChooseGenre__alert-box`
             ).className = `ChooseGenre__alert-disable`;
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
+            document.getElementById(`Preferences__genre-active`).id =
+                "Preferences__genre-disable";
+            document.getElementById(`Preferences__positivity-disable`).id =
+                "Preferences__positivity-active";
         }
     };
 
@@ -91,7 +94,7 @@ const ChooseGenre = ({ genres, setGenres}) => {
                     id="ChooseGenre__submit-button"
                     variant="outlined"
                 >
-                    Save
+                    Save and Set Positivity
                 </Button>
             </div>
         </div>

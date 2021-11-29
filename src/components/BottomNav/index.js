@@ -8,7 +8,7 @@ import {
     AiOutlineLogout,
     AiOutlineEdit,
 } from "react-icons/ai";
-import { BiNews, BiBookOpen } from "react-icons/bi";
+import { BiNews, BiBookOpen, BiLogIn } from "react-icons/bi";
 import { IoGameControllerOutline } from "react-icons/io5";
 import { MdGames } from "react-icons/md";
 import { FaTimes } from "react-icons/fa";
@@ -36,19 +36,19 @@ const BottomNav = () => {
 
     useEffect(() => {
         const checkIfClickedOutside = e => {
-          if (searchOpen && ref.current && !ref.current.contains(e.target)) {
-            handleSearch();
-            clearSearch();
-          }
+            if (searchOpen && ref.current && !ref.current.contains(e.target)) {
+                handleSearch();
+                clearSearch();
+            }
         }
-    
+
         document.addEventListener("mousedown", checkIfClickedOutside)
-    
+
         return () => {
-          // Cleanup the event listener
-          document.removeEventListener("mousedown", checkIfClickedOutside)
+            // Cleanup the event listener
+            document.removeEventListener("mousedown", checkIfClickedOutside)
         }
-      }, [searchOpen]);
+    }, [searchOpen]);
 
     // for games menu
     const [gameAnchor, setGameAnchor] = useState(null);
@@ -191,7 +191,7 @@ const BottomNav = () => {
                                         <div className="BottomNav__search-results-info">
                                             <p className="BottomNav__search-results-genre">{toTitleCase(s.genre)}</p>
                                             <p className="BottomNav__search-results-positivity">Score: {s.positivity_score}</p>
-                                            <img className="BottomNav__search-results-source" src={linklogo(s.link)} alt="source" />    
+                                            <img className="BottomNav__search-results-source" src={linklogo(s.link)} alt="source" />
                                         </div>
                                     </Link>
                                 </ListItem>
@@ -217,122 +217,133 @@ const BottomNav = () => {
             </div>
 
             <div className="BottomNav__nav">
-                <Button
-                    onClick={handleSearch}
-                    value="search"
-                    className="BottomNav__nav-item"
-                >
-                    <AiOutlineSearch className="BottomNav__nav-item-icon" />
-                    <h6 className="BottomNav__nav-item-text">Search</h6>
-                </Button>
-                <Button value="news" className="BottomNav__nav-item">
-                    <Link className="Bottom__nav-item-link" to="/news">
-                        <BiNews className="BottomNav__nav-item-icon" />
-                        <h6 className="BottomNav__nav-item-text">News</h6>
-                    </Link>
-                </Button>
+                {user ? (
+                    <>
+                        <Button
+                            onClick={handleSearch}
+                            value="search"
+                            className="BottomNav__nav-item"
+                        >
+                            <AiOutlineSearch className="BottomNav__nav-item-icon" />
+                            <h6 className="BottomNav__nav-item-text">Search</h6>
+                        </Button>
+                        <Button value="news" className="BottomNav__nav-item">
+                            <Link className="Bottom__nav-item-link" to="/news">
+                                <BiNews className="BottomNav__nav-item-icon" />
+                                <h6 className="BottomNav__nav-item-text">News</h6>
+                            </Link>
+                        </Button>
 
-                <img onClick={handleSettingClick} src={FirstLight} alt="logo" />
-                <Menu
-                    className="BottomNav__settings-menu"
-                    aria-labelledby="demo-positioned-button"
-                    anchorEl={settingAnchor}
-                    open={settingMenuOpen}
-                    onClose={handleSettingClose}
-                    anchorOrigin={{
-                        vertical: "top",
-                        horizontal: "center",
-                    }}
-                    transformOrigin={{
-                        vertical: "center",
-                        horizontal: "center",
-                    }}
-                >
-                    <MenuItem
-                        className="BottomNav__settings-menu-item"
-                        onClick={handleSettingClose}
-                    >
-                        <Link
-                            className="Bottom__nav-item-link"
-                            to="/preferences"
+                        <img onClick={handleSettingClick} src={FirstLight} alt="logo" />
+                        <Menu
+                            className="BottomNav__settings-menu"
+                            aria-labelledby="demo-positioned-button"
+                            anchorEl={settingAnchor}
+                            open={settingMenuOpen}
+                            onClose={handleSettingClose}
+                            anchorOrigin={{
+                                vertical: "top",
+                                horizontal: "center",
+                            }}
+                            transformOrigin={{
+                                vertical: "center",
+                                horizontal: "center",
+                            }}
                         >
-                            <AiOutlineEdit /> Preferences
-                        </Link>
-                    </MenuItem>
-                    <Divider />
-                    <MenuItem
-                        className="BottomNav__settings-menu-item"
-                        onClick={handleLogout}
-                    >
-                        <AiOutlineLogout /> Logout
-                    </MenuItem>
-                </Menu>
+                            <MenuItem
+                                className="BottomNav__settings-menu-item"
+                                onClick={handleSettingClose}
+                            >
+                                <Link
+                                    className="Bottom__nav-item-link"
+                                    to="/preferences"
+                                >
+                                    <AiOutlineEdit /> Preferences
+                                </Link>
+                            </MenuItem>
+                            <Divider />
+                            <MenuItem
+                                className="BottomNav__settings-menu-item"
+                                onClick={handleLogout}
+                            >
+                                <AiOutlineLogout /> Logout
+                            </MenuItem>
+                        </Menu>
 
-                <Button value="comics" className="BottomNav__nav-item">
-                    <Link className="Bottom__nav-item-link" to="/comics">
-                        <BiBookOpen className="BottomNav__nav-item-icon" />
-                        <h6 className="BottomNav__nav-item-text">Comics</h6>
+                        <Button value="comics" className="BottomNav__nav-item">
+                            <Link className="Bottom__nav-item-link" to="/comics">
+                                <BiBookOpen className="BottomNav__nav-item-icon" />
+                                <h6 className="BottomNav__nav-item-text">Comics</h6>
+                            </Link>
+                        </Button>
+                        <Button
+                            onClick={handleGameClick}
+                            value="games"
+                            className="BottomNav__nav-item"
+                        >
+                            <IoGameControllerOutline className="BottomNav__nav-item-icon" />
+                            <h6 className="BottomNav__nav-item-text">Games</h6>
+                        </Button>
+                        <Menu
+                            className="BottomNav__settings-menu"
+                            aria-labelledby="demo-positioned-button"
+                            anchorEl={gameAnchor}
+                            open={gameMenuOpen}
+                            onClose={handleGameClose}
+                            anchorOrigin={{
+                                vertical: "top",
+                                horizontal: "right",
+                            }}
+                            transformOrigin={{
+                                vertical: "center",
+                                horizontal: "center",
+                            }}
+                        >
+                            <MenuItem
+                                className="top-nav__settings-menu-item"
+                                onClick={handleGameClose}
+                            >
+                                <Link
+                                    className="Bottom__nav-item-link"
+                                    to="/games/maze-solver"
+                                >
+                                    <MdGames /> Maze
+                                </Link>
+                            </MenuItem>
+                            <Divider />
+                            <MenuItem
+                                className="top-nav__settings-menu-item"
+                                onClick={handleGameClose}
+                            >
+                                <Link
+                                    className="Bottom__nav-item-link"
+                                    to="/games/sudoku"
+                                >
+                                    <MdGames /> Sudoku
+                                </Link>
+                            </MenuItem>
+                            <Divider />
+                            <MenuItem
+                                className="top-nav__settings-menu-item"
+                                onClick={handleGameClose}
+                            >
+                                <Link
+                                    className="Bottom__nav-item-link"
+                                    to="/games/tic-tac-toe"
+                                >
+                                    <MdGames /> Tic Tac Toe
+                                </Link>
+                            </MenuItem>
+                        </Menu>
+                    </>
+                ) : (
+                    <Link to="/login">
+                        <Button id="SignUp__btn-mobile">
+                            Sign Up
+                            <BiLogIn id="SignUp__icon-mobile" />
+                        </Button>
                     </Link>
-                </Button>
-                <Button
-                    onClick={handleGameClick}
-                    value="games"
-                    className="BottomNav__nav-item"
-                >
-                    <IoGameControllerOutline className="BottomNav__nav-item-icon" />
-                    <h6 className="BottomNav__nav-item-text">Games</h6>
-                </Button>
-                <Menu
-                    className="BottomNav__settings-menu"
-                    aria-labelledby="demo-positioned-button"
-                    anchorEl={gameAnchor}
-                    open={gameMenuOpen}
-                    onClose={handleGameClose}
-                    anchorOrigin={{
-                        vertical: "top",
-                        horizontal: "right",
-                    }}
-                    transformOrigin={{
-                        vertical: "center",
-                        horizontal: "center",
-                    }}
-                >
-                    <MenuItem
-                        className="top-nav__settings-menu-item"
-                        onClick={handleGameClose}
-                    >
-                        <Link
-                            className="Bottom__nav-item-link"
-                            to="/games/maze-solver"
-                        >
-                            <MdGames /> Maze
-                        </Link>
-                    </MenuItem>
-                    <Divider />
-                    <MenuItem
-                        className="top-nav__settings-menu-item"
-                        onClick={handleGameClose}
-                    >
-                        <Link
-                            className="Bottom__nav-item-link"
-                            to="/games/sudoku"
-                        >
-                            <MdGames /> Sudoku
-                        </Link>
-                    </MenuItem>
-                    <Divider />
-                    <MenuItem
-                        className="top-nav__settings-menu-item"
-                        onClick={handleGameClose}
-                    >
-                        <Link
-                            className="Bottom__nav-item-link"
-                            to="/games/tic-tac-toe"
-                        >
-                            <MdGames /> Tic Tac Toe
-                        </Link>
-                    </MenuItem>
-                </Menu>
+                )}
             </div>
         </div >
     );

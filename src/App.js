@@ -22,6 +22,7 @@ const App = () => {
     if (user == null) {
         routes = (
             <div>
+                <TopNav />
                 <Switch>
                     <Route path="/login" component={SignUp} />
                     <Route exact path="/comics/:id" component={SingleComic} />
@@ -29,6 +30,7 @@ const App = () => {
                     <Redirect to="/login"></Redirect>
                 </Switch>
                 <Footer />
+                <BottomNav />
             </div>
         );
     } else if(!(("genre" in user) || ("positivity" in user))){

@@ -88,7 +88,7 @@ const DisplayNewsList = ({
     };
 
     useEffect(() => {
-        if (user_genres && user_positivity) {
+        if (user_genres && user_positivity >= 0) {
             fetchAllNews();
         }
     }, [genre, skip]);

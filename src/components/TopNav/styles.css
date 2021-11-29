@@ -171,6 +171,26 @@
     padding-bottom: 8px !important;
 }
 
+#SignUp__btn {
+    border: 0.1em solid black !important;
+    background-color: black;
+    color: white !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+    gap: 5px;
+}
+
+#SignUp_btn a {
+    color: white !important;
+}
+
+#SignUp__icon {
+    font-size: x-large;
+    color: white !important;
+}
+
 @media only screen and (max-width: 992px) {
     .top-nav__header {
         display: none !important;
