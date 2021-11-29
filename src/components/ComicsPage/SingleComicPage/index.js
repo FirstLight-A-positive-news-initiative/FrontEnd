@@ -58,7 +58,6 @@ const SingleComic = () => {
                         <img className="ComicsPage__modal-image" src={curr.link} alt="comic-large" />
                     </Modal>
                     <h1 className="SingleComic__heading">For more such comics, visit FirstLight- A Positive News Initiative.</h1>
-                    <div className="SingleComic__btn"><Button variant="outlined"><a href={`${window.location.origin}`}>Click Here to visit FirstLight</a></Button></div>
                 </div>
             ) : (
                 <p>
