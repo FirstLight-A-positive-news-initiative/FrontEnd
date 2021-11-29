@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Avatar, Tooltip, Button } from "@mui/material";
 import { KeyboardArrowUp } from "@mui/icons-material";
 import featured from "../../assets/images/NewsList/featured.png";
+import world from "../../assets/images/NewsList/world.png";
+import india from "../../assets/images/NewsList/india.png";
 import entertainment from "../../assets/images/NewsList/entertainment.jpg";
 import politics from "../../assets/images/NewsList/politics.jpg";
 import science from "../../assets/images/NewsList/science.png";
 import technology from "../../assets/images/NewsList/technology.webp";
+import offbeat from "../../assets/images/NewsList/offbeat.png";
 import sports from "../../assets/images/NewsList/sports.jpg";
 import "./styles.css";
 import DisplayNewsList from "./DisplayNewsList";
@@ -81,6 +84,34 @@ const NewsList = () => {
                         />
                     </li>
                 </Tooltip>
+                <Tooltip title="World">
+                    <li className="news-list__genre-World" key="World" onClick={() => setTabGenre("world")}>
+                        <Avatar
+                            sx={{ height: "50px", width: "50px" }}
+                            src={world}
+                            alt="world"
+                            className={
+                                tab === "world"
+                                    ? "news-list__genre-item active"
+                                    : "news-list__genre-item"
+                            }
+                        />
+                    </li>
+                </Tooltip>
+                <Tooltip title="India">
+                    <li className="news-list__genre-India" key="India" onClick={() => setTabGenre("india")}>
+                        <Avatar
+                            sx={{ height: "50px", width: "50px" }}
+                            src={india}
+                            alt="india"
+                            className={
+                                tab === "india"
+                                    ? "news-list__genre-item active"
+                                    : "news-list__genre-item"
+                            }
+                        />
+                    </li>
+                </Tooltip>
                 <Tooltip title="Entertainment">
                     <li className="news-list__genre-Entertainment" key="Entertainment" onClick={() => setTabGenre("entertainment")}>
                         <Avatar
@@ -131,6 +162,20 @@ const NewsList = () => {
                             alt="technology"
                             className={
                                 tab === "technology"
+                                    ? "news-list__genre-item active"
+                                    : "news-list__genre-item"
+                            }
+                        />
+                    </li>
+                </Tooltip>
+                <Tooltip title="Offbeat">
+                    <li className="news-list__genre-Offbeat" key="Offbeat" onClick={() => setTabGenre("offbeat")}>
+                        <Avatar
+                            sx={{ height: "50px", width: "50px" }}
+                            src={offbeat}
+                            alt="offbeat"
+                            className={
+                                tab === "offbeat"
                                     ? "news-list__genre-item active"
                                     : "news-list__genre-item"
                             }

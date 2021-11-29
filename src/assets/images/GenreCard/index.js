@@ -1,15 +1,21 @@
-import Politics from "./Genre_politics.png";
-import Entertainment from "./Genre_entertainment.png";
-import Sports from "./Genre_sports.png";
-import Science from "./Genre_science.png";
-import Technology from "./Genre_technology.png";
+import Politics from "./Genre_politics.svg";
+import India from "./Genre_india.png";
+import World from "./Genre_world.svg";
+import Offbeat from "./Genre_offbeat.svg";
+import Entertainment from "./Genre_entertainment.svg";
+import Sports from "./Genre_sports.svg";
+import Science from "./Genre_science.svg";
+import Technology from "./Genre_technology.svg";
 
 const GenreCardImages = {
     Entertainment,
+    World,
+    India,
     Politics,
     Science,
     Sports,
-    Technology
+    Technology,
+    Offbeat,
 }
 
 export default GenreCardImages;

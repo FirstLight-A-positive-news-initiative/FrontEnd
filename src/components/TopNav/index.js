@@ -17,6 +17,7 @@ import {
 import { FaTimes } from "react-icons/fa";
 import Modal from "@mui/material/Modal"
 
+import Placeholder from "../../assets/images/placeholder.svg";
 import TC from "../../assets/images/NewsLogos/techcrunch.png";
 import BBC from "../../assets/images/NewsLogos/bbc.png";
 import CNN from "../../assets/images/NewsLogos/cnn.jpg";
@@ -28,7 +29,7 @@ const TopNav = (props) => {
     const [searchresults, setSearchresults] = useState([]);
     const [nores, setNores] = useState(false);
     // eslint-disable-next-line
-    const [user, setUser ] = useContext(userContext);
+    const [user, setUser] = useContext(userContext);
     const [loading, setLoading] = useState(false);
 
     // for games menu
@@ -100,8 +101,8 @@ const TopNav = (props) => {
     }
 
     function trim(str) {
-        if (str.length > 100) {
-            return str.substr(0, 100) + "...";
+        if (str.length > 90) {
+            return str.substr(0, 90) + "...";
         }
         return str;
     }
@@ -120,7 +121,7 @@ const TopNav = (props) => {
             return FL;
         }
     }
-    
+
     return (
         <header className="top-nav__header">
             <Link to="/"><img src={Logo} className="top-nav__image" alt="logo" /></Link>
@@ -139,13 +140,13 @@ const TopNav = (props) => {
                 {searchresults && searchresults.length ? (
                     <Modal
                         open={!loading}
-                        onClose={()=>{clearSearch()}}
+                        onClose={() => { clearSearch() }}
                     >
                         <div className="top-nav__search-results">
                             <List>
                                 {searchresults.map((s) => (
                                     <ListItem className="top-nav__search-results-item">
-                                        <img className="top-nav__search-results-item-image" src={s.image_link} alt="news-img" />
+                                        <img className="top-nav__search-results-item-image" src={s.image_link.length === 0 ? Placeholder : s.image_link} alt="news-img" />
                                         <Link to={`/news/${s._id}`} target="_blank">
                                             <ListItemText
                                                 primary={trim(s.title)}

@@ -104,8 +104,8 @@
   }
   
   .animation-container-difficulty {
-    height: 150px;
-    width: 200px;
+    height: 120px;
+    width: 170px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -113,11 +113,11 @@
 
 
   .SelectDifficulty__img {
-    height: 80px;
+    height: 70px;
   }
 
   .hard .SelectDifficulty__img {
-    height: 150px;
+    height: 120px;
   }
 
   .Difficulty__btn {

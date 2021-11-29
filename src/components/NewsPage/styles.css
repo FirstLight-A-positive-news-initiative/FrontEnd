@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap");
 
-.news-page__loading{
+.news-page__loading {
     height: 330px;
     width: 100%;
     background-image: url(../../assets/images/FirstLight_No_Text.png);
@@ -19,17 +19,17 @@
     height: 60vh;
 }
 
-.news-page__header-bg{
+.news-page__header-bg {
     width: 100%;
     height: 60vh;
-    position: absolute;
+    position: fixed;
     overflow: hidden;
 }
 
-.news-page__header-bg-image{
+.news-page__header-bg-image {
     width: 100%;
     height: 60vh;
-    position: absolute;
+    position: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -37,10 +37,10 @@
     -webkit-filter: blur(20px);
 }
 
-.news-page__header-image-wrap{
+.news-page__header-image-wrap {
     height: 60vh;
     width: 100%;
-    position: absolute;
+    position: fixed;
     transform: translate(-50%, 0);
     left: 50%;
     overflow: hidden;
@@ -50,13 +50,13 @@
     /* width: 100%; */
     /* max-width: 100%; */
     height: 60vh;
-    position: absolute;
+    position: fixed;
     transform: translate(-50%, 0);
     left: 50%;
 }
 
 .news-page__overlay {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 60vh;
     text-align: center;
@@ -124,7 +124,7 @@
 }
 
 @media only screen and (min-width: 993px) {
-    .news-page__header-title{
+    .news-page__header-title {
         bottom: 15%;
         left: 3%;
     }
@@ -138,5 +138,13 @@
     .news-page__content-title {
         padding: 1rem 5rem;
         font-size: 1.4rem;
+    }
+
+    .news-page__header-bg,
+    .news-page__header-bg-image,
+    .news-page__header-image-wrap,
+    .news-page__header-image,
+    .news-page__overlay {
+        position: absolute;
     }
 }

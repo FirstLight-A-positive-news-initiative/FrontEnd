@@ -6,7 +6,13 @@
     border-radius: 5% !important;
     color: black;
     width: 200px;
+    height: 210px;
     cursor: pointer;
+}
+
+.GenreCard__genre-image{
+    max-width: 200px !important;
+    max-height: 100px !important;
 }
 
 .GenreCard__choice-button {
@@ -23,5 +29,10 @@
 @media only screen and (max-width : 992px) {
     .GenreCard__card {
         width: 150px;
+        height: 160px;
+    }
+    .GenreCard__genre-image{
+        max-width: 150px !important;
+        max-height: 70px !important;
     }
 }

@@ -9,6 +9,14 @@ const ChooseGenre = ({ genres, setGenres}) => {
 
     const genre_list = [
         {
+            genre: "World",
+            image: GenreCardImages.World,
+        },
+        {
+            genre: "India",
+            image: GenreCardImages.India,
+        },
+        {
             genre: "Entertainment",
             image: GenreCardImages.Entertainment,
         },
@@ -23,6 +31,10 @@ const ChooseGenre = ({ genres, setGenres}) => {
         {
             genre: "Technology",
             image: GenreCardImages.Technology,
+        },
+        {
+            genre: "Offbeat",
+            image: GenreCardImages.Offbeat,
         },
         {
             genre: "Sports",

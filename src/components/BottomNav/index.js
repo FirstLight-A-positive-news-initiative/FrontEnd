@@ -17,6 +17,7 @@ import { Button, Menu, MenuItem, Divider, List, ListItem, ListItemText } from "@
 import "./styles.css";
 import FirstLight from "../../assets/images/FirstLight_No_Text.png";
 
+import Placeholder from "../../assets/images/placeholder.svg";
 import TC from "../../assets/images/NewsLogos/techcrunch.png";
 import BBC from "../../assets/images/NewsLogos/bbc.png";
 import CNN from "../../assets/images/NewsLogos/cnn.jpg";
@@ -141,8 +142,8 @@ const BottomNav = () => {
     }
 
     function trim(str) {
-        if (str.length > 30) {
-            return str.substr(0, 30) + "...";
+        if (str.length > 25) {
+            return str.substr(0, 25) + "...";
         }
         return str;
     }
@@ -182,7 +183,7 @@ const BottomNav = () => {
                         <List>
                             {searchresults.map((s) => (
                                 <ListItem className="BottomNav__search_results-item">
-                                    <img src={s.image_link} alt="news-img" />
+                                    <img src={s.image_link.length === 0 ? Placeholder : s.image_link} alt="news-img" />
                                     <Link to={`/news/${s._id}`} target="_blank">
                                         <ListItemText
                                             primary={trim(s.title)}
