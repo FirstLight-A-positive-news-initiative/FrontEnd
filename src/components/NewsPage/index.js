@@ -28,8 +28,8 @@ const NewsPage = () => {
     }, [news])
 
     function trim(str) {
-        if (str.length > 65) {
-            return str.substr(0, 65) + "...";
+        if (str.length > 60) {
+            return str.substr(0, 60) + "...";
         }
         return str;
     }
