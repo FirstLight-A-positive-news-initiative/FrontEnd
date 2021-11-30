@@ -1,8 +1,13 @@
 .SingleComic {
     display: flex;
     justify-content: center;
-    margin-top: 10%;
     margin-bottom: 10%;
+}
+
+.SingleComic div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .SingleComic__heading {
@@ -10,19 +15,20 @@
     font-weight: bold;
     text-align: center;
     margin: 5% 0;
+    width: 100%;
 }
 
 .SingleComic__ComicCard {
-    width: 100%;
+    max-width: 90%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 2%;
 }
 
-/* .SingleComic__img {
-    height: 30vh;
-} */
+.SingleComic__ComicCard p {
+    margin-top: 4%;
+}
 
 .SingleComic__btn {
     width: 100%;

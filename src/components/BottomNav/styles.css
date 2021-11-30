@@ -232,6 +232,20 @@
         text-align: center;
         flex-wrap: wrap;
     }
+
+    #SignUp__btn-mobile {
+        width: 100vw !important;
+        height: 100%;
+        color: black;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .BottomNav__nav a {
+        text-decoration: none !important;
+    }
 }
 
 @keyframes search-backdrop {
