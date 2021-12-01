@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Comics from "../../assets/images/Comics";
 import ComicCard from "./ComicCard";
@@ -6,7 +6,6 @@ import { Modal, Box, Typography, Input, Button } from "@mui/material";
 import { CheckRounded, KeyboardArrowUp } from "@mui/icons-material";
 
 import "./styles.css";
-import Logo from "../../assets/images/FirstLight_No_Text.png";
 
 const style = {
     position: "absolute",
@@ -30,39 +29,6 @@ const ComicsPage = () => {
     const [modalLink, setModalLink] = useState(null);
 
     const handleOpen = () => setOpen((prev) => !prev);
-
-    // infinite scroll intersection observer
-    const [element, setElement] = useState(null);
-
-    const observer = useRef(
-        new IntersectionObserver(
-            (entries) => {
-                const first = entries[0];
-
-                if (first.isIntersecting) {
-                    setPage((prev) => prev + 1);
-                }
-            },
-            {
-                threshold: 1,
-            }
-        )
-    );
-
-    useEffect(() => {
-        const currentElement = element;
-        const currentObserver = observer.current;
-
-        if (currentElement) {
-            currentObserver.observe(currentElement);
-        }
-
-        return () => {
-            if (currentElement) {
-                currentObserver.unobserve(currentElement);
-            }
-        };
-    }, [element]);
 
     const listComics = async () => {
         setEnd(false);
@@ -200,19 +166,12 @@ const ComicsPage = () => {
                 />
             </Modal>
 
-            <div
-                ref={setElement}
-                className="display-news__load-more display-comics__load-more"
+            <div className="display-news__load-more"
             >
                 {(comics.length) && !end ? (
-                    <p>
-                        Loading Comics...
-                        <img
-                            src={Logo}
-                            id="display-news__logo-loader"
-                            alt="Logo-loader"
-                        />
-                    </p>
+                    <Button className="display-comics__load-more" onClick={() => setPage(prev => prev + 1)}>
+                        Load More Comics
+                    </Button>
                 ) : (
                     <p>
                         You reached the end.

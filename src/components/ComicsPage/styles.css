@@ -45,7 +45,20 @@
 }
 
 .ComicsPage__modal-image {
-    height: 50%;
+    min-height: 40%;
+    max-height: 80%;
+}
+
+.display-comics__load-more {
+    background-color: transparent !important;
+    border: solid 0.1rem black !important;
+    color: black !important; 
+    padding: 10px !important;
+}
+
+.display-comics__load-more:hover {
+    background-color: black !important;
+    color: white !important;
 }
 
 @media only screen and (max-width: 992px) {

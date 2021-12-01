@@ -166,15 +166,25 @@ const TopNav = (props) => {
                             </Modal>
                         ) : (
                             loading ? (
-                                <div className="top-nav__search-results top-nav__search-load">
-                                    <h3>Loading...</h3>
-                                    <img src={FL} alt="loader" className="top-nav__search-loader" />
-                                </div>
+                                <Modal
+                                    open={loading}
+                                    onClose={() => { clearSearch() }}
+                                >
+                                    <div className="top-nav__search-results top-nav__search-load">
+                                        <h3>Loading...</h3>
+                                        <img src={FL} alt="loader" className="top-nav__search-loader" />
+                                    </div>
+                                </Modal>
                             ) : (
                                 nores ? (
-                                    <div className="top-nav__search-results">
-                                        <h3>No results found.</h3>
-                                    </div>
+                                    <Modal
+                                        open={nores}
+                                        onClose={() => { clearSearch(); setNores(false) }}
+                                    >
+                                        <div className="top-nav__search-results">
+                                            <h3>No results found.</h3>
+                                        </div>
+                                    </Modal>
                                 ) : (
                                     <></>
                                 )
