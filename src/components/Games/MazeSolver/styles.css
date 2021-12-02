@@ -100,6 +100,24 @@
     height: 80vh;
 }
 
+.maze__modal img {
+    height: 30% !important;
+}
+
+.maze__modal > .MuiBox-root {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 40% !important;
+    width: 70% !important;
+    opacity: 0.95;
+}
+
+.maze__modal > .MuiBox-root h2, .maze__modal > .MuiBox-root p {
+    text-align: center !important;
+    width: 100%;
+}
+
 .maze-buttons {
     display: flex;
     flex-direction: row;
@@ -118,8 +136,13 @@
     background-color: #b2ea6f !important;
 }
 
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 992px) {
     .maze__mobile-controls {
         display: none;
+    }
+
+    .maze__modal > .MuiBox-root {
+        height: 40%;
+        width: 20% !important;
     }
 }

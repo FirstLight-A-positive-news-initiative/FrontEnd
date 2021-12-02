@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { GoogleLogout } from "react-google-login";
@@ -25,12 +25,29 @@ import NDTV from "../../assets/images/NewsLogos/ndtv.png";
 import FL from "../../assets/images/FirstLight_No_Text.png";
 
 const TopNav = (props) => {
+    const ref = useRef();
     const [search, setSearch] = useState("");
     const [searchresults, setSearchresults] = useState([]);
     const [nores, setNores] = useState(false);
     // eslint-disable-next-line
     const [user, setUser] = useContext(userContext);
     const [loading, setLoading] = useState(false);
+    const [searchOpen, setSearchOpen] = useState(false);
+
+    useEffect(() => {
+        const checkIfClickedOutside = (e) => {
+            if (searchOpen && ref.current && !ref.current.contains(e.target)) {
+                clearSearch();
+            }
+        }
+
+        document.addEventListener("mousedown", checkIfClickedOutside)
+
+        return () => {
+            // Cleanup the event listener
+            document.removeEventListener("mousedown", checkIfClickedOutside)
+        }
+    }, [searchOpen]);
 
     // for games menu
     const [gameAnchor, setGameAnchor] = useState(null);
@@ -68,6 +85,7 @@ const TopNav = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setSearchresults([]);
+        setSearchOpen(true);
         if (search.trim() !== "") {
             setLoading(true);
             const results = await axios(
@@ -92,6 +110,8 @@ const TopNav = (props) => {
     const clearSearch = () => {
         setSearch("");
         setSearchresults([]);
+        setSearchOpen(false);
+        setNores(false);
     };
 
     function toTitleCase(str) {
@@ -140,30 +160,25 @@ const TopNav = (props) => {
                         </form>
 
                         {searchresults && searchresults.length ? (
-                            <Modal
-                                open={!loading}
-                                onClose={() => { clearSearch() }}
-                            >
-                                <div className="top-nav__search-results">
-                                    <List>
-                                        {searchresults.map((s) => (
-                                            <ListItem className="top-nav__search-results-item">
-                                                <img className="top-nav__search-results-item-image" src={s.image_link.length === 0 ? Placeholder : s.image_link} alt="news-img" />
-                                                <Link to={`/news/${s._id}`} target="_blank">
-                                                    <ListItemText
-                                                        primary={trim(s.title)}
-                                                    />
-                                                    <div className="top-nav__search-results-info">
-                                                        <p className="top-nav__search-results-genre">{toTitleCase(s.genre)}</p>
-                                                        <p className="top-nav__search-results-positivity">Score: {s.positivity_score}</p>
-                                                        <img className="top-nav__search-results-source" src={linklogo(s.link)} alt="source" />
-                                                    </div>
-                                                </Link>
-                                            </ListItem>
-                                        ))}
-                                    </List>
-                                </div>
-                            </Modal>
+                            <div className="top-nav__search-results" ref={ref}>
+                                <List>
+                                    {searchresults.map((s) => (
+                                        <ListItem className="top-nav__search-results-item">
+                                            <img className="top-nav__search-results-item-image" src={s.image_link.length === 0 ? Placeholder : s.image_link} alt="news-img" />
+                                            <Link to={`/news/${s._id}`} target="_blank">
+                                                <ListItemText
+                                                    primary={trim(s.title)}
+                                                />
+                                                <div className="top-nav__search-results-info">
+                                                    <p className="top-nav__search-results-genre">{toTitleCase(s.genre)}</p>
+                                                    <p className="top-nav__search-results-positivity">Score: {s.positivity_score}</p>
+                                                    <img className="top-nav__search-results-source" src={linklogo(s.link)} alt="source" />
+                                                </div>
+                                            </Link>
+                                        </ListItem>
+                                    ))}
+                                </List>
+                            </div>
                         ) : (
                             loading ? (
                                 <div className="top-nav__search-results top-nav__search-load">
@@ -172,7 +187,7 @@ const TopNav = (props) => {
                                 </div>
                             ) : (
                                 nores ? (
-                                    <div className="top-nav__search-results">
+                                    <div className="top-nav__search-results" ref={ref}>
                                         <h3>No results found.</h3>
                                     </div>
                                 ) : (

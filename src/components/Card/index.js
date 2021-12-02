@@ -15,10 +15,11 @@ import BBC from "../../assets/images/NewsLogos/bbc.png";
 import CNN from "../../assets/images/NewsLogos/cnn.jpg";
 import NDTV from "../../assets/images/NewsLogos/ndtv.png";
 import FL from "../../assets/images/FirstLight_No_Text.png";
+import IN from "../../assets/images/NewsLogos/indiadotcom.png";
 import Placeholder from "../../assets/images/placeholder.svg";
 import "./styles.css";
 
-export default function NewsCard({ news, modalLink, setModalLink }) {
+export default function NewsCard({ news, modalLink, setModalLink, setModalTitle }) {
     function toTitleCase(str) {
         return str.replace(/\w\S*/g, function (txt) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -40,6 +41,8 @@ export default function NewsCard({ news, modalLink, setModalLink }) {
             return CNN;
         } else if (str.includes("ndtv")) {
             return NDTV;
+        } else if(str.includes("india.com")) {
+            return IN;
         } else {
             return FL;
         }
@@ -54,6 +57,7 @@ export default function NewsCard({ news, modalLink, setModalLink }) {
                     width: 345,
                     height: 430,
                     display: "inline-block",
+                    boxShadow: "2px 2px 8px gray"
                 }}
             >
                 <Link to={`/news/${news._id}`} className="news-list__link">
@@ -118,10 +122,11 @@ export default function NewsCard({ news, modalLink, setModalLink }) {
                                 navigator.share({
                                     title: `${news.title}`,
                                     url: `/news/${news._id}`,
-                                    text: "Hey! Check out this news on FirstLight - A Positive News Initiative!",
+                                    text: `Hey! Check out this news on FirstLight - A Positive News Initiative!\n\n${news.title}`,
                                 });
                             } else {
                                 setModalLink(() => news._id);
+                                setModalTitle(() => news.title);
                             }
                         }}
                     >
