@@ -19,7 +19,7 @@ import IN from "../../assets/images/NewsLogos/indiadotcom.png";
 import Placeholder from "../../assets/images/placeholder.svg";
 import "./styles.css";
 
-export default function NewsCard({ news, modalLink, setModalLink }) {
+export default function NewsCard({ news, modalLink, setModalLink, setModalTitle }) {
     function toTitleCase(str) {
         return str.replace(/\w\S*/g, function (txt) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -57,6 +57,7 @@ export default function NewsCard({ news, modalLink, setModalLink }) {
                     width: 345,
                     height: 430,
                     display: "inline-block",
+                    boxShadow: "2px 2px 8px gray"
                 }}
             >
                 <Link to={`/news/${news._id}`} className="news-list__link">
@@ -121,10 +122,11 @@ export default function NewsCard({ news, modalLink, setModalLink }) {
                                 navigator.share({
                                     title: `${news.title}`,
                                     url: `/news/${news._id}`,
-                                    text: "Hey! Check out this news on FirstLight - A Positive News Initiative!",
+                                    text: `Hey! Check out this news on FirstLight - A Positive News Initiative!\n\n${news.title}`,
                                 });
                             } else {
                                 setModalLink(() => news._id);
+                                setModalTitle(() => news.title);
                             }
                         }}
                     >

@@ -11,6 +11,8 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Happy from "../../../assets/images/PositivityRange/66.png";
+import Ok from "../../../assets/images/PositivityRange/0.png";
 
 const MazeSolver = (props) => {
     //var now = new Date().getTime();
@@ -584,8 +586,8 @@ const MazeSolver = (props) => {
                         >
                             {modalText}
                         </Typography>
+                        <img src = {modalText==="Oops! Looks like you are out of time" ? Ok : Happy} alt="happy" />
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                            Try again?{" "}
                             <Button
                                 className="maze__button"
                                 onClick={() => {

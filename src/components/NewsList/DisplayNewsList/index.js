@@ -31,6 +31,7 @@ const DisplayNewsList = ({
     // infinite scroll intersection observer
     const [element, setElement] = useState(null);
     const [modalLink, setModalLink] = useState(null);
+    const [modalTitle, setModalTitle] = useState(null);
 
     const observer = useRef(
         new IntersectionObserver(
@@ -110,7 +111,7 @@ const DisplayNewsList = ({
             <div className="display-news__list">
                 <Modal
                     open={modalLink !== null}
-                    onClose={() => setModalLink(() => null)}
+                    onClose={() => { setModalLink(() => null); setModalTitle(() => null) }}
                 >
                     <Box className="display-news__share-modal" sx={style}>
                         <Typography
@@ -133,7 +134,7 @@ const DisplayNewsList = ({
                                     console.log(copy_text);
                                     document.execCommand("copy");
                                     navigator.clipboard.writeText(
-                                        `Hey! Check out this news on Firstlight. Firstlight is the best news app ever!\n\n${window.location.origin}/news/${modalLink}`
+                                        `Hey! Check out this news on Firstlight - A Positive News Initiative!\n\n${modalTitle}\n\n${window.location.origin}/news/${modalLink}`
                                     );
                                 }}
                             >
@@ -148,6 +149,7 @@ const DisplayNewsList = ({
                         news={news}
                         modalLink={modalLink}
                         setModalLink={setModalLink}
+                        setModalTitle={setModalTitle}
                     />
                 ))}
             </div>
