@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {Helmet} from "react-helmet";
 import "./styles.css";
 import Placeholder from "../../assets/images/placeholder.svg";
 import axios from "axios";
@@ -42,6 +43,12 @@ const NewsPage = () => {
 
     return news ? (
         <div id="news-page" className="news-page">
+            <Helmet>
+                <meta property="og:site_name" content="FirstLight- A Positive News Initiative" />
+                <meta property="og:title" content={news.title} />
+                <meta property="og:image" itemprop="image" content={news.image_link} />
+                <meta property="og:type" content="website" />
+            </Helmet>
             <div className="news-page__header">
                 <div className="news-page__header-bg">
                     <div className="news-page__header-bg-image" style={{backgroundImage: `url(${news.image_link.length===0 ? Placeholder : news.image_link})`}}>
