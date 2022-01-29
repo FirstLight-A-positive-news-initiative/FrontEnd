@@ -15,7 +15,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import NewsCard from "../../Card/index";
 import "./styles.css";
-import Logo from "../../../assets/images/FirstLight_No_Text.png";
+import Logo from "../../../assets/images/FirstLight-Radial.png";
 
 const DisplayNewsList = ({
     user_genres,

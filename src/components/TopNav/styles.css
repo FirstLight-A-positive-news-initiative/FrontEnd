@@ -14,7 +14,8 @@
 }
 
 .top-nav__image {
-    height: 5rem;
+    height: 1.3rem;
+    padding: 3.5rem;
     cursor: pointer;
 }
 
@@ -171,14 +172,15 @@
 }
 
 #SignUp__btn {
-    border: 0.1em solid black !important;
-    background-color: black;
+    /* background: -webkit-linear-gradient(0deg, #4FD1C5, #338CF5); */
+    background-color: #000;
     color: white !important;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: large;
-    gap: 5px;
+    font-size: medium;
+    font-weight: bold;
+    gap: 10px;
 }
 
 #SignUp_btn a {

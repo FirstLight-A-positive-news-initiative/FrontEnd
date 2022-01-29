@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
+import { GoogleLogin, GoogleLogout } from "react-google-login";
 import Cookies from "js-cookie";
 import userContext from "../../context/userContext";
 import {
@@ -12,17 +13,18 @@ import { BiNews, BiBookOpen, BiLogIn } from "react-icons/bi";
 import { IoGameControllerOutline } from "react-icons/io5";
 import { MdGames } from "react-icons/md";
 import { FaTimes } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import { Button, Menu, MenuItem, Divider, List, ListItem, ListItemText } from "@mui/material";
 
 import "./styles.css";
-import FirstLight from "../../assets/images/FirstLight_No_Text.png";
+import FirstLight from "../../assets/images/FirstLight-Radial.png";
 
 import Placeholder from "../../assets/images/placeholder.svg";
 import TC from "../../assets/images/NewsLogos/techcrunch.png";
 import BBC from "../../assets/images/NewsLogos/bbc.png";
 import CNN from "../../assets/images/NewsLogos/cnn.jpg";
 import NDTV from "../../assets/images/NewsLogos/ndtv.png";
-import FL from "../../assets/images/FirstLight_No_Text.png";
+import FL from "../../assets/images/FirstLight-Radial.png";
 
 const BottomNav = () => {
     const ref = useRef();
@@ -33,6 +35,40 @@ const BottomNav = () => {
     const [user, setUser] = useContext(userContext);
     const [loading, setLoading] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
+
+    //Login
+    const responseGoogle = async (res) => {
+        const googleUser = res.profileObj;
+        // check if user already had an account
+        axios
+            .get(`${process.env.REACT_APP_API}/users/${googleUser.email}`)
+            .then((res) => {
+                localStorage.setItem(
+                    "firstlightUser",
+                    JSON.stringify(res.data)
+                );
+                localStorage.setItem(
+                    "avatar", googleUser.imageUrl
+                )
+                setUser(() => res.data);
+            })
+            .catch((err) => {
+                console.log("err: ", err);
+                const firstLightUser = {
+                    name: googleUser.givenName + " " + googleUser.familyName,
+                    email: googleUser.email,
+                };
+                localStorage.setItem(
+                    "firstlightUser",
+                    JSON.stringify(firstLightUser)
+                );
+                localStorage.setItem(
+                    "avatar", googleUser.imageUrl
+                )
+                setUser(() => firstLightUser);
+                history.push("/preferences");
+            });
+    };
 
     useEffect(() => {
         const checkIfClickedOutside = e => {
@@ -216,7 +252,7 @@ const BottomNav = () => {
                 )}
             </div>
 
-            <div className="BottomNav__nav">
+            <div className="BottomNav__nav" style={user ? {padding: "1%"}: {}}>
                 {user ? (
                     <>
                         <Button
@@ -337,16 +373,25 @@ const BottomNav = () => {
                         </Menu>
                     </>
                 ) : (
-                    <Link to="/login">
-                        <Button id="SignUp__btn-mobile">
-                            Sign Up
-                            <BiLogIn id="SignUp__icon-mobile" />
+                    <GoogleLogin
+                    className="top-nav__google-login"
+                    clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                    buttonText="LogIn/ SignUp"
+                    render={renderProps => (
+                        <Button id="SignUp__btn-mobile" onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                            <FcGoogle id="SignUp__icon" />
+                            LogIn/ SignUp
                         </Button>
-                    </Link>
+                    )}
+                    icon={false}
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy={"single_host_origin"}
+                />
                 )}
             </div>
-        </div >
+        </div>
     );
 };
 
-export default BottomNav;
+export default withRouter(BottomNav);

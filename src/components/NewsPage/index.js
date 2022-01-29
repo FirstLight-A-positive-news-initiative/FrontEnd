@@ -24,7 +24,7 @@ const NewsPage = () => {
     }, [id]);
 
     useEffect(() => {
-        scroll(0, 0);
+        window.scroll(0, 0);
     }, [news])
 
     function trim(str) {

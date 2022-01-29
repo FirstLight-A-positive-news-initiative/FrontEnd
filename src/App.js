@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router";
 import userContext from "./context/userContext";
-import SignUp from "./components/signup";
+import Landing from "./components/Landing"
 import TopNav from "./components/TopNav";
 import BottomNav from "./components/BottomNav";
 import Preferences from "./components/Preferences";
@@ -24,10 +24,10 @@ const App = () => {
             <div>
                 <TopNav />
                 <Switch>
-                    <Route path="/login" component={SignUp} />
+                    <Route exact path="/" component={Landing} />
                     <Route exact path="/comics/:id" component={SingleComic} />
                     <Route exact path="/news/:id" component={NewsPage} />
-                    <Redirect to="/login"></Redirect>
+                    <Redirect to="/"></Redirect>
                 </Switch>
                 <Footer />
                 <BottomNav />
@@ -37,7 +37,7 @@ const App = () => {
         routes = (
             <div>
                 <Switch>
-                    <Route path="/login" component={SignUp} />
+                    <Route exact path="/" component={Landing} />
                     <Route exact path="/preferences" component={Preferences} />
                     <Redirect to="/preferences"></Redirect>
                 </Switch>
