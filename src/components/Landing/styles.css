@@ -31,15 +31,20 @@ a{
     background-image: url("./../../assets/images/wave-background.svg");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 620px;
+    height: 110vh;
 }
 .landing__title{
     padding: 5rem 1rem 10rem 5rem;
+    margin: auto;
     text-align: center;
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
     align-items: center;
+}
+.landing__title-logo{
+    margin: auto;
+    display: none;
 }
 .landing__title-content{
     color: #000000;
@@ -61,7 +66,8 @@ a{
     text-align: center;
     background-image: -webkit-linear-gradient(-90deg, #0066FF,#4FD1C5);
     /* background-color: #0066FF; */
-    padding-top: 2.5rem;
+    padding-top: 2.5rem;    
+    margin-top: -1px;
 }
 .landing__about-title{
     font-size: 3.5rem;
@@ -173,26 +179,42 @@ a{
     margin: auto;
 }
 
-@media only screen and (max-width: 1050px){
+@media only screen and (max-width: 1005px){
     .landing__title{
         grid-auto-flow: row;
         grid-auto-columns: 1fr;
-        padding: 6.5rem 0rem 15rem 0rem;
+        padding: 6.5rem 0rem 0rem 0rem;
     }
     .landing__title-content{
         font-size: 3rem;
     }
     .landing__title-image{
-        height: 200px;
+        width: 90%;
+        height: 90%;
         margin-top: 3rem;
     }
     .landing__title-content div{
         font-size: 6rem;
     }
+    .landing__about-card{
+        margin: 1rem;
+    }
+}
+@media only screen and (max-width: 750px){
     .landing__about-cards{
         flex-direction: column;
     }
-    .landing__about-card{
-        margin: 1rem;
+}
+@media only screen and (max-width: 500px){
+    .landing__title{
+        padding-top: 2rem;
+    }
+    .landing__title-logo{
+        height: 200px;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    .landing__title-image{
+        margin-top: 6rem;
     }
 }

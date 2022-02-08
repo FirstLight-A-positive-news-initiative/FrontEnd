@@ -3,9 +3,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import Laptop from "./../../assets/images/Laptop.png";
-import Arjun from "./../../assets/images/Team/Arjun.png";
-import Shubh from "./../../assets/images/Team/Shubh.jpg";
-import Utkarsh from "./../../assets/images/Team/Utkarsh.jpeg";
+import FL from "./../../assets/images/FirstLight-Radial.png";
 import './styles.css';
 
 const Landing = ()=>{
@@ -14,6 +12,7 @@ const Landing = ()=>{
     <div className="landing__cover">
       <div className="landing__wave">
         <div className="landing__title">
+          <img className="landing__title-logo" src={FL} />
           <h1 className="landing__title-content">Start your day with <div>FIRSTLIGHT</div></h1>
           <div><img className="landing__title-image" alt="Laptop" src={Laptop}/></div>
         </div>
@@ -22,7 +21,7 @@ const Landing = ()=>{
         <p className="landing__about-title">Developers behind the Scene</p>
         <div className="landing__about-cards">
           <div className="landing__about-card">
-            <img className="landing__about-card-img"  src="https://avatars.githubusercontent.com/u/65658829?s=460&v=4"/>
+            <img className="landing__about-card-img"  src="https://github.com/arjun-kathail.png?size=460"/>
             <div className="landing__about-card-animate">
               <span className="landing__about-card-animate-line-1"></span>
               <span className="landing__about-card-animate-line-2"></span>
@@ -45,7 +44,7 @@ const Landing = ()=>{
             </div>
           </div>
           <div className="landing__about-card">
-            <img className="landing__about-card-img"  src="https://avatars.githubusercontent.com/u/52048551?s=460&v=4"/>
+            <img className="landing__about-card-img"  src="https://github.com/utkarshgoelut.png?size=460"/>
             <div className="landing__about-card-animate">
               <span className="landing__about-card-animate-line-1"></span>
               <span className="landing__about-card-animate-line-2"></span>
@@ -56,19 +55,19 @@ const Landing = ()=>{
               </div>
               <div className="landing__about-card-contact">
                 <div className="landing__about-card-contact-icon">
-                  <MailIcon/>
+                  <a href="mailto:ugoel911@gmail.com"><MailIcon/></a>
                 </div>
                 <div className="landing__about-card-contact-icon">
-                  <LinkedInIcon/>
+                  <a href="https://www.linkedin.com/in/utkarshgoelut/" target="_blank"><LinkedInIcon/></a>
                 </div>
                 <div className="landing__about-card-contact-icon">
-                  <GitHubIcon/>
+                  <a href="https://github.com/UtkarshGoelUT" target="_blank"><GitHubIcon/></a>
                 </div>
               </div>
             </div>
           </div>
           <div className="landing__about-card">
-            <img className="landing__about-card-img"  src={Shubh}/>
+            <img className="landing__about-card-img"  src="https://github.com/solarconstant.png?size=460"/>
             <div className="landing__about-card-animate">
               <span className="landing__about-card-animate-line-1"></span>
               <span className="landing__about-card-animate-line-2"></span>
@@ -79,13 +78,13 @@ const Landing = ()=>{
               </div>
               <div className="landing__about-card-contact">
                 <div className="landing__about-card-contact-icon">
-                  <MailIcon/>
+                  <a href="mailto:ashishshubh001@gmail.com"><MailIcon/></a>
                 </div>
                 <div className="landing__about-card-contact-icon">
-                  <LinkedInIcon/>
+                  <a href="https://www.linkedin.com/in/shubh-ashish-a4a415190/" target="_blank"><LinkedInIcon/></a>
                 </div>
                 <div className="landing__about-card-contact-icon">
-                  <GitHubIcon/>
+                  <a href="https://github.com/solarconstant" target="_blank"><GitHubIcon/></a>
                 </div>
               </div>
             </div>
