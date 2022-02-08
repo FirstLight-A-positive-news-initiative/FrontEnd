@@ -7,7 +7,7 @@ import india from "../../assets/images/NewsList/india.png";
 import entertainment from "../../assets/images/NewsList/entertainment.jpg";
 import politics from "../../assets/images/NewsList/politics.jpg";
 import science from "../../assets/images/NewsList/science.png";
-import technology from "../../assets/images/NewsList/technology.webp";
+import technology from "../../assets/images/NewsList/technology.png";
 import offbeat from "../../assets/images/NewsList/offbeat.png";
 import sports from "../../assets/images/NewsList/sports.jpg";
 import "./styles.css";

@@ -31,7 +31,7 @@ a{
     background-image: url("./../../assets/images/wave-background.svg");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 110vh;
+    height: 115vh;
 }
 .landing__title{
     padding: 5rem 1rem 10rem 5rem;
@@ -60,6 +60,7 @@ a{
     font-family: 'Dongle';
     background: -webkit-linear-gradient(0deg, #338CF5, #4FD1C5);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 .landing__about{
@@ -215,6 +216,6 @@ a{
         margin-bottom: 0.5rem;
     }
     .landing__title-image{
-        margin-top: 6rem;
+        margin-top: 5rem;
     }
 }
