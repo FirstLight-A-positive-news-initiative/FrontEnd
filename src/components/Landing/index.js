@@ -13,6 +13,7 @@ const Landing = ()=>{
       <div className="landing__wave">
         <div className="landing__title">
           <img className="landing__title-logo" src={FL} />
+          <h1 className="landing__title-content-mobile"><div>FIRSTLIGHT</div>A Positive Start to your Day</h1>
           <h1 className="landing__title-content">Start your day with <div>FIRSTLIGHT</div></h1>
           <div><img className="landing__title-image" alt="Laptop" src={Laptop}/></div>
         </div>

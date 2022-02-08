@@ -8,6 +8,8 @@ import entertainment from "../../assets/images/NewsList/entertainment.jpg";
 import politics from "../../assets/images/NewsList/politics.jpg";
 import science from "../../assets/images/NewsList/science.png";
 import technology from "../../assets/images/NewsList/technology.png";
+import business from "../../assets/images/NewsList/business.png";
+import health from "../../assets/images/NewsList/health.png";
 import offbeat from "../../assets/images/NewsList/offbeat.png";
 import sports from "../../assets/images/NewsList/sports.jpg";
 import "./styles.css";
@@ -162,6 +164,34 @@ const NewsList = () => {
                             alt="technology"
                             className={
                                 tab === "technology"
+                                    ? "news-list__genre-item active"
+                                    : "news-list__genre-item"
+                            }
+                        />
+                    </li>
+                </Tooltip>
+                <Tooltip title="Business">
+                    <li className="news-list__genre-Business" key="Business" onClick={() => setTabGenre("business")}>
+                        <Avatar
+                            sx={{ height: "50px", width: "50px" }}
+                            src={business}
+                            alt="business"
+                            className={
+                                tab === "business"
+                                    ? "news-list__genre-item active"
+                                    : "news-list__genre-item"
+                            }
+                        />
+                    </li>
+                </Tooltip>
+                <Tooltip title="Health">
+                    <li className="news-list__genre-Health" key="Health" onClick={() => setTabGenre("health")}>
+                        <Avatar
+                            sx={{ height: "50px", width: "50px" }}
+                            src={health}
+                            alt="health"
+                            className={
+                                tab === "health"
                                     ? "news-list__genre-item active"
                                     : "news-list__genre-item"
                             }

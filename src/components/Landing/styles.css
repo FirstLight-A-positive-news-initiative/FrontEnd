@@ -52,10 +52,25 @@ a{
     font-size: 3.5rem;
     font-family: 'Inter'
 }
+.landing__title-content-mobile{
+    color: #000000;
+    font-weight: 800;
+    font-size: 3.5rem;
+    font-family: 'Inter';
+    display: none;
+}
 .landing__title-image{
     height: 300px;
 }
 .landing__title-content div{
+    font-size: 8rem;
+    font-family: 'Dongle';
+    background: -webkit-linear-gradient(0deg, #338CF5, #4FD1C5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.landing__title-content-mobile div{
     font-size: 8rem;
     font-family: 'Dongle';
     background: -webkit-linear-gradient(0deg, #338CF5, #4FD1C5);
@@ -189,12 +204,18 @@ a{
     .landing__title-content{
         font-size: 3rem;
     }
+    .landing__title-content-mobile{
+        font-size: 2.3rem;
+    }
     .landing__title-image{
         width: 90%;
         height: 90%;
         margin-top: 3rem;
     }
     .landing__title-content div{
+        font-size: 6rem;
+    }
+    .landing__title-content-mobile div{
         font-size: 6rem;
     }
     .landing__about-card{
@@ -204,6 +225,12 @@ a{
 @media only screen and (max-width: 750px){
     .landing__about-cards{
         flex-direction: column;
+    }
+    .landing__title-content{
+        display: none;
+    }
+    .landing__title-content-mobile{
+        display: block;
     }
 }
 @media only screen and (max-width: 500px){
