@@ -37,7 +37,6 @@ const App = () => {
         routes = (
             <div>
                 <Switch>
-                    <Route exact path="/" component={Landing} />
                     <Route exact path="/preferences" component={Preferences} />
                     <Redirect to="/preferences"></Redirect>
                 </Switch>
