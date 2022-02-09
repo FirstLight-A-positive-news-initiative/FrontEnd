@@ -48,7 +48,17 @@ const App = () => {
             <div>
                 <TopNav />
                 <Switch>
-                    <Route exact path="/news" component={NewsList} />
+                    <Route exact path="/featured" component={NewsList} />
+                    <Route exact path="/world" component={NewsList} />
+                    <Route exact path="/india" component={NewsList} />
+                    <Route exact path="/entertainment" component={NewsList} />
+                    <Route exact path="/politics" component={NewsList} />
+                    <Route exact path="/science" component={NewsList} />
+                    <Route exact path="/technology" component={NewsList} />
+                    <Route exact path="/business" component={NewsList} />
+                    <Route exact path="/health" component={NewsList} />
+                    <Route exact path="/offbeat" component={NewsList} />
+                    <Route exact path="/sports" component={NewsList} />
                     <Route exact path="/preferences" component={Preferences} />
                     <Route exact path="/news/:id" component={NewsPage} />
                     <Route exact path="/test/card" component={Card} />
@@ -65,7 +75,7 @@ const App = () => {
                     <Route exact path="/games/sudoku" component={Sudoku} />
                     <Route exact path="/comics" component={ComicsPage} />
                     <Route exact path="/comics/:id" component={SingleComic} />
-                    <Redirect to="/news"></Redirect>
+                    <Redirect to="/featured"></Redirect>
                 </Switch>
                 <Footer />
                 <BottomNav />

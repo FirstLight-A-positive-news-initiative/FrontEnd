@@ -236,7 +236,7 @@ const TopNav = ({history}) => {
                     <nav>
                         <ul className="top-nav__links">
                             <li key="news">
-                                <Link to="/news">
+                                <Link to="/featured">
                                     <BiNews
                                         className="top-nav__links-icons"
                                         size="25px"

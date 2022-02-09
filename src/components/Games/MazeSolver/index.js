@@ -566,7 +566,7 @@ const MazeSolver = (props) => {
                     <Button
                         className="maze__button maze-play-again"
                         onClick={() => {
-                            history.push("/news");
+                            history.push("/featured");
                             history.goBack();
                         }}
                     >
@@ -591,7 +591,7 @@ const MazeSolver = (props) => {
                             <Button
                                 className="maze__button"
                                 onClick={() => {
-                                    history.push("/news");
+                                    history.push("/featured");
                                     history.goBack();
                                 }}
                             >

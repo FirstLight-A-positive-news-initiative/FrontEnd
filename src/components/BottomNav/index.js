@@ -264,7 +264,7 @@ const BottomNav = () => {
                             <h6 className="BottomNav__nav-item-text">Search</h6>
                         </Button>
                         <Button value="news" className="BottomNav__nav-item">
-                            <Link className="Bottom__nav-item-link" to="/news">
+                            <Link className="Bottom__nav-item-link" to="/featured">
                                 <BiNews className="BottomNav__nav-item-icon" />
                                 <h6 className="BottomNav__nav-item-text">News</h6>
                             </Link>

@@ -61,7 +61,7 @@ const ChoosePositivity = ({ history, poslevel, setPoslevel, genres }) => {
                         );
                     })
                     .then(() => {
-                        history.push("/news");
+                        history.push("/featured");
                     });
             }
         } else {
@@ -81,7 +81,7 @@ const ChoosePositivity = ({ history, poslevel, setPoslevel, genres }) => {
                     );
                 })
                 .then(() => {
-                    history.push("/news");
+                    history.push("/featured");
                 });
         }
     };

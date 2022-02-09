@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation, withRouter } from "react-router-dom";
 import { Avatar, Tooltip, Button } from "@mui/material";
 import { KeyboardArrowUp } from "@mui/icons-material";
 import featured from "../../assets/images/NewsList/featured.png";
@@ -15,11 +16,11 @@ import sports from "../../assets/images/NewsList/sports.jpg";
 import "./styles.css";
 import DisplayNewsList from "./DisplayNewsList";
 
-const NewsList = () => {
+const NewsList = ({history}) => {
     const user_genres = JSON.parse(localStorage.getItem("firstlightUser")).genre;
     const user_positivity = JSON.parse(localStorage.getItem("firstlightUser")).positivity;
 
-    const [tab, setTab] = useState("featured");
+    const [tab, setTab] = useState(useLocation().pathname.substring(1));
     const [skip, setSkip] = useState(0);
     const [end, setEnd] = useState(false);
     const [news, setNews] = useState([]);
@@ -42,10 +43,13 @@ const NewsList = () => {
     }, [])
 
     const setTabGenre = (tab_name) => {
-        setNews([]);
-        setTab(tab_name);
-        setSkip(0);
-        setEnd(false);
+        if(tab!==tab_name){
+            setNews([]);
+            setTab(tab_name);
+            setSkip(0);
+            setEnd(false);
+            history.push("/"+tab_name);
+        }
     }
     
     const handleScroll = () => {
@@ -253,4 +257,4 @@ const NewsList = () => {
     );
 };
 
-export default NewsList;
+export default withRouter(NewsList);
