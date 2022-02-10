@@ -60,7 +60,7 @@ a{
     display: none;
 }
 .landing__title-image{
-    height: 300px;
+    width: 90%;
 }
 .landing__title-content div{
     font-size: 8rem;
@@ -208,8 +208,8 @@ a{
         font-size: 2.3rem;
     }
     .landing__title-image{
-        width: 90%;
-        height: 90%;
+        width: 65%;
+        height: 65%;
         margin-top: 3rem;
     }
     .landing__title-content div{
@@ -231,6 +231,10 @@ a{
     }
     .landing__title-content-mobile{
         display: block;
+    }
+    .landing__title-image{
+        width: 90%;
+        height: 90%;
     }
 }
 @media only screen and (max-width: 500px){
