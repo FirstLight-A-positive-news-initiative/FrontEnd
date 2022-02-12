@@ -60,7 +60,6 @@
         color: black;
         background-color: white;
         justify-content: space-evenly !important;
-        padding: 1%;
         height: 60px !important;
     }
 
@@ -236,11 +235,14 @@
     #SignUp__btn-mobile {
         width: 100vw !important;
         height: 100%;
-        color: black;
-        font-size: 1.5rem;
+        background-color: #000;
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: bold;
         display: flex;
         justify-content: center;
         gap: 10px;
+        border-radius: 0;
     }
 
     .BottomNav__nav a {

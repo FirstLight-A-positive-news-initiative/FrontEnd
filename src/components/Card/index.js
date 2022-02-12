@@ -14,7 +14,7 @@ import TC from "../../assets/images/NewsLogos/techcrunch.png";
 import BBC from "../../assets/images/NewsLogos/bbc.png";
 import CNN from "../../assets/images/NewsLogos/cnn.jpg";
 import NDTV from "../../assets/images/NewsLogos/ndtv.png";
-import FL from "../../assets/images/FirstLight_No_Text.png";
+import FL from "../../assets/images/FirstLight-Radial.png";
 import IN from "../../assets/images/NewsLogos/indiadotcom.png";
 import Placeholder from "../../assets/images/placeholder.svg";
 import "./styles.css";

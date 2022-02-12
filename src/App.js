@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router";
 import userContext from "./context/userContext";
-import SignUp from "./components/signup";
+import Landing from "./components/Landing"
 import TopNav from "./components/TopNav";
 import BottomNav from "./components/BottomNav";
 import Preferences from "./components/Preferences";
@@ -25,10 +25,10 @@ const App = () => {
             <div>
                 <TopNav />
                 <Switch>
-                    <Route path="/login" component={SignUp} />
+                    <Route exact path="/" component={Landing} />
                     <Route exact path="/comics/:id" component={SingleComic} />
                     <Route exact path="/news/:id" component={NewsPage} />
-                    <Redirect to="/login"></Redirect>
+                    <Redirect to="/"></Redirect>
                 </Switch>
                 <Footer />
                 <BottomNav />
@@ -38,7 +38,6 @@ const App = () => {
         routes = (
             <div>
                 <Switch>
-                    <Route path="/login" component={SignUp} />
                     <Route exact path="/preferences" component={Preferences} />
                     <Redirect to="/preferences"></Redirect>
                 </Switch>
@@ -50,7 +49,17 @@ const App = () => {
             <div>
                 <TopNav />
                 <Switch>
-                    <Route exact path="/news" component={NewsList} />
+                    <Route exact path="/featured" component={NewsList} />
+                    <Route exact path="/world" component={NewsList} />
+                    <Route exact path="/india" component={NewsList} />
+                    <Route exact path="/entertainment" component={NewsList} />
+                    <Route exact path="/politics" component={NewsList} />
+                    <Route exact path="/science" component={NewsList} />
+                    <Route exact path="/technology" component={NewsList} />
+                    <Route exact path="/business" component={NewsList} />
+                    <Route exact path="/health" component={NewsList} />
+                    <Route exact path="/offbeat" component={NewsList} />
+                    <Route exact path="/sports" component={NewsList} />
                     <Route exact path="/preferences" component={Preferences} />
                     <Route exact path="/news/:id" component={NewsPage} />
                     <Route exact path="/test/card" component={Card} />
@@ -67,7 +76,7 @@ const App = () => {
                     <Route exact path="/games/sudoku" component={Sudoku} />
                     <Route exact path="/comics" component={ComicsPage} />
                     <Route exact path="/comics/:id" component={SingleComic} />
-                    <Redirect to="/news"></Redirect>
+                    <Redirect to="/featured"></Redirect>
                 </Switch>
                 <Footer />
                 <BottomNav />

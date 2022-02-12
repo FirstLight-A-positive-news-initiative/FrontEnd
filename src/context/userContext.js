@@ -12,7 +12,6 @@ export const UserProvider = (props) => {
             if (serializedState == null) return undefined;
             return JSON.parse(serializedState);
         } catch (err) {
-            console.log(err);
             return null;
         }
     };

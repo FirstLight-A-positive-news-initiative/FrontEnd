@@ -33,6 +33,14 @@ const ChooseGenre = ({ genres, setGenres }) => {
             image: GenreCardImages.Technology,
         },
         {
+            genre: "Business",
+            image: GenreCardImages.Business,
+        },
+        {
+            genre: "Health",
+            image: GenreCardImages.Health,
+        },
+        {
             genre: "Offbeat",
             image: GenreCardImages.Offbeat,
         },

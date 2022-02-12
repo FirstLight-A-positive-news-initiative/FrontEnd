@@ -1,10 +1,11 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
-import { GoogleLogout } from "react-google-login";
+import { GoogleLogin, GoogleLogout } from "react-google-login";
 import userContext from "../../context/userContext";
 import "./styles.css";
-import Logo from "../../assets/images/FirstLight_text_crop.png";
+// import Logo from "../../assets/images/FirstLight_text_crop.png";
+import Logo from "../../assets/images/FirstLight-Rebrand.png";
 import { Avatar, Tooltip, Menu, MenuItem, Divider, List, ListItem, ListItemText, Button } from "@mui/material";
 import { MdGames } from "react-icons/md";
 import { BiNews, BiBookOpen, BiLogIn } from "react-icons/bi";
@@ -15,6 +16,7 @@ import {
     AiOutlineEdit,
 } from "react-icons/ai";
 import { FaTimes } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import Modal from "@mui/material/Modal"
 
 import Placeholder from "../../assets/images/placeholder.svg";
@@ -22,9 +24,9 @@ import TC from "../../assets/images/NewsLogos/techcrunch.png";
 import BBC from "../../assets/images/NewsLogos/bbc.png";
 import CNN from "../../assets/images/NewsLogos/cnn.jpg";
 import NDTV from "../../assets/images/NewsLogos/ndtv.png";
-import FL from "../../assets/images/FirstLight_No_Text.png";
+import FL from "../../assets/images/FirstLight-Radial.png";
 
-const TopNav = (props) => {
+const TopNav = ({history}) => {
     const ref = useRef();
     const [search, setSearch] = useState("");
     const [searchresults, setSearchresults] = useState([]);
@@ -33,6 +35,40 @@ const TopNav = (props) => {
     const [user, setUser] = useContext(userContext);
     const [loading, setLoading] = useState(false);
     const [searchOpen, setSearchOpen] = useState(false);
+
+    //Login
+    const responseGoogle = async (res) => {
+        const googleUser = res.profileObj;
+        // check if user already had an account
+        axios
+            .get(`${process.env.REACT_APP_API}/users/${googleUser.email}`)
+            .then((res) => {
+                localStorage.setItem(
+                    "firstlightUser",
+                    JSON.stringify(res.data)
+                );
+                localStorage.setItem(
+                    "avatar", googleUser.imageUrl
+                )
+                setUser(() => res.data);
+            })
+            .catch((err) => {
+                console.log("err: ", err);
+                const firstLightUser = {
+                    name: googleUser.givenName + " " + googleUser.familyName,
+                    email: googleUser.email,
+                };
+                localStorage.setItem(
+                    "firstlightUser",
+                    JSON.stringify(firstLightUser)
+                );
+                localStorage.setItem(
+                    "avatar", googleUser.imageUrl
+                )
+                setUser(() => firstLightUser);
+                history.push("/preferences");
+            });
+    };
 
     useEffect(() => {
         const checkIfClickedOutside = (e) => {
@@ -200,7 +236,7 @@ const TopNav = (props) => {
                     <nav>
                         <ul className="top-nav__links">
                             <li key="news">
-                                <Link to="/news">
+                                <Link to="/featured">
                                     <BiNews
                                         className="top-nav__links-icons"
                                         size="25px"
@@ -316,15 +352,24 @@ const TopNav = (props) => {
                     </Menu>
                 </>
             ) : (
-                <Link to="/login">
-                    <Button id="SignUp__btn">
-                        Sign Up
-                        <BiLogIn id="SignUp__icon" />
-                    </Button>
-                </Link>
+                <GoogleLogin
+                    className="top-nav__google-login"
+                    clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                    buttonText="LogIn/ SignUp"
+                    render={renderProps => (
+                        <Button id="SignUp__btn" onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                            <FcGoogle id="SignUp__icon" />
+                            LogIn/ SignUp
+                        </Button>
+                    )}
+                    icon={false}
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    cookiePolicy={"single_host_origin"}
+                />
             )}
         </header>
     );
 };
 
-export default TopNav;
+export default withRouter(TopNav);
