@@ -60,7 +60,7 @@ a {
   display: none;
 }
 .landing__title-image {
-  height: 300px;
+  width: 90%;
 }
 .landing__title-content div {
   font-size: 8rem;
@@ -78,11 +78,25 @@ a {
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.landing__about {
+  text-align: center;
+  background-image: -webkit-linear-gradient(-90deg, #0066ff, #4fd1c5);
+  /* background-color: #0066FF; */
+  padding-top: 2.5rem;
+  margin-top: -1px;
+}
+.landing__about-title {
+  font-size: 3.5rem;
+  color: #ffffff;
+  font-weight: 700;
+  font-family: "Ubuntu";
+}
 
 .landing__feature {
   text-align: center;
   background-color: #0066ff;
   margin-top: -2rem;
+  z-index: 10000;
 }
 
 .landing__feature-title {
@@ -148,8 +162,9 @@ a {
   background-image: url("./../../assets/images/wave-background-invert.svg");
   /* background-color: #0066FF; */
   padding-top: 18rem;
-  margin-top: -2px;
+  margin-top: -2rem !important;
 }
+
 .landing__about-title {
   font-size: 3.5rem;
   color: #0066ff;
@@ -296,6 +311,61 @@ a {
   }
   .landing__title-content-mobile {
     display: block;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .landing__title {
+    padding-top: 2rem;
+  }
+  .landing__title-logo {
+    height: 200px;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .landing__title-image {
+    margin-top: 5rem;
+  }
+}
+@media only screen and (max-width: 1005px) {
+  .landing__title {
+    grid-auto-flow: row;
+    grid-auto-columns: 1fr;
+    padding: 6.5rem 0rem 0rem 0rem;
+  }
+  .landing__title-content {
+    font-size: 3rem;
+  }
+  .landing__title-content-mobile {
+    font-size: 2.3rem;
+  }
+  .landing__title-image {
+    width: 65%;
+    height: 65%;
+    margin-top: 3rem;
+  }
+  .landing__title-content div {
+    font-size: 6rem;
+  }
+  .landing__title-content-mobile div {
+    font-size: 6rem;
+  }
+  .landing__about-card {
+    margin: 1rem;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .landing__about-cards {
+    flex-direction: column;
+  }
+  .landing__title-content {
+    display: none;
+  }
+  .landing__title-content-mobile {
+    display: block;
+  }
+  .landing__title-image {
+    width: 90%;
+    height: 90%;
   }
 }
 @media only screen and (max-width: 500px) {
