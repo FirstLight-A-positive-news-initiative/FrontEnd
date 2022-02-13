@@ -6,6 +6,8 @@ import Entertainment from "./Genre_entertainment.svg";
 import Sports from "./Genre_sports.svg";
 import Science from "./Genre_science.svg";
 import Technology from "./Genre_technology.svg";
+import Business from "./Genre_business.svg";
+import Health from "./Genre_health.svg";
 
 const GenreCardImages = {
     Entertainment,
@@ -15,6 +17,8 @@ const GenreCardImages = {
     Science,
     Sports,
     Technology,
+    Business,
+    Health,
     Offbeat,
 }
 

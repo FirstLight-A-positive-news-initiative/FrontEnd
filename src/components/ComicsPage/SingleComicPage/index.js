@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Modal, Card, Button, CardContent } from "@mui/material";
 
-import Logo from "../../../assets/images/FirstLight_No_Text.png";
+import Logo from "../../../assets/images/FirstLight-Radial.png";
 import "./styles.css";
 
 const SingleComic = () => {
