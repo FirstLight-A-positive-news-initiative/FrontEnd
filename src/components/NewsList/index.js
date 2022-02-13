@@ -5,14 +5,14 @@ import { KeyboardArrowUp } from "@mui/icons-material";
 import featured from "../../assets/images/NewsList/featured.png";
 import world from "../../assets/images/NewsList/world.png";
 import india from "../../assets/images/NewsList/india.png";
-import entertainment from "../../assets/images/NewsList/entertainment.jpg";
-import politics from "../../assets/images/NewsList/politics.jpg";
+import entertainment from "../../assets/images/NewsList/entertainment.png";
+import politics from "../../assets/images/NewsList/politics.png";
 import science from "../../assets/images/NewsList/science.png";
 import technology from "../../assets/images/NewsList/technology.png";
 import business from "../../assets/images/NewsList/business.png";
 import health from "../../assets/images/NewsList/health.png";
 import offbeat from "../../assets/images/NewsList/offbeat.png";
-import sports from "../../assets/images/NewsList/sports.jpg";
+import sports from "../../assets/images/NewsList/sports.png";
 import "./styles.css";
 import DisplayNewsList from "./DisplayNewsList";
 
