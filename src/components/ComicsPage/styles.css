@@ -19,13 +19,14 @@
     display: flex;
     margin: 2%;
     transition: ease-in 0.25s;
+    cursor: pointer;
 }
 
 .ComicsPage__header-image-active {
-    height: 15vh;
+    height: 13.5vh;
     display: flex;
     margin: 2%;
-    border: 0.5em solid;
+    border: 0.5rem solid;
     border-image-slice: 1;
     border-image-source: linear-gradient( 64.5deg,  rgba(245,116,185,1) 14.7%, rgba(89,97,223,1) 88.7% );
     transition: ease-in 0.25s;

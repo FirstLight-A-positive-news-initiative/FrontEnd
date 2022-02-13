@@ -44,10 +44,12 @@ const ComicsPage = () => {
     };
 
     const setTabComic = (tab_name) => {
-        setComics([]);
-        setTab(tab_name);
-        setPage(0);
-        setEnd(false);
+        if(tab!==tab_name){
+            setComics([]);
+            setTab(tab_name);
+            setPage(0);
+            setEnd(false);
+        }
     };
 
     useEffect(() => {

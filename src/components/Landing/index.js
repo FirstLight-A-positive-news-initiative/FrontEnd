@@ -41,7 +41,7 @@ const Landing = () => {
             <div className="landing__feature-card">
               <img src={Download} />
               <h1>Download application</h1>
-              <h2>Download it on your phone or desktop with PWA support.</h2>
+              <h2>Download it on your mobile or desktop with PWA support.</h2>
             </div>
           </div>
           <div className="landing__feature-col">
@@ -49,16 +49,16 @@ const Landing = () => {
               <img src={Sources} />
               <h1>Multiple News Sources</h1>
               <h2>
-                Enjoy news from your favorite news sources such as CNN, BCC,
-                NDTV, and Tech Crunch
+                Enjoy news from your favorite news sources such as BBC, CNN,
+                NDTV and TechCrunch.
               </h2>
             </div>
             <div className="landing__feature-card">
               <img src={Games} />
               <h1>Play Games</h1>
               <h2>
-                Play the traditional newspaper games such as Tic Tac Toe,
-                Sudoku, and Maze or solve them using AI.
+                Play the traditional newspaper games such as
+                Sudoku, Maze and TicTacToe or solve them using AI.
               </h2>
             </div>
             <div className="landing__feature-card">

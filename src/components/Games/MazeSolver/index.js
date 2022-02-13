@@ -407,7 +407,7 @@ const MazeSolver = (props) => {
                 if (this.Board[x][y]===" " || this.Board[x][y]==="&") {
                     scale = this.S;
                     this.ctx = this.canvas.getContext("2d");
-                    console.log(x, y);
+                    // console.log(x, y);
                     if (x!==orgx || y!==orgy) this.ctx.fillStyle = "#FBFF00"; // color of dot
                     this.ctx.fillRect(scale * x, scale * y, scale, scale);
                     if (x===20 && y===20) return true;

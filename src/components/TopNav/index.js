@@ -184,7 +184,7 @@ const TopNav = ({history}) => {
             {user ? (
                 <>
                     <div className="top-nav__search">
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} autoComplete="off">
                             <AiOutlineSearch />
                             <input
                                 type="text"
@@ -201,7 +201,7 @@ const TopNav = ({history}) => {
                                     {searchresults.map((s) => (
                                         <ListItem className="top-nav__search-results-item">
                                             <img className="top-nav__search-results-item-image" src={s.image_link.length === 0 ? Placeholder : s.image_link} alt="news-img" />
-                                            <Link to={`/news/${s._id}`} target="_blank">
+                                            <Link to={`/news/${s._id}`} onClick={()=>clearSearch()}>
                                                 <ListItemText
                                                     primary={trim(s.title)}
                                                 />
@@ -236,7 +236,7 @@ const TopNav = ({history}) => {
                     <nav>
                         <ul className="top-nav__links">
                             <li key="news">
-                                <Link to="/featured">
+                                <Link to="/news">
                                     <BiNews
                                         className="top-nav__links-icons"
                                         size="25px"

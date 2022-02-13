@@ -160,6 +160,7 @@ const BottomNav = () => {
             document.getElementById(
                 `BottomNav__search-box`
             ).className = `BottomNav__search-active`;
+            document.getElementById(`search-input`).focus();
         } else {
             document.getElementById(
                 `BottomNav__search-backdrop`
@@ -203,9 +204,10 @@ const BottomNav = () => {
             <div id="BottomNav__search-backdrop-disable"></div>
 
             <div id="BottomNav__search-box" className="BottomNav__search" ref={ref}>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} autoComplete="off">
                     <AiOutlineSearch />
                     <input
+                        id="search-input"
                         type="text"
                         placeholder="Search"
                         onChange={updateSearch}
@@ -220,7 +222,7 @@ const BottomNav = () => {
                             {searchresults.map((s) => (
                                 <ListItem className="BottomNav__search_results-item">
                                     <img src={s.image_link.length === 0 ? Placeholder : s.image_link} alt="news-img" />
-                                    <Link to={`/news/${s._id}`} target="_blank">
+                                    <Link to={`/news/${s._id}`} onClick={()=>{handleSearch(); clearSearch()}}>
                                         <ListItemText
                                             primary={trim(s.title)}
                                         />
@@ -264,7 +266,7 @@ const BottomNav = () => {
                             <h6 className="BottomNav__nav-item-text">Search</h6>
                         </Button>
                         <Button value="news" className="BottomNav__nav-item">
-                            <Link className="Bottom__nav-item-link" to="/featured">
+                            <Link className="Bottom__nav-item-link" to="/news">
                                 <BiNews className="BottomNav__nav-item-icon" />
                                 <h6 className="BottomNav__nav-item-text">News</h6>
                             </Link>
