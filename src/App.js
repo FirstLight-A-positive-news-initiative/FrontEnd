@@ -14,7 +14,6 @@ import MazeSolver from "./components/Games/MazeSolver";
 import Footer from "./components/Footer";
 import Sudoku from "./components/Games/Sudoku";
 import SingleComic from "./components/ComicsPage/SingleComicPage";
-import { HelmetProvider } from 'react-helmet-async';
 
 const App = () => {
     var routes = null;
@@ -83,7 +82,7 @@ const App = () => {
             </div>
         );
     }
-    return <HelmetProvider><div className="App">{routes}</div></HelmetProvider>;
+    return <div className="App">{routes}</div>;
 };
 
 export default App;

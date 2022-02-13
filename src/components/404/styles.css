@@ -1,0 +1,20 @@
+.news-page__404 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 0;
+}
+
+.news-page__404 img {
+    height: 25em;
+}
+
+.news-page__404 p {
+    width: 100%;
+    display: block;
+    padding-top: 2.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
