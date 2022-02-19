@@ -1,0 +1,8 @@
+body {
+    font-family: "Ubuntu", sans-serif;
+    cursor: image-set( "./assets/images/cursor.png" 1x, "./assets/images/cursor-2x.png" 2x), auto;
+}
+
+a{
+    text-decoration: none;
+}

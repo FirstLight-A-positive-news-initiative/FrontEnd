@@ -41,6 +41,22 @@ const NewsPage = () => {
     });
   }
 
+  const websource = (str) => {
+    if (str.includes("techcrunch")) {
+        return "TechCrunch";
+    } else if (str.includes("bbc")) {
+        return "BBC";
+    } else if (str.includes("cnn")) {
+        return "CNN";
+    } else if (str.includes("ndtv")) {
+        return "NDTV";
+    } else if(str.includes("india.com")) {
+        return "IndiaTV";
+    } else {
+        return "FirstLight";
+    }
+  };
+
   return news ? (
     <div id="news-page" className="news-page">
       <div className="news-page__header">
@@ -72,6 +88,7 @@ const NewsPage = () => {
         </a>
         <h1 className="news-page__content-title">{news.title}</h1>
         <p>{news.summary}</p>
+        <p id="news-page__content-source">Source: {websource(news.link)}</p>
       </div>
     </div>
   ) : notFound ? (

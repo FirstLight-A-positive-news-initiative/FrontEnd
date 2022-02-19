@@ -48,6 +48,22 @@ export default function NewsCard({ news, modalLink, setModalLink, setModalTitle 
         }
     };
 
+    const date = (str)=>{
+        var date=new Date(str.substr(0, str.length-5));
+        var today=new Date();
+        if(today.getDate()>date.getDate()){
+            if(today.getDate()-date.getDate()===1)
+                return "1 day ago";
+            else return today.getDate()-date.getDate() + " days ago";
+        }
+        else if(today.getHours()>date.getHours()){
+            if(today.getHours()-date.getHours()===1)
+                return "1 hour ago";
+            else return today.getHours()-date.getHours() + " hours ago";
+        }
+        else return "Recent";
+    }
+
     return (
         <div className="newsCard">
             <Card
@@ -105,7 +121,7 @@ export default function NewsCard({ news, modalLink, setModalLink, setModalTitle 
                 <CardActions
                     sx={{
                         display: "flex",
-                        justifyContent: "left",
+                        justifyContent: "space-between",
                         paddingTop: 0,
                         paddingBottom: "10px",
                     }}
@@ -132,6 +148,7 @@ export default function NewsCard({ news, modalLink, setModalLink, setModalTitle 
                     >
                         <ShareIcon sx={{ fontSize: "2rem", color: "black" }} />
                     </Button>
+                    <span className="card__date">{date(news.date)}</span>
                 </CardActions>
             </Card>
         </div>

@@ -3,13 +3,17 @@
     background-size: 500px;
     background-repeat: repeat;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 .tictactoe__heading{
     font-family: 'Ubuntu', sans-serif;
     font-size: 3.5rem;
     font-weight: 500;
     color: #fff;
-    padding: 1% 0% 0% 2%;
+    padding: 4% 0% 0% 0%;
+    margin: auto;
 }
 .tictactoe__modal{
     position: absolute;

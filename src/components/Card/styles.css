@@ -1,6 +1,12 @@
 .newsCard {
     margin: 20px;
     display: inline-block;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
 }
 .card__genre {
     display: inline;
@@ -14,6 +20,12 @@
 
 .news-list__link {
     text-decoration: none;
+}
+
+.card__date{
+    font-size: 1rem;
+    color: #666666;
+    margin-right: 0.5rem;
 }
 
 @media only screen and (max-width: 500px) {

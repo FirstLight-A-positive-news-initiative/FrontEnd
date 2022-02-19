@@ -195,7 +195,7 @@ const Sudoku = () => {
       <h1
         className="Sudoku__title"
       >
-        Sudoku
+      Sudoku
       </h1>
       <Button onClick={showRules} className="Sudoku__rules-btn">
         How to Play

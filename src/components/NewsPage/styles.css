@@ -115,6 +115,13 @@
     color: #4d4d4d;
 }
 
+#news-page__content-source{
+    font-size: 1rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: rgb(143, 143, 143);
+}
+
 .news-page__content-title {
     margin-top: 2rem;
     line-height: 30px;
@@ -133,6 +140,10 @@
         padding: 1rem 5rem;
         font-size: 1.2rem;
         margin-top: 0.5rem;
+    }
+
+    #news-page__content-source{
+        margin-top: 0;
     }
 
     .news-page__content-title {

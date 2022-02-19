@@ -14,6 +14,7 @@ import MazeSolver from "./components/Games/MazeSolver";
 import Footer from "./components/Footer";
 import Sudoku from "./components/Games/Sudoku";
 import SingleComic from "./components/ComicsPage/SingleComicPage";
+import "./App.css";
 
 const App = () => {
     var routes = null;
