@@ -51,15 +51,19 @@ export default function NewsCard({ news, modalLink, setModalLink, setModalTitle 
     const date = (str)=>{
         var date=new Date(str.substr(0, str.length-5));
         var today=new Date();
-        if(today.getDate()>date.getDate()){
-            if(today.getDate()-date.getDate()===1)
+        var diff =(today.getTime()-date.getTime())/1000;
+        diff/=(60*60);
+        var hours=Math.abs(Math.round(diff));
+        var days=Math.floor(hours/24);
+        if(days>0){
+            if(days===1)
                 return "1 day ago";
-            else return today.getDate()-date.getDate() + " days ago";
+            else return days + " days ago";
         }
-        else if(today.getHours()>date.getHours()){
-            if(today.getHours()-date.getHours()===1)
+        else if(hours){
+            if(hours===1)
                 return "1 hour ago";
-            else return today.getHours()-date.getHours() + " hours ago";
+            else return hours + " hours ago";
         }
         else return "Recent";
     }
