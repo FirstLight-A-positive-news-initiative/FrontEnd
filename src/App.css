@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=fallback");
+@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=fallback");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap");
+
 body {
     font-family: "Ubuntu", sans-serif;
     cursor: image-set( "./assets/images/cursor.png" 1x, "./assets/images/cursor-2x.png" 2x), auto;

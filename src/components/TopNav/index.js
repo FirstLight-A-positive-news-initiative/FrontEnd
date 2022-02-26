@@ -4,7 +4,6 @@ import axios from "axios";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 import userContext from "../../context/userContext";
 import "./styles.css";
-// import Logo from "../../assets/images/FirstLight_text_crop.png";
 import Logo from "../../assets/images/FirstLight-Rebrand.png";
 import { Avatar, Tooltip, Menu, MenuItem, Divider, List, ListItem, ListItemText, Button } from "@mui/material";
 import { MdGames } from "react-icons/md";
@@ -268,7 +267,7 @@ const TopNav = ({history}) => {
                                         className="top-nav__settings"
                                         onClick={handleSettingClick}
                                     >
-                                        <img src={localStorage.avatar} alt="logo" />
+                                        <img src={localStorage.avatar} alt="avatar" />
                                     </Avatar>
                                     {/* <img className="top-nav__settings" onClick={handleSettingClick}  src={localStorage.avatar}/> */}
                                 </Tooltip>
